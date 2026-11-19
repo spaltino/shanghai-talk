@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>상하이 소통카드 · 上海沟通卡</title>
+<meta name="description" content="상하이 현장에서 1초 만에 보여주는 중국어 소통카드. 장소 → 상황 → 순서별 대화카드, 화면 가득 확대 모드. 인터넷 없이도 열립니다." />
+<meta name="theme-color" content="#0b1220" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="상하이톡" />
+<meta property="og:title" content="상하이 소통카드" />
+<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 200장" />
+<meta property="og:type" content="website" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23ff8a3d' font-family='sans-serif'%3E%E8%AF%B4%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    --bg:#0b1220; --panel:#111c2e; --card:#152135; --card2:#1b2942;
+    --line:#26364f; --ink:#eef4fb; --muted:#96a7be; --dim:#6d7f98;
+    --accent:#ff8a3d; --accent2:#2fd3a4; --blue:#48b8f5;
+    --radius:16px;
+    --font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+            "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK SC", "Segoe UI", Roboto, sans-serif;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  html,body{margin:0; padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:
+      radial-gradient(1100px 520px at 80% -12%, rgba(255,138,61,.12), transparent 60%),
+      radial-gradient(900px 460px at 6% 0%, rgba(47,211,164,.08), transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding-bottom:calc(24px + env(safe-area-inset-bottom));
+  }
+  a{color:inherit}
+  button{font-family:inherit; color:inherit; background:none; border:0; cursor:pointer}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:8px;
+    padding:calc(10px + env(safe-area-inset-top)) 14px 10px;
+    background:rgba(11,18,32,.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-btn{
+    flex:0 0 auto; min-width:44px; height:44px; padding:0 12px;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    border-radius:12px; background:var(--card); border:1px solid var(--line);
+    font-size:15px; font-weight:600; color:var(--ink);
+  }
+  .nav-btn:active{background:var(--card2)}
+  .nav-btn[hidden]{display:none}
+  .htitle{flex:1 1 auto; min-width:0}
+  .htitle b{display:block; font-size:16px; font-weight:800; letter-spacing:-.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .htitle span{display:block; font-size:11.5px; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .brand{display:flex; align-items:center; gap:9px; flex:1 1 auto; min-width:0}
+  .brand .logo{
+    width:38px; height:38px; border-radius:11px; flex:0 0 auto;
+    background:linear-gradient(145deg,#ff8a3d,#ff5f6d);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:800; color:#0b1220;
+  }
+
+  main{max-width:760px; margin:0 auto; padding:14px 14px 40px}
+  .view[hidden]{display:none}
+
+  /* ---------- step 1 ---------- */
+  .lede{
+    margin:2px 0 14px; padding:14px 16px; border-radius:var(--radius);
+    background:linear-gradient(140deg, rgba(255,138,61,.10), rgba(47,211,164,.06));
+    border:1px solid var(--line);
+  }
+  .lede .t{font-size:13px; color:var(--muted)}
+  .lede .t b{color:var(--ink); font-weight:700}
+  .lede .steps{display:flex; align-items:center; gap:6px; margin-top:9px; font-size:11.5px; color:var(--dim); flex-wrap:wrap}
+  .lede .steps i{
+    font-style:normal; padding:3px 9px; border-radius:999px;
+    background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--muted);
+  }
+  .lede .steps i.on{background:rgba(255,138,61,.16); border-color:rgba(255,138,61,.45); color:#ffb787}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:11px}
+  .place{
+    position:relative; text-align:left; padding:16px 14px 14px;
+    border-radius:18px; background:linear-gradient(160deg,var(--card),#121d2e);
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; gap:6px; min-height:118px;
+    transition:transform .08s ease, border-color .15s ease;
+  }
+  .place:active{transform:scale(.98); border-color:rgba(255,138,61,.55)}
+  .place .em{font-size:28px; line-height:1.1}
+  .place .nm{font-size:17px; font-weight:800; letter-spacing:-.2px}
+  .place .note{font-size:11.5px; color:var(--dim); line-height:1.35}
+  .place .cnt{
+    margin-top:auto; font-size:11px; color:var(--accent);
+    background:rgba(255,138,61,.12); border:1px solid rgba(255,138,61,.3);
+    padding:2px 8px; border-radius:999px; align-self:flex-start;
+  }
+  .place.urgent{background:linear-gradient(160deg,#2a1620,#1a1220); border-color:#4a2334}
+  .place.urgent .cnt{color:#ff8f9c; background:rgba(255,95,110,.12); border-color:rgba(255,95,110,.3)}
+
+  /* ---------- step 2 ---------- */
+  .scenes{display:flex; flex-direction:column; gap:10px}
+  .scene{
+    display:flex; align-items:center; gap:13px; width:100%; text-align:left;
+    padding:15px 14px; border-radius:16px;
+    background:var(--card); border:1px solid var(--line);
+  }
+  .scene:active{background:var(--card2)}
+  .scene .no{
+    flex:0 0 auto; width:34px; height:34px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,138,61,.14); border:1px solid rgba(255,138,61,.32);
+    color:#ffb787; font-weight:800; font-size:15px;
+  }
+  .scene .tx{flex:1 1 auto; min-width:0}
+  .scene .tx b{display:block; font-size:16px; font-weight:700}
+  .scene .tx span{display:block; font-size:11.5px; color:var(--dim); margin-top:2px}
+  .scene .arw{flex:0 0 auto; color:var(--dim); font-size:18px}
+
+  /* ---------- step 3 ---------- */
+  .cards{display:flex; flex-direction:column; gap:10px}
+  .card{
+    width:100%; text-align:left; padding:14px 15px 13px; border-radius:16px;
+    background:var(--card); border:1px solid var(--line);
+    display:block; position:relative;
+  }
+  .card:active{background:var(--card2)}
+  .card .top{display:flex; align-items:center; gap:8px; margin-bottom:7px; padding-right:54px}
+  .card .idx{
+    font-size:11px; font-weight:800; color:#9fb2cb; min-width:20px;
+    width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,.06);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card .qline{
+    font-size:11.5px; color:#ffb787; background:rgba(255,138,61,.10);
+    border:1px solid rgba(255,138,61,.24); border-radius:999px;
+    padding:2px 9px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .card .zh{font-size:22px; font-weight:700; line-height:1.42; letter-spacing:-.2px; color:#fff; word-break:keep-all; overflow-wrap:anywhere}
+  .card .py{font-size:12px; color:var(--blue); margin-top:5px; opacity:.9; overflow-wrap:anywhere}
+  .card .ko{font-size:13px; color:var(--muted); margin-top:5px}
+  .card .zoom{
+    position:absolute; top:12px; right:12px;
+    font-size:10.5px; color:var(--dim); border:1px solid var(--line);
+    border-radius:8px; padding:2px 6px;
+  }
+  .card .top + .zh{margin-top:2px}
+  .hint{font-size:11.5px; color:var(--dim); text-align:center; margin:16px 0 0; line-height:1.6}
+
+  /* ---------- fullscreen ---------- */
+  .fs{
+    position:fixed; inset:0; z-index:100; background:#fff; color:#000;
+    display:flex; flex-direction:column;
+    padding:calc(12px + env(safe-area-inset-top)) 18px calc(12px + env(safe-area-inset-bottom));
+    touch-action:pan-y;
+  }
+  .fs[hidden]{display:none}
+  .fs .bar{display:flex; align-items:center; justify-content:space-between; gap:10px; flex:0 0 auto}
+  .fs .count{font-size:13px; font-weight:700; color:#111; background:#f1f2f4; border-radius:999px; padding:5px 11px}
+  .fs .close{
+    width:44px; height:44px; border-radius:50%; background:#f1f2f4; color:#111;
+    font-size:20px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  .fs .body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:10px 0 4px; min-height:0}
+  .fs .q{font-size:15px; color:#666; margin-bottom:14px; line-height:1.45; max-width:100%}
+  .fs .q b{color:#111; font-weight:700}
+  .fs .zh{font-weight:800; line-height:1.36; letter-spacing:-.3px; color:#000; overflow-wrap:anywhere; word-break:keep-all}
+  .fs .py{font-size:15px; color:#5b6b80; margin-top:16px; font-weight:600; overflow-wrap:anywhere}
+  .fs .ko{font-size:14.5px; color:#666; margin-top:18px; padding-top:14px; border-top:1px solid #e3e5e9; line-height:1.5}
+  .fs .ctrl{flex:0 0 auto; display:flex; gap:10px; align-items:stretch}
+  .fs .ctrl button{
+    flex:1 1 0; height:62px; border-radius:16px; background:#f1f2f4; color:#111;
+    font-size:17px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:8px;
+    border:1px solid #e3e5e9;
+  }
+  .fs .ctrl button:active{background:#e6e8ec}
+  .fs .ctrl button:disabled{opacity:.35}
+  .fs .dots{display:flex; gap:4px; justify-content:center; padding:10px 0 0; flex-wrap:wrap}
+  .fs .dots i{width:5px; height:5px; border-radius:50%; background:#d6d9de}
+  .fs .dots i.on{background:#111; width:14px; border-radius:3px}
+
+  @media (min-width:620px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .card .zh{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="nav-btn" id="btnBack" hidden aria-label="뒤로">‹</button>
+  <div class="brand">
+    <div class="logo">说</div>
+    <div class="htitle">
+      <b id="hTitle">상하이 소통카드</b>
+      <span id="hSub">장소 → 상황 → 카드 · 2026.11.26 상하이</span>
+    </div>
+  </div>
+  <button class="nav-btn" id="btnHome" hidden aria-label="처음으로">⌂</button>
+</header>
+
+<main>
+  <!-- STEP 1 -->
+  <section class="view" id="view1">
+    <div class="lede">
+      <div class="t"><b>어디서 쓰실 건가요?</b> 장소를 고르면 그 자리에서 바로 쓰는 순서대로 나옵니다.</div>
+      <div class="steps"><i class="on">1 장소</i><i>2 상황</i><i>3 카드</i></div>
+    </div>
+    <div class="grid" id="placeGrid"></div>
+    <p class="hint">카드를 누르면 화면 가득 크게 뜹니다.<br>상대방에게 폰을 내밀고 보여주세요. · 인터넷 없이도 열립니다</p>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="view" id="view2" hidden>
+    <div class="lede">
+      <div class="t"><b id="ledePlace">병원</b> 안에서 겪는 상황을 순서대로 골랐습니다.</div>
+      <div class="steps"><i>1 장소</i><i class="on">2 상황</i><i>3 카드</i></div>
+    </div>
+    <div class="scenes" id="sceneList"></div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="view" id="view3" hidden>
+    <div class="lede">
+      <div class="t"><b id="ledeScene">① 접수</b> · 실제로 부딪히는 순서대로입니다.</div>
+      <div class="steps"><i>1 장소</i><i>2 상황</i><i class="on">3 카드</i></div>
+    </div>
+    <div class="cards" id="cardList"></div>
+    <p class="hint">카드를 누르면 확대 · 좌우로 넘겨 이어서 보여줄 수 있습니다.</p>
+  </section>
+</main>
+
+<!-- FULLSCREEN -->
+<div class="fs" id="fs" hidden>
+  <div class="bar">
+    <div class="count" id="fsCount">1 / 1</div>
+    <button class="close" id="fsClose" aria-label="닫기">✕</button>
+  </div>
+  <div class="body" id="fsBody">
+    <div class="q" id="fsQ" hidden></div>
+    <div class="zh" id="fsZh"></div>
+    <div class="py" id="fsPy"></div>
+    <div class="ko" id="fsKo"></div>
+  </div>
+  <div class="ctrl">
+    <button id="fsPrev">‹ 이전</button>
+    <button id="fsNext">다음 ›</button>
+  </div>
+  <div class="dots" id="fsDots"></div>
+</div>
+
+<script>
+/* ============ DATA ============ */
+/* card: [중국어, 병음, 한국어, (상대방 예상 질문)] */
+const C = (zh, py, ko, q) => ({zh, py, ko, q});
+
+const PLACES = [
+{
+  id:'hospital', em:'🏥', name:'병원', note:'런지병원 동원 · 내분비과 예약 12:15',
+  scenes:[
+    { name:'접수 · 예약 확인', sub:'1층 국제의료부 접수 → 여권 제시', cards:[
+      C('你好。','nǐ hǎo','안녕하세요.'),
+      C('我预约了今天12点15分，内分泌科。','wǒ yùyuē le jīntiān shí\'èr diǎn shíwǔ fēn, nèifēnbì kē','오늘 12시 15분 내분비과 예약했습니다.'),
+      C('我的名字是 HONG TEAK LIM。','wǒ de míngzi shì HONG TEAK LIM','제 이름은 HONG TEAK LIM입니다. (여권 영문명)'),
+      C('这是我的护照。','zhè shì wǒ de hùzhào','여권 여기 있습니다.'),
+      C('请问国际医疗部在哪里？','qǐngwèn guójì yīliáo bù zài nǎlǐ','국제의료부가 어디예요?'),
+      C('请问在哪里报到？','qǐngwèn zài nǎlǐ bàodào','접수(도착 보고)는 어디서 해요?'),
+      C('地址是北园路33号，健康管理中心一楼。','dìzhǐ shì Běiyuán lù sānshísān hào, jiànkāng guǎnlǐ zhōngxīn yī lóu','주소는 북원로 33호, 건강관리센터 1층입니다. (기사·직원에게 보여주기)'),
+      C('我是韩国人，听不懂中文。','wǒ shì hánguórén, tīngbudǒng zhōngwén','한국인이라 중국어를 못 알아듣습니다.'),
+      C('请说慢一点，谢谢。','qǐng shuō màn yìdiǎn, xièxie','천천히 말씀해 주세요.'),
+      C('我可以用翻译软件吗？','wǒ kěyǐ yòng fānyì ruǎnjiàn ma','번역 앱을 써도 될까요?'),
+      C('我当天要回韩国，可以快一点吗？','wǒ dāngtiān yào huí hánguó, kěyǐ kuài yìdiǎn ma','당일 한국으로 돌아가야 해서요, 조금 서둘러 주실 수 있나요?'),
+      C('有，我预约了今天12点15分。','yǒu, wǒ yùyuē le jīntiān shí\'èr diǎn shíwǔ fēn','네, 오늘 12시 15분 예약했습니다.','您有预约吗？'),
+      C('HONG TEAK LIM。','HONG TEAK LIM','홍택림입니다.','您叫什么名字？'),
+      C('好的，这是我的护照。','hǎo de, zhè shì wǒ de hùzhào','네, 여기 여권입니다.','请出示护照。'),
+      C('是的，我从韩国来。','shì de, wǒ cóng hánguó lái','네, 한국에서 왔습니다.','您是韩国人吗？'),
+      C('大概要等多久？','dàgài yào děng duōjiǔ','얼마나 기다려야 해요?'),
+      C('诊室在几楼？','zhěnshì zài jǐ lóu','진료실은 몇 층이에요?'),
+    ]},
+    { name:'진료 · 마운자로 처방', sub:'5mg 1펜 · 종이 처방전 요청', cards:[
+      C('医生，您好。','yīshēng, nín hǎo','의사 선생님, 안녕하세요.'),
+      C('我想开一支穆峰达5毫克。','wǒ xiǎng kāi yì zhī Mùfēngdá wǔ háokè','마운자로 5mg 1펜을 처방해 주세요.'),
+      C('替尔泊肽5毫克，一支。','Tì\'ěrbótóng wǔ háokè, yì zhī','터르제파타이드(성분명) 5mg, 1펜입니다.'),
+      C('我在韩国一直用2.5毫克，已经两个月了。','wǒ zài hánguó yìzhí yòng èr diǎn wǔ háokè, yǐjīng liǎng ge yuè le','한국에서 2.5mg를 두 달째 쓰고 있습니다.'),
+      C('这是韩国带来的药盒和处方照片。','zhè shì hánguó dàilái de yàohé hé chùfāng zhàopiàn','한국에서 가져온 약통과 처방전 사진입니다.'),
+      C('我的体重90公斤，身高178厘米。','wǒ de tǐzhòng jiǔshí gōngjīn, shēngāo yìbǎi qīshíbā límǐ','체중 90kg, 키 178cm입니다.'),
+      C('我没有糖尿病，是为了减重。','wǒ méiyǒu tángniàobìng, shì wèile jiǎnzhòng','당뇨는 없고 체중 감량 목적입니다.'),
+      C('用过，已经用了两个月。','yòngguo, yǐjīng yòng le liǎng ge yuè','써 봤고, 두 달째입니다.','您以前用过这个药吗？'),
+      C('没有，血糖正常。','méiyǒu, xuètáng zhèngcháng','없습니다. 혈당은 정상입니다.','有糖尿病吗？'),
+      C('一支，四周的量。','yì zhī, sì zhōu de liàng','4주분 1펜입니다.','您要几支？'),
+      C('没有，都很好。','méiyǒu, dōu hěn hǎo','없습니다, 다 괜찮습니다.','有没有不舒服？'),
+      C('请问怎么注射？','qǐngwèn zěnme zhùshè','어떻게 주사하나요?'),
+      C('好的，一周一次。','hǎo de, yì zhōu yí cì','네, 일주일에 한 번입니다.','一周一次，好吗？'),
+      C('这个需要冷藏吗？','zhège xūyào lěngcáng ma','이거 냉장 보관해야 하나요?'),
+      C('可以给我纸质处方吗？','kěyǐ gěi wǒ zhǐzhì chùfāng ma','종이 처방전을 주실 수 있나요? (세관용)'),
+      C('可以开英文诊断书吗？','kěyǐ kāi yīngwén zhěnduànshū ma','영문 진단서를 발급해 주실 수 있나요?'),
+      C('请问诊察费是多少？','qǐngwèn zhěncháfèi shì duōshǎo','진찰료가 얼마인가요?'),
+      C('今天能拿到药吗？','jīntiān néng ná dào yào ma','오늘 약을 받을 수 있나요?'),
+    ]},
+    { name:'수납 · 영수증(发票)', sub:'알리페이 결제 → 정식 영수증', cards:[
+      C('请问在哪里缴费？','qǐngwèn zài nǎlǐ jiǎofèi','수납은 어디서 해요?'),
+      C('一共多少钱？','yígòng duōshǎo qián','전부 얼마예요?'),
+      C('可以用支付宝吗？','kěyǐ yòng Zhīfùbǎo ma','알리페이로 결제할 수 있나요?'),
+      C('可以用微信支付吗？','kěyǐ yòng Wēixìn zhīfù ma','위챗페이로 결제할 수 있나요?'),
+      C('可以刷卡吗？','kěyǐ shuā kǎ ma','카드로 긁을 수 있나요?'),
+      C('请给我正式发票。','qǐng gěi wǒ zhèngshì fāpiào','정식 영수증(发票)을 주세요. (세관 제출용)'),
+      C('发票上请写药名和数量。','fāpiào shàng qǐng xiě yàomíng hé shùliàng','영수증에 약 이름과 수량을 적어 주세요.'),
+      C('请给我两份。','qǐng gěi wǒ liǎng fèn','두 장 주세요.'),
+      C('这个费用包括药费吗？','zhège fèiyòng bāokuò yàofèi ma','이 비용에 약값도 포함돼 있나요?'),
+      C('可以开英文发票吗？','kěyǐ kāi yīngwén fāpiào ma','영문 영수증도 발급되나요?'),
+      C('支付宝。','Zhīfùbǎo','알리페이로 할게요.','您怎么付款？'),
+      C('需要，请给我正式发票。','xūyào, qǐng gěi wǒ zhèngshì fāpiào','네, 정식 영수증 주세요.','需要发票吗？'),
+      C('请给我一张收据。','qǐng gěi wǒ yì zhāng shōujù','영수증 한 장 주세요.'),
+    ]},
+    { name:'약국 · 약 받기', sub:'원내 약국 · 재고 없으면 옆 약국', cards:[
+      C('请问药房在哪里？','qǐngwèn yàofáng zài nǎlǐ','약국이 어디예요?'),
+      C('这是我的处方。','zhè shì wǒ de chùfāng','처방전 여기 있습니다.'),
+      C('我来取穆峰达5毫克。','wǒ lái qǔ Mùfēngdá wǔ háokè','마운자로 5mg을 받으러 왔습니다.'),
+      C('请问有货吗？','qǐngwèn yǒu huò ma','재고 있나요?'),
+      C('如果没有，附近哪家药店有？','rúguǒ méiyǒu, fùjìn nǎ jiā yàodiàn yǒu','재고가 없으면 근처 어느 약국에 있나요?'),
+      C('请给我冰袋。','qǐng gěi wǒ bīngdài','아이스팩 주세요.'),
+      C('这个要冷藏，能给我保冷袋吗？','zhège yào lěngcáng, néng gěi wǒ bǎolěngdài ma','냉장 보관해야 하는데 보냉백 주실 수 있나요?'),
+      C('请告诉我怎么保存。','qǐng gàosu wǒ zěnme bǎocún','보관 방법을 알려 주세요.'),
+      C('注射针头包括吗？','zhùshè zhēntóu bāokuò ma','주사침도 포함인가요?'),
+      C('一共多少钱？','yígòng duōshǎo qián','전부 얼마예요?'),
+      C('请给我发票。','qǐng gěi wǒ fāpiào','영수증 주세요.'),
+      C('谢谢，辛苦了。','xièxie, xīnkǔ le','감사합니다, 수고하셨어요.'),
+    ]},
+  ]
+},
+{
+  id:'pharmacy', em:'💊', name:'약국', note:'외부 약국 · 처방전 지참 필수',
+  scenes:[
+    { name:'처방전 제시 · 구매', sub:'종이 처방전 없으면 판매 불가', cards:[
+      C('你好。','nǐ hǎo','안녕하세요.'),
+      C('我有中国的处方，可以买药吗？','wǒ yǒu Zhōngguó de chùfāng, kěyǐ mǎi yào ma','중국 처방전이 있는데 약을 살 수 있나요?'),
+      C('这是医院的处方和发票。','zhè shì yīyuàn de chùfāng hé fāpiào','병원 처방전과 영수증입니다.'),
+      C('我要买穆峰达5毫克，一支。','wǒ yào mǎi Mùfēngdá wǔ háokè, yì zhī','마운자로 5mg 한 펜을 사려고 합니다.'),
+      C('我是韩国人，今天从医院过来的。','wǒ shì hánguórén, jīntiān cóng yīyuàn guòlái de','한국인이고 오늘 병원에서 왔습니다.'),
+      C('我需要冷藏，请给我冰袋。','wǒ xūyào lěngcáng, qǐng gěi wǒ bīngdài','냉장이 필요해서 아이스팩 주세요.'),
+    ]},
+    { name:'재고 · 가격 확인', sub:'5mg 재고, 1펜 가격, 주사침', cards:[
+      C('请问有5毫克的吗？','qǐngwèn yǒu wǔ háokè de ma','5mg 짜리 있나요?'),
+      C('多少钱一支？','duōshǎo qián yì zhī','한 펜에 얼마예요?'),
+      C('别的地方更便宜，可以一样吗？','bié de dìfang gèng piányi, kěyǐ yíyàng ma','다른 데가 더 싸던데, 같은 가격으로 해 주실 수 있나요?'),
+      C('可以便宜一点吗？','kěyǐ piányi yìdiǎn ma','조금 깎아 주실 수 있나요?'),
+      C('注射针头包括吗？','zhùshè zhēntóu bāokuò ma','주사침도 포함인가요?'),
+      C('需要另外买针头吗？','xūyào lìngwài mǎi zhēntóu ma','주사침을 따로 사야 하나요?'),
+      C('有货，一支。','yǒu huò, yì zhī','재고 있고, 한 펜입니다.','您要几支？'),
+    ]},
+    { name:'복용법 · 보관', sub:'일주일 1회 · 2~8℃', cards:[
+      C('请告诉我怎么使用。','qǐng gàosu wǒ zěnme shǐyòng','사용법을 알려 주세요.'),
+      C('一周打一次，对吗？','yì zhōu dǎ yí cì, duì ma','일주일에 한 번 맞는 거죠?'),
+      C('需要放在冰箱里吗？','xūyào fàng zài bīngxiāng lǐ ma','냉장고에 넣어야 하나요?'),
+      C('温度要多少度？','wēndù yào duōshǎo dù','몇 도에 보관해야 하나요?'),
+      C('坐飞机可以带吗？','zuò fēijī kěyǐ dài ma','비행기에 가지고 탈 수 있나요?'),
+      C('有说明书吗？','yǒu shuōmíngshū ma','설명서 있나요?'),
+    ]},
+    { name:'결제 · 영수증', sub:'알리페이 · 发票 요청', cards:[
+      C('可以用支付宝吗？','kěyǐ yòng Zhīfùbǎo ma','알리페이 되나요?'),
+      C('请给我发票。','qǐng gěi wǒ fāpiào','영수증을 주세요.'),
+      C('请把药名写在发票上。','qǐng bǎ yàomíng xiě zài fāpiào shàng','영수증에 약 이름을 적어 주세요.'),
+      C('请给我一个袋子。','qǐng gěi wǒ yí ge dàizi','봉투 하나 주세요.'),
+      C('谢谢，再见。','xièxie, zàijiàn','감사합니다, 안녕히 계세요.'),
+    ]},
+  ]
+},
+{
+  id:'taxi', em:'🚕', name:'택시 · 이동', note:'디디·택시 · 목적지 보여주기',
+  scenes:[
+    { name:'타기 · 목적지', sub:'주소 카드를 그대로 보여주세요', cards:[
+      C('你好，请去这个地址。','nǐ hǎo, qǐng qù zhège dìzhǐ','안녕하세요, 이 주소로 가 주세요.'),
+      C('上海市浦东新区北园路33号，仁济医院东院国际医疗部。','Shànghǎi shì Pǔdōng xīnqū Běiyuán lù sānshísān hào, Rénjì Yīyuàn Dōngyuàn guójì yīliáo bù','상하이 푸동신구 북원로 33호, 런지병원 동원 국제의료부. (병원행·기사에게 보여주기)'),
+      C('上海市浦东新区浦建路160号，仁济医院东院。','Shànghǎi shì Pǔdōng xīnqū Pǔjiàn lù yìbǎi liùshí hào, Rénjì Yīyuàn Dōngyuàn','상하이 푸동신구 푸졘로 160호, 런지병원 동원. (일반외래 정문)'),
+      C('上海浦东国际机场2号航站楼。','Shànghǎi Pǔdōng guójì jīchǎng èr hào hángzhàn lóu','상하이 푸동국제공항 T2 터미널. (춘추항공)'),
+      C('请开快一点，我12点15分有预约。','qǐng kāi kuài yìdiǎn, wǒ shí\'èr diǎn shíwǔ fēn yǒu yùyuē','좀 빨리 가 주세요, 12시 15분 예약이 있어요.'),
+      C('大概多久能到？','dàgài duōjiǔ néng dào','얼마나 걸려요?'),
+      C('请在这里停车。','qǐng zài zhèlǐ tíngchē','여기서 세워 주세요.'),
+      C('请等我一下，我马上回来。','qǐng děng wǒ yíxià, wǒ mǎshàng huílái','잠깐만 기다려 주세요, 금방 올게요.'),
+      C('去浦东机场2号航站楼。','qù Pǔdōng jīchǎng èr hào hángzhàn lóu','푸동공항 T2로 가 주세요.','去哪里？'),
+    ]},
+    { name:'요금 · 결제', sub:'미터기 · 알리페이', cards:[
+      C('请打表。','qǐng dǎ biǎo','미터기를 켜 주세요.'),
+      C('多少钱？','duōshǎo qián','얼마예요?'),
+      C('可以支付宝吗？','kěyǐ Zhīfùbǎo ma','알리페이 되나요?'),
+      C('可以刷卡吗？','kěyǐ shuā kǎ ma','카드 되나요?'),
+      C('我没有现金。','wǒ méiyǒu xiànjīn','현금이 없어요.'),
+      C('这是高速公路费吗？','zhè shì gāosù gōnglù fèi ma','이게 고속도로 통행료인가요?'),
+      C('太贵了，可以便宜一点吗？','tài guì le, kěyǐ piányi yìdiǎn ma','너무 비싸요, 조금 깎아 주실 수 있나요?'),
+    ]},
+    { name:'영수증 · 하차', sub:'发票 요청', cards:[
+      C('请给我发票。','qǐng gěi wǒ fāpiào','영수증(发票) 주세요.'),
+      C('发票请写今天的日期。','fāpiào qǐng xiě jīntiān de rìqī','영수증에 오늘 날짜를 적어 주세요.'),
+      C('谢谢，辛苦了。','xièxie, xīnkǔ le','감사합니다, 수고하셨어요.'),
+      C('我的手机忘在车上了。','wǒ de shǒujī wàng zài chē shàng le','핸드폰을 차에 두고 내렸어요.'),
+    ]},
+    { name:'길 · 지하철 묻기', sub:'푸동공항 가는 길', cards:[
+      C('请问地铁站怎么走？','qǐngwèn dìtiě zhàn zěnme zǒu','지하철역은 어떻게 가요?'),
+      C('去浦东机场坐几号线？','qù Pǔdōng jīchǎng zuò jǐ hào xiàn','푸동공항 가려면 몇 호선을 타요?'),
+      C('在哪里换乘？','zài nǎlǐ huànchéng','어디서 갈아타요?'),
+      C('到机场要多长时间？','dào jīchǎng yào duō cháng shíjiān','공항까지 얼마나 걸려요?'),
+      C('请问几号出口？','qǐngwèn jǐ hào chūkǒu','몇 번 출구예요?'),
+      C('请在地图上指给我看。','qǐng zài dìtú shàng zhǐ gěi wǒ kàn','지도에서 가리켜 주세요.'),
+    ]},
+  ]
+},
+{
+  id:'airport', em:'✈️', name:'공항 · 입출국', note:'푸동공항 PVG · 춘추항공 T2',
+  scenes:[
+    { name:'입국 심사', sub:'당일치기 · 진료 목적', cards:[
+      C('你好。','nǐ hǎo','안녕하세요.'),
+      C('我是韩国人，来中国看病。','wǒ shì hánguórén, lái Zhōngguó kànbìng','한국인이고, 진료받으러 왔습니다.'),
+      C('我当天回韩国。','wǒ dāngtiān huí hánguó','당일로 한국에 돌아갑니다.'),
+      C('这是我的回程机票。','zhè shì wǒ de huíchéng jīpiào','돌아가는 항공권입니다.'),
+      C('这些药是我自己用的。','zhèxiē yào shì wǒ zìjǐ yòng de','이 약은 제가 쓰는 것입니다.'),
+      C('我有处方和发票。','wǒ yǒu chùfāng hé fāpiào','처방전과 영수증이 있습니다.'),
+      C('去医院看病，当天回去。','qù yīyuàn kànbìng, dāngtiān huíqù','병원 진료 받고 당일 돌아갑니다.','来中国做什么？'),
+      C('当天回韩国，不住。','dāngtiān huí hánguó, bú zhù','당일 돌아가서 숙박은 없습니다.','住在哪里？'),
+      C('当天来回，一天。','dāngtiān láihuí, yì tiān','당일치기, 하루입니다.','待几天？'),
+      C('是我自己用的药，有处方。','shì wǒ zìjǐ yòng de yào, yǒu chùfāng','제가 쓰는 약이고, 처방전 있습니다.','这是什么？'),
+    ]},
+    { name:'출국 · 체크인', sub:'춘추항공 카운터 J·M', cards:[
+      C('请问春秋航空的柜台在哪里？','qǐngwèn Chūnqiū hángkōng de guìtái zài nǎlǐ','춘추항공 카운터가 어디예요?'),
+      C('我要办登机手续。','wǒ yào bàn dēngjī shǒuxù','체크인하려고 합니다.'),
+      C('这是我的护照和机票。','zhè shì wǒ de hùzhào hé jīpiào','여권과 항공권입니다.'),
+      C('我要托运行李。','wǒ yào tuōyùn xínglǐ','짐을 부치려고 합니다.'),
+      C('这个可以带上飞机吗？','zhège kěyǐ dài shàng fēijī ma','이거 기내에 가지고 탈 수 있나요?'),
+      C('我想要靠窗的座位。','wǒ xiǎng yào kào chuāng de zuòwèi','창가 자리로 주세요.'),
+      C('登机口在哪里？','dēngjīkǒu zài nǎlǐ','탑승구가 어디예요?'),
+      C('几点开始登机？','jǐ diǎn kāishǐ dēngjī','몇 시에 탑승 시작해요?'),
+      C('有，一个。','yǒu, yí ge','네, 하나 있습니다.','有行李要托运吗？'),
+    ]},
+    { name:'보안 · 세관', sub:'약품 신고 · 냉장 주의', cards:[
+      C('这个药需要冷藏，请不要打开。','zhège yào xūyào lěngcáng, qǐng bú yào dǎkāi','이 약은 냉장 보관이라 열지 말아 주세요.'),
+      C('这些是我自己用的药，三个月的量。','zhèxiē shì wǒ zìjǐ yòng de yào, sān ge yuè de liàng','제가 쓰는 약이고 3개월분입니다.'),
+      C('这是医院的处方和发票。','zhè shì yīyuàn de chùfāng hé fāpiào','병원 처방전과 영수증입니다.'),
+      C('这些药需要申报吗？','zhèxiē yào xūyào shēnbào ma','이 약은 신고해야 하나요? (알리페이 없으면)'),
+      C('请小心，这个不能摇晃。','qǐng xiǎoxīn, zhège bù néng yáohuàng','조심해 주세요, 이건 흔들면 안 됩니다.'),
+      C('可以帮我放回冰袋吗？','kěyǐ bāng wǒ fàng huí bīngdài ma','다시 아이스팩에 넣어 주실 수 있나요?'),
+    ]},
+    { name:'공항 시설', sub:'화장실 · 환전 · 와이파이', cards:[
+      C('请问洗手间在哪里？','qǐngwèn xǐshǒujiān zài nǎlǐ','화장실이 어디예요?'),
+      C('请问哪里可以接热水？','qǐngwèn nǎlǐ kěyǐ jiē rèshuǐ','뜨거운 물은 어디서 받아요?'),
+      C('请问Wi-Fi密码是多少？','qǐngwèn Wi-Fi mìmǎ shì duōshǎo','와이파이 비밀번호가 뭐예요?'),
+      C('请问在哪里换钱？','qǐngwèn zài nǎlǐ huàn qián','환전은 어디서 해요?'),
+      C('请问出租车站在哪里？','qǐngwèn chūzūchē zhàn zài nǎlǐ','택시 타는 곳이 어디예요?'),
+      C('请问有没有充电的地方？','qǐngwèn yǒu méiyǒu chōngdiàn de dìfang','충전할 곳 있나요?'),
+      C('去市区的机场大巴在哪里坐？','qù shìqū de jīchǎng dàbā zài nǎlǐ zuò','시내 가는 리무진버스는 어디서 타요?'),
+    ]},
+  ]
+},
+{
+  id:'store', em:'🏪', name:'식당 · 편의점', note:'주문 · 결제 · 포장',
+  scenes:[
+    { name:'편의점', sub:'물 · 아이스팩 · 데우기', cards:[
+      C('请问有矿泉水吗？','qǐngwèn yǒu kuàngquánshuǐ ma','생수 있나요?'),
+      C('我要这个。','wǒ yào zhège','이거 주세요.'),
+      C('多少钱？','duōshǎo qián','얼마예요?'),
+      C('可以用支付宝吗？','kěyǐ yòng Zhīfùbǎo ma','알리페이 되나요?'),
+      C('请给我一个袋子。','qǐng gěi wǒ yí ge dàizi','봉투 하나 주세요.'),
+      C('请问有冰袋吗？','qǐngwèn yǒu bīngdài ma','아이스팩 있나요?'),
+      C('可以加热吗？','kěyǐ jiārè ma','데워 주실 수 있어요?'),
+      C('谢谢。','xièxie','감사합니다.'),
+    ]},
+    { name:'식당 주문', sub:'메뉴 · 안 맵게 · 계산', cards:[
+      C('两位。','liǎng wèi','두 명이요.'),
+      C('请给我菜单。','qǐng gěi wǒ càidān','메뉴 주세요.'),
+      C('有带图片的菜单吗？','yǒu dài túpiàn de càidān ma','사진 있는 메뉴 있나요?'),
+      C('我要这个。','wǒ yào zhège','이거 주세요.'),
+      C('请给我一碗面。','qǐng gěi wǒ yì wǎn miàn','국수 한 그릇 주세요.'),
+      C('不要辣。','bú yào là','맵지 않게 해 주세요.'),
+      C('请少放辣。','qǐng shǎo fàng là','덜 맵게 해 주세요.'),
+      C('不要香菜。','bú yào xiāngcài','고수는 빼 주세요.'),
+      C('请不要放猪肉。','qǐng bú yào fàng zhūròu','돼지고기는 빼 주세요.'),
+      C('请给我水。','qǐng gěi wǒ shuǐ','물 좀 주세요.'),
+      C('很好吃，谢谢。','hěn hǎochī, xièxie','맛있습니다, 감사합니다.'),
+      C('请结账。','qǐng jiézhàng','계산해 주세요.'),
+      C('可以分开付吗？','kěyǐ fēnkāi fù ma','따로 계산할 수 있나요?'),
+      C('请打包。','qǐng dǎbāo','포장해 주세요.'),
+    ]},
+    { name:'카페', sub:'커피 주문', cards:[
+      C('我要一杯美式咖啡。','wǒ yào yì bēi měishì kāfēi','아메리카노 한 잔 주세요.'),
+      C('热的。','rè de','따뜻한 걸로요.'),
+      C('冰的。','bīng de','아이스로요.'),
+      C('不要糖。','bú yào táng','설탕은 빼 주세요.'),
+      C('在这里喝。','zài zhèlǐ hē','여기서 마실게요.'),
+      C('请给我纸巾。','qǐng gěi wǒ zhǐjīn','냅킨 주세요.'),
+    ]},
+    { name:'결제 · 기타', sub:'카드 안 될 때', cards:[
+      C('可以用微信支付吗？','kěyǐ yòng Wēixìn zhīfù ma','위챗페이 되나요?'),
+      C('可以刷卡吗？','kěyǐ shuā kǎ ma','카드 되나요?'),
+      C('我的卡不能用，可以付现金吗？','wǒ de kǎ bù néng yòng, kěyǐ fù xiànjīn ma','카드가 안 되는데 현금으로 내도 되나요?'),
+      C('请给我小票。','qǐng gěi wǒ xiǎopiào','영수증 주세요.'),
+      C('请问洗手间在哪里？','qǐngwèn xǐshǒujiān zài nǎlǐ','화장실이 어디예요?'),
+      C('请问垃圾桶在哪里？','qǐngwèn lājītǒng zài nǎlǐ','쓰레기통이 어디예요?'),
+    ]},
+  ]
+},
+{
+  id:'help', em:'🆘', name:'긴급 · 도움', note:'몸이 아플 때 · 길 잃었을 때', urgent:true,
+  scenes:[
+    { name:'몸이 아플 때', sub:'구급차 · 증상 말하기', cards:[
+      C('我不舒服。','wǒ bù shūfu','몸이 안 좋아요.'),
+      C('请帮我叫救护车。','qǐng bāng wǒ jiào jiùhùchē','구급차를 불러 주세요.'),
+      C('我头晕。','wǒ tóuyūn','어지러워요.'),
+      C('我肚子疼。','wǒ dùzi téng','배가 아파요.'),
+      C('我发烧了。','wǒ fāshāo le','열이 나요.'),
+      C('我有高血压，也有糖尿病。','wǒ yǒu gāoxuèyā, yě yǒu tángniàobìng','고혈압이 있고 당뇨도 있어요.'),
+      C('请带我去最近的医院。','qǐng dài wǒ qù zuìjìn de yīyuàn','가장 가까운 병원으로 데려다 주세요.'),
+      C('请帮我打这个电话。','qǐng bāng wǒ dǎ zhège diànhuà','이 번호로 전화 좀 걸어 주세요.'),
+      C('我头晕，想吐。','wǒ tóuyūn, xiǎng tù','어지럽고 토할 것 같아요.','您哪里不舒服？'),
+    ]},
+    { name:'길을 잃었을 때', sub:'위치 · 택시 요청', cards:[
+      C('我迷路了。','wǒ mílù le','길을 잃었어요.'),
+      C('请问这个地方怎么走？','qǐngwèn zhège dìfang zěnme zǒu','여기는 어떻게 가요?'),
+      C('请在地图上指给我看。','qǐng zài dìtú shàng zhǐ gěi wǒ kàn','지도에서 가리켜 주세요.'),
+      C('可以帮我叫出租车吗？','kěyǐ bāng wǒ jiào chūzūchē ma','택시 좀 불러 주실 수 있나요?'),
+      C('这里离浦东机场远吗？','zhèlǐ lí Pǔdōng jīchǎng yuǎn ma','여기서 푸동공항까지 먼가요?'),
+      C('我要回机场，请帮帮我。','wǒ yào huí jīchǎng, qǐng bāngbang wǒ','공항으로 돌아가야 해요, 도와주세요.'),
+    ]},
+    { name:'도움 요청', sub:'못 알아들을 때 쓰는 기본 카드', cards:[
+      C('请帮帮我。','qǐng bāngbang wǒ','도와주세요.'),
+      C('我听不懂中文。','wǒ tīngbudǒng zhōngwén','중국어를 못 알아들어요.'),
+      C('请说慢一点。','qǐng shuō màn yìdiǎn','천천히 말해 주세요.'),
+      C('请写在纸上。','qǐng xiě zài zhǐ shàng','종이에 적어 주세요.'),
+      C('请问有会说英语的人吗？','qǐngwèn yǒu huì shuō yīngyǔ de rén ma','영어 하시는 분 계세요?'),
+      C('我可以用翻译软件吗？','wǒ kěyǐ yòng fānyì ruǎnjiàn ma','번역 앱을 써도 될까요?'),
+      C('可以借我充电器吗？','kěyǐ jiè wǒ chōngdiànqì ma','충전기 좀 빌릴 수 있나요?'),
+      C('请问Wi-Fi密码是多少？','qǐngwèn Wi-Fi mìmǎ shì duōshǎo','와이파이 비밀번호가 뭐예요?'),
+      C('谢谢你的帮助。','xièxie nǐ de bāngzhù','도와주셔서 감사합니다.'),
+    ]},
+    { name:'화장실 · 사진 부탁', sub:'마지막 한마디', cards:[
+      C('请问洗手间在哪里？','qǐngwèn xǐshǒujiān zài nǎlǐ','화장실이 어디예요?'),
+      C('请问有纸巾吗？','qǐngwèn yǒu zhǐjīn ma','화장지 있나요?'),
+      C('我要买水。','wǒ yào mǎi shuǐ','물을 사려고요.'),
+      C('最近的地铁站在哪里？','zuìjìn de dìtiě zhàn zài nǎlǐ','가장 가까운 지하철역이 어디예요?'),
+      C('可以帮我拍张照片吗？','kěyǐ bāng wǒ pāi zhāng zhàopiàn ma','사진 좀 찍어 주실 수 있나요?'),
+      C('谢谢，再见。','xièxie, zàijiàn','감사합니다, 안녕히 계세요.'),
+    ]},
+  ]
+}
+];
+
+/* ============ STATE ============ */
+let place = null, scene = null, cardIdx = 0;
+const $ = id => document.getElementById(id);
+const view1 = $('view1'), view2 = $('view2'), view3 = $('view3');
+const btnBack = $('btnBack'), btnHome = $('btnHome'), hTitle = $('hTitle'), hSub = $('hSub');
+const fs = $('fs'), fsQ = $('fsQ'), fsZh = $('fsZh'), fsPy = $('fsPy'), fsKo = $('fsKo'), fsCount = $('fsCount'), fsDots = $('fsDots');
+
+/* ============ STEP 1 ============ */
+function renderPlaces(){
+  $('placeGrid').innerHTML = PLACES.map(p => {
+    const n = p.scenes.reduce((a,s)=>a+s.cards.length,0);
+    return `<button class="place ${p.urgent?'urgent':''}" data-place="${p.id}">
+      <div class="em">${p.em}</div>
+      <div class="nm">${p.name}</div>
+      <div class="note">${p.note}</div>
+      <div class="cnt">${p.scenes.length}상황 · ${n}장</div>
+    </button>`;
+  }).join('');
+}
+
+/* ============ STEP 2 ============ */
+function renderScenes(){
+  $('ledePlace').textContent = place.em + ' ' + place.name;
+  $('sceneList').innerHTML = place.scenes.map((s,i)=>`
+    <button class="scene" data-scene="${i}">
+      <div class="no">${i+1}</div>
+      <div class="tx"><b>${s.name}</b><span>${s.sub} · ${s.cards.length}장</span></div>
+      <div class="arw">›</div>
+    </button>`).join('');
+}
+
+/* ============ STEP 3 ============ */
+function renderCards(){
+  $('ledeScene').textContent = scene.name;
+  $('cardList').innerHTML = scene.cards.map((c,i)=>`
+    <button class="card" data-card="${i}">
+      <div class="top">
+        <div class="idx">${i+1}</div>
+        ${c.q ? `<div class="qline">← ${c.q}</div>` : ''}
+        <div class="zoom">크게</div>
+      </div>
+      <div class="zh">${c.zh}</div>
+      <div class="py">${c.py}</div>
+      <div class="ko">${c.ko}</div>
+    </button>`).join('');
+  window.scrollTo({top:0});
+}
+
+/* ============ VIEWS ============ */
+function show(n){
+  [view1,view2,view3].forEach((v,i)=>v.hidden = (i+1!==n));
+  btnBack.hidden = n===1;
+  btnHome.hidden = n===1;
+  if(n===1){ hTitle.textContent='상하이 소통카드'; hSub.textContent='장소 → 상황 → 카드 · 2026.11.26 상하이'; window.scrollTo({top:0}); }
+  if(n===2){ hTitle.textContent = place.em+' '+place.name; hSub.textContent = '상황을 고르세요'; }
+  if(n===3){ hTitle.textContent = scene.name; hSub.textContent = place.name + ' · ' + scene.cards.length + '장'; }
+  history.replaceState({n}, '');
+}
+btnBack.onclick = () => { if(view3.hidden===false) show(2); else show(1); };
+btnHome.onclick = () => { closeFs(); show(1); };
+
+document.addEventListener('click', e=>{
+  const p = e.target.closest('[data-place]');
+  if(p){ place = PLACES.find(x=>x.id===p.dataset.place); renderScenes(); show(2); return; }
+  const s = e.target.closest('[data-scene]');
+  if(s){ scene = place.scenes[+s.dataset.scene]; renderCards(); show(3); return; }
+  const c = e.target.closest('[data-card]');
+  if(c){ openFs(+c.dataset.card); }
+});
+
+/* ============ FULLSCREEN ============ */
+function fitSize(len){
+  const w = Math.min(window.innerWidth, 620);
+  let s;
+  if(len <= 8) s = w * 0.145;
+  else if(len <= 13) s = w * 0.105;
+  else if(len <= 20) s = w * 0.082;
+  else if(len <= 30) s = w * 0.066;
+  else s = w * 0.058;
+  return Math.max(24, Math.min(s, 72));
+}
+function drawFs(){
+  const c = scene.cards[cardIdx];
+  if(c.q){ fsQ.hidden = false; fsQ.innerHTML = '<b>' + c.q + '</b>'; }
+  else fsQ.hidden = true;
+  fsZh.textContent = c.zh;
+  fsZh.style.fontSize = fitSize(c.zh.length) + 'px';
+  fsPy.textContent = c.py;
+  fsKo.textContent = c.ko;
+  fsCount.textContent = (cardIdx+1) + ' / ' + scene.cards.length;
+  $('fsPrev').disabled = cardIdx === 0;
+  $('fsNext').disabled = cardIdx === scene.cards.length-1;
+  fsDots.innerHTML = scene.cards.map((_,i)=>`<i class="${i===cardIdx?'on':''}"></i>`).join('');
+}
+function openFs(i){ cardIdx = i; drawFs(); fs.hidden = false; document.body.style.overflow='hidden'; }
+function closeFs(){ fs.hidden = true; document.body.style.overflow=''; }
+function go(d){ const n = cardIdx + d; if(n<0 || n>=scene.cards.length) return; cardIdx = n; drawFs(); }
+$('fsClose').onclick = closeFs;
+$('fsPrev').onclick = ()=>go(-1);
+$('fsNext').onclick = ()=>go(1);
+
+document.addEventListener('keydown', e=>{
+  if(fs.hidden) return;
+  if(e.key==='Escape') closeFs();
+  if(e.key==='ArrowRight' || e.key===' ') { e.preventDefault(); go(1); }
+  if(e.key==='ArrowLeft') { e.preventDefault(); go(-1); }
+});
+
+/* swipe */
+let sx=0, sy=0, moved=false;
+fs.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; moved=false; }, {passive:true});
+fs.addEventListener('touchmove', e=>{ if(Math.abs(e.touches[0].clientX-sx)>12) moved=true; }, {passive:true});
+fs.addEventListener('touchend', e=>{
+  const dx = e.changedTouches[0].clientX - sx;
+  const dy = e.changedTouches[0].clientY - sy;
+  if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)*1.4){ go(dx < 0 ? 1 : -1); }
+});
+
+/* init */
+renderPlaces();
+show(1);
+
+/* offline */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
+}
+</script>
+</body>
+</html>
