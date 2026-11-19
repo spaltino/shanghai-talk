@@ -1,8 +1,19 @@
 /* 상하이 소통카드 — 오프라인 캐시
    페이지(문서)는 네트워크 우선 + 3.5초 타임아웃 후 캐시로 폴백:
    온라인이면 항상 최신, 중국처럼 느리거나 막혀도 저장된 화면으로 바로 뜹니다. */
-const CACHE = 'shanghai-talk-v12';
-const ASSETS = ['./', './index.html', './manifest.json', './icon.svg'];
+const CACHE = 'shanghai-talk-v13';
+const ASSETS = [
+  './', './index.html', './manifest.json', './icon.svg',
+  './assets/metro/01-t2-terminal2.jpg',
+  './assets/metro/02-metro-gate.jpg',
+  './assets/metro/03-line2-platform.jpg',
+  './assets/metro/04-line2-train.jpg',
+  './assets/metro/05-century-ave-concourse.jpg',
+  './assets/metro/06-line6-platform.jpg',
+  './assets/metro/07-scmc-platform.jpg',
+  './assets/metro/08-exit3-scmc.jpg',
+  './assets/metro/09-exit1-scmc.jpg'
+];
 const TIMEOUT = 3500;
 
 self.addEventListener('install', e => {
