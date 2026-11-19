@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="상하이톡" />
 <meta property="og:title" content="상하이 소통카드" />
-<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 200장" />
+<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 210여 장" />
 <meta property="og:type" content="website" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23ff8a3d' font-family='sans-serif'%3E%E8%AF%B4%3C/text%3E%3C/svg%3E" />
@@ -319,7 +319,8 @@ const PLACES = [
       C('这是我的护照。','zhè shì wǒ de hùzhào','여권 여기 있습니다.'),
       C('请问国际医疗部在哪里？','qǐngwèn guójì yīliáo bù zài nǎlǐ','국제의료부가 어디예요?'),
       C('请问在哪里报到？','qǐngwèn zài nǎlǐ bàodào','접수(도착 보고)는 어디서 해요?'),
-      C('地址是北园路33号，健康管理中心一楼。','dìzhǐ shì Běiyuán lù sānshísān hào, jiànkāng guǎnlǐ zhōngxīn yī lóu','주소는 북원로 33호, 건강관리센터 1층입니다. (기사·직원에게 보여주기)'),
+      C('我没有医院卡，可以用护照直接挂号吗？','wǒ méiyǒu yīyuàn kǎ, kěyǐ yòng hùzhào zhíjiē guàhào ma','진료카드가 없는데 여권으로 바로 접수할 수 있나요?'),
+      C('请问我的排队号是多少？','qǐngwèn wǒ de páiduì hào shì duōshǎo','제 대기 번호가 몇 번인가요?'),
       C('我是韩国人，听不懂中文。','wǒ shì hánguórén, tīngbudǒng zhōngwén','한국인이라 중국어를 못 알아듣습니다.'),
       C('请说慢一点，谢谢。','qǐng shuō màn yìdiǎn, xièxie','천천히 말씀해 주세요.'),
       C('我可以用翻译软件吗？','wǒ kěyǐ yòng fānyì ruǎnjiàn ma','번역 앱을 써도 될까요?'),
@@ -334,7 +335,7 @@ const PLACES = [
     { name:'진료 · 마운자로 처방', sub:'5mg 1펜 · 종이 처방전 요청', cards:[
       C('医生，您好。','yīshēng, nín hǎo','의사 선생님, 안녕하세요.'),
       C('我想开一支穆峰达5毫克。','wǒ xiǎng kāi yì zhī Mùfēngdá wǔ háokè','마운자로 5mg 1펜을 처방해 주세요.'),
-      C('替尔泊肽5毫克，一支。','Tì\'ěrbótóng wǔ háokè, yì zhī','터르제파타이드(성분명) 5mg, 1펜입니다.'),
+      C('替尔泊肽5毫克，一支。','Tì\'ěrbótài wǔ háokè, yì zhī','터르제파타이드(성분명) 5mg, 1펜입니다.'),
       C('我在韩国一直用2.5毫克，已经两个月了。','wǒ zài hánguó yìzhí yòng èr diǎn wǔ háokè, yǐjīng liǎng ge yuè le','한국에서 2.5mg를 두 달째 쓰고 있습니다.'),
       C('这是韩国带来的药盒和处方照片。','zhè shì hánguó dàilái de yàohé hé chùfāng zhàopiàn','한국에서 가져온 약통과 처방전 사진입니다.'),
       C('我的体重90公斤，身高178厘米。','wǒ de tǐzhòng jiǔshí gōngjīn, shēngāo yìbǎi qīshíbā límǐ','체중 90kg, 키 178cm입니다.'),
@@ -348,6 +349,7 @@ const PLACES = [
       C('这个需要冷藏吗？','zhège xūyào lěngcáng ma','이거 냉장 보관해야 하나요?'),
       C('可以给我纸质处方吗？','kěyǐ gěi wǒ zhǐzhì chùfāng ma','종이 처방전을 주실 수 있나요? (세관용)'),
       C('可以开英文诊断书吗？','kěyǐ kāi yīngwén zhěnduànshū ma','영문 진단서를 발급해 주실 수 있나요?'),
+      C('处方上可以盖医院的公章吗？','chùfāng shàng kěyǐ gài yīyuàn de gōngzhāng ma','처방전에 병원 직인(도장)을 찍어 주실 수 있나요? (세관 대비)'),
       C('请问诊察费是多少？','qǐngwèn zhěncháfèi shì duōshǎo','진찰료가 얼마인가요?'),
       C('今天能拿到药吗？','jīntiān néng ná dào yào ma','오늘 약을 받을 수 있나요?'),
     ]},
@@ -387,6 +389,10 @@ const PLACES = [
   scenes:[
     { name:'처방전 제시 · 구매', sub:'종이 처방전 없으면 판매 불가', cards:[
       C('你好。','nǐ hǎo','안녕하세요.'),
+      C('我没有中国医院的处方，只用护照可以在这里买吗？','wǒ méiyǒu Zhōngguó yīyuàn de chùfāng, zhǐ yòng hùzhào kěyǐ zài zhèlǐ mǎi ma','중국 병원 처방전은 없는데, 여권만으로 여기서 살 수 있나요?'),
+      C('可以在店里在线开处方直接买吗？','kěyǐ zài diàn lǐ zàixiàn kāi chùfāng zhíjiē mǎi ma','매장에서 온라인 처방으로 바로 살 수 있나요?'),
+      C('一个人最多可以买几支？','yí ge rén zuìduō kěyǐ mǎi jǐ zhī','한 사람이 최대 몇 펜까지 살 수 있나요?'),
+      C('有效期到什么时候？','yǒuxiàoqī dào shénme shíhou','유통기한이 언제까지예요?'),
       C('我有中国的处方，可以买药吗？','wǒ yǒu Zhōngguó de chùfāng, kěyǐ mǎi yào ma','중국 처방전이 있는데 약을 살 수 있나요?'),
       C('这是医院的处方和发票。','zhè shì yīyuàn de chùfāng hé fāpiào','병원 처방전과 영수증입니다.'),
       C('我要买穆峰达5毫克，一支。','wǒ yào mǎi Mùfēngdá wǔ háokè, yì zhī','마운자로 5mg 한 펜을 사려고 합니다.'),
@@ -429,7 +435,8 @@ const PLACES = [
       C('上海浦东国际机场2号航站楼。','Shànghǎi Pǔdōng guójì jīchǎng èr hào hángzhàn lóu','상하이 푸동국제공항 T2 터미널. (춘추항공)'),
       C('请开快一点，我12点15分有预约。','qǐng kāi kuài yìdiǎn, wǒ shí\'èr diǎn shíwǔ fēn yǒu yùyuē','좀 빨리 가 주세요, 12시 15분 예약이 있어요.'),
       C('大概多久能到？','dàgài duōjiǔ néng dào','얼마나 걸려요?'),
-      C('请在这里停车。','qǐng zài zhèlǐ tíngchē','여기서 세워 주세요.'),
+      C('请帮我打开后备箱。','qǐng bāng wǒ dǎkāi hòubèixiāng','트렁크 좀 열어 주세요.'),
+      C('请在这里停车，谢谢。','qǐng zài zhèlǐ tíngchē, xièxie','여기에 세워 주세요, 감사합니다.'),
       C('请等我一下，我马上回来。','qǐng děng wǒ yíxià, wǒ mǎshàng huílái','잠깐만 기다려 주세요, 금방 올게요.'),
       C('去浦东机场2号航站楼。','qù Pǔdōng jīchǎng èr hào hángzhàn lóu','푸동공항 T2로 가 주세요.','去哪里？'),
     ]},
