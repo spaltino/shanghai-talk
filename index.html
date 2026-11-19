@@ -243,7 +243,7 @@
   .rh-t b{display:block; font-size:16px; font-weight:800; letter-spacing:-.3px; color:#fff}
   .rh-t span{display:block; font-size:11.5px; color:var(--muted); margin-top:2px}
   .rh-arrow{flex:0 0 auto; width:14px; text-align:center; color:var(--accent); font-size:12px; margin-top:4px; line-height:1}
-  .rh-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-top:11px}
+  .rh-strip{display:grid; grid-template-columns:repeat(6,1fr); gap:4px; margin-top:11px}
   .rh-strip i{
     font-style:normal; text-align:center; padding:5px 2px; border-radius:9px;
     background:rgba(255,255,255,.05); border:1px solid var(--line);
@@ -333,6 +333,9 @@
   .sp-h b{font-size:12.5px; font-weight:800; color:#e8f0fa; line-height:1.35; min-width:0; overflow-wrap:anywhere}
   .sp-a{margin:5px 0 0 27px}
   .sp-a .addr{font-size:13px}
+  .sp-m{margin-top:5px; font-size:10.5px; color:var(--dim); line-height:1.6; overflow-wrap:anywhere}
+  .sp-m b{color:#cfe0f5; font-weight:800}
+  .sp-m a{color:#d6ecff; text-decoration:none; border-bottom:1px dotted rgba(72,184,245,.5)}
   .sp-b{display:flex; flex-wrap:wrap; gap:5px; margin:7px 0 0 27px}
   .mbtn{
     display:inline-flex; align-items:center; justify-content:center; gap:3px;
@@ -390,7 +393,8 @@
           <i><b>08:25</b>착륙</i>
           <i><b>10:20</b>약국</i>
           <i><b>12:15</b>런지</i>
-          <i><b>13:30</b>난징동루</i>
+          <i><b>13:10</b>펑양루</i>
+          <i><b>14:30</b>난징동루</i>
           <i><b>17:15</b>공항</i>
         </span>
         <span class="rh-cta" id="routeCta">▾ 동선 펼쳐 보기</span>
@@ -398,12 +402,13 @@
       <div class="route-body" id="routeBody" hidden>
         <div class="mapsec">
           <h3>🗺️ 동선 한눈에</h3>
-          <p class="cap">푸동공항 → 2호선 → 世纪大道 환승 → 6호선 → 上海儿童医学中心 → 다시 6·2호선 → 南京东路 → 2호선 직통 → 공항</p>
+          <p class="cap">푸동공항 → 2호선 → 世纪大道 환승 → 6호선 → 上海儿童医学中心 → (택시 20분) → 人民广场 第一医药 凤阳路店 → 南京东路 → 2호선 직통 → 공항</p>
           <div class="svgwrap">
-            <svg viewBox="0 0 320 408" role="img" aria-label="푸동공항 T2에서 2호선으로 世纪大道까지, 6호선으로 上海儿童医学中心, 다시 6호선과 2호선으로 南京东路, 2호선 직통으로 푸동공항 복귀하는 동선 도식">
+            <svg viewBox="0 0 320 532" role="img" aria-label="푸동공항 T2에서 2호선으로 世纪大道까지, 6호선으로 上海儿童医学中心, 택시로 人民广场 第一医药 凤阳路店, 이어서 南京东路, 2호선 직통으로 푸동공항 복귀하는 동선 도식">
               <defs>
                 <marker id="arwG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#4fd06a"/></marker>
                 <marker id="arwP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#c95fe0"/></marker>
+                <marker id="arwA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#ffb787"/></marker>
               </defs>
 
               <rect x="6" y="8" width="308" height="44" rx="11" fill="#16233a" stroke="#2b3d58"/>
@@ -428,27 +433,37 @@
               <text class="sv8" x="18" y="207">10:20 약국 — 런지약국 동원점 东方路1621号</text>
               <text class="sv8" x="18" y="221">런지병원 국제의료부 北园路33号</text>
 
-              <line x1="160" y1="228" x2="160" y2="260" stroke="url(#l62)" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
-              <linearGradient id="l62" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#c95fe0"/><stop offset="1" stop-color="#4fd06a"/>
-              </linearGradient>
-              <circle cx="172" cy="241" r="3" fill="#8f7ce8"/>
-              <text class="sv2" x="180" y="238">6→2号线 · 약 25~30분</text>
-              <text class="sv7" x="180" y="251">황푸강 건너 푸시</text>
+              <line x1="160" y1="228" x2="160" y2="258" stroke="#ffb787" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwA)"/>
+              <circle cx="172" cy="241" r="3" fill="#ffb787"/>
+              <text class="sv2" x="180" y="240">🚕 택시 약 20분 · 13.1km</text>
+              <text class="sv2" x="180" y="253">또는 6→2号线 · 人民广场</text>
 
-              <rect x="6" y="264" width="308" height="54" rx="11" fill="#16233a" stroke="#4fd06a" stroke-opacity=".55"/>
-              <text class="sv5" x="18" y="286">南京东路</text>
-              <text class="sv3" x="302" y="286" text-anchor="end">13:30~17:15</text>
-              <text class="sv8" x="18" y="302">제1의약상점 본점 616号 · 익풍 인민로 905号</text>
+              <rect x="6" y="262" width="308" height="86" rx="11" fill="#16233a" stroke="#ffb787" stroke-opacity=".65"/>
+              <text class="sv5" x="18" y="282">人民广场</text>
+              <text class="sv3" x="302" y="282" text-anchor="end">13:10~</text>
+              <text class="sv8" x="18" y="300">第一医药 凤阳路店 · 凤阳路274号</text>
+              <text class="sv8" x="18" y="316">08:30–20:30 · ☎ 021-6312-8993</text>
+              <text class="sv8" x="18" y="334">8·9번 출구 도보 170~200m · 오후 1순위</text>
 
-              <line x1="160" y1="318" x2="160" y2="346" stroke="#4fd06a" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
-              <circle cx="172" cy="334" r="3" fill="#4fd06a"/>
-              <text class="sv2" x="180" y="337">2号线 직통 · 약 65분</text>
+              <line x1="160" y1="348" x2="160" y2="388" stroke="#4fd06a" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
+              <circle cx="172" cy="362" r="3" fill="#4fd06a"/>
+              <circle cx="172" cy="374" r="3" fill="#4fd06a"/>
+              <text class="sv2" x="180" y="362">2号线 1정거장</text>
+              <text class="sv2" x="180" y="374">도보 약 1.2km</text>
 
-              <rect x="6" y="350" width="308" height="48" rx="11" fill="#16233a" stroke="#2b3d58"/>
-              <text class="sv1" x="18" y="373">✈️ 浦东国际机场 T2</text>
-              <text class="sv3" x="302" y="373" text-anchor="end">20:10 9C8573</text>
-              <text class="sv8" x="18" y="390">카운터 J·M · 18:10까지 수속</text>
+              <rect x="6" y="392" width="308" height="52" rx="11" fill="#16233a" stroke="#4fd06a" stroke-opacity=".55"/>
+              <text class="sv5" x="18" y="414">南京东路</text>
+              <text class="sv3" x="302" y="414" text-anchor="end">14:30~17:15</text>
+              <text class="sv8" x="18" y="430">제1의약상점 본점 616号 · 익풍 인민로 905号</text>
+
+              <line x1="160" y1="444" x2="160" y2="472" stroke="#4fd06a" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
+              <circle cx="172" cy="460" r="3" fill="#4fd06a"/>
+              <text class="sv2" x="180" y="463">2号线 직통 · 약 65분</text>
+
+              <rect x="6" y="476" width="308" height="48" rx="11" fill="#16233a" stroke="#2b3d58"/>
+              <text class="sv1" x="18" y="499">✈️ 浦东国际机场 T2</text>
+              <text class="sv3" x="302" y="499" text-anchor="end">20:10 9C8573</text>
+              <text class="sv8" x="18" y="516">카운터 J·M · 18:10까지 수속</text>
             </svg>
           </div>
         </div>
@@ -506,11 +521,13 @@
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">4</div>
-            <div class="stp-tx"><b>13:30~17:15 오후 · 난징동루 이동</b><span>약 25~30분</span></div>
+            <div class="stp-tx"><b>13:30~17:15 오후 · 펑양루 → 난징동루</b><span>런지 직후 택시 약 20분</span></div>
           </div>
           <ul class="stp-l">
-            <li><span class="zh">上海儿童医学中心</span>역 <span class="zh">6号线</span> → <span class="zh">世纪大道</span> 환승 → <span class="zh">2号线</span> → <span class="zh">南京东路</span>역 하차</li>
-            <li><span class="zh">제1의약상점 본점</span> <span class="addr">南京东路616号</span> 등 도심 약국 · 식사 · 미니소</li>
+            <li><b>1순위</b> <span class="zh">第一医药 凤阳路店</span> <span class="addr">凤阳路274号</span> — <span class="zh">런지병원</span> <span class="addr">北园路33号</span>에서 택시 약 20분(13.1km) · 지하철이면 <span class="zh">6→2号线</span> <span class="zh">人民广场</span>역</li>
+            <li>영업 <b>08:30~20:30</b> · <a href="tel:+862163128993">021-6312-8993</a> · <span class="zh">人民广场</span>역 <b>8·9번 출구</b> 도보 170~200m</li>
+            <li>여권으로 <b>현장 온라인 처방</b> 구매까지 된 지점 — 오후 약국은 여기부터</li>
+            <li>이어서 <span class="zh">제1의약상점 본점</span> <span class="addr">南京东路616号</span> (2호선 1정거장 · 도보 약 1.2km) 등 도심 약국 · 식사 · 미니소</li>
           </ul>
         </div>
 
@@ -520,7 +537,7 @@
             <div class="stp-tx"><b>17:15~20:10 공항 복귀</b><span>2호선 직통 약 65분</span></div>
           </div>
           <ul class="stp-l">
-            <li>늦어도 <b>17:15~17:30</b> <span class="zh">南京东路</span>역 → <span class="zh">2号线</span> 직통 → <span class="zh">浦东国际机场</span>역</li>
+            <li>늦어도 <b>17:15~17:30</b> <span class="zh">人民广场</span> 또는 <span class="zh">南京东路</span>역 → <span class="zh">2号线</span> 직통 → <span class="zh">浦东国际机场</span>역</li>
             <li>T2 <b>카운터 J·M</b> · <b>20:10</b> <span class="zh">9C8573</span> 귀국</li>
             <li>젤 아이스팩 <b>100ml 이하</b> · 기내 반입 규정 주의</li>
           </ul>
@@ -562,6 +579,19 @@
               <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%8C%97%E5%9B%AD%E8%B7%AF33%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
               <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E5%8C%97%E5%9B%AD%E8%B7%AF33%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
               <button class="mbtn copy" type="button" data-copy="北园路33号">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">4·1</span><b>제일의약 펑양루점 · 오후 1순위</b></div>
+            <div class="sp-a">
+              <span class="addr">凤阳路274号</span>
+              <div class="sp-m">第一医药 (凤阳路店) · 영업 <b>08:30–20:30</b> · <a href="tel:+862163128993">☎ 021-6312-8993</a><br>인민광장역 <b>8·9번 출구</b> 도보 170~200m · 런지병원에서 택시 약 20분(13.1km)</div>
+            </div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E5%87%A4%E9%98%B3%E8%B7%AF274%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://surl.amap.com/1EQmTdMK32c" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="凤阳路274号">📋 주소 복사</button>
+              <a class="mbtn" href="tel:+862163128993">☎ 전화</a>
             </div>
           </div>
           <div class="spot">
