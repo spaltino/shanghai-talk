@@ -1024,14 +1024,17 @@ function fitSize(len){
 function fitFsText(len){
   const avail = Math.max(160, (fsBody.clientWidth || window.innerWidth - 36));
   let s = fitSize(len);
-  fsZh.style.whiteSpace = 'nowrap';
+  const measurable = fsZh.getClientRects().length > 0;   // 확대 화면이 아직 숨김(display:none)이면 측정 불가
+  if(measurable) fsZh.style.whiteSpace = 'nowrap';
   fsZh.style.fontSize = s + 'px';
-  let guard = 0;
-  while(fsZh.scrollWidth > avail - 2 && s > 20 && guard++ < 80){
-    s -= 1;
-    fsZh.style.fontSize = s + 'px';
+  if(measurable){
+    let guard = 0;
+    while(fsZh.scrollWidth > avail - 2 && s > 22 && guard++ < 80){
+      s -= 1;
+      fsZh.style.fontSize = s + 'px';
+    }
+    fsZh.style.whiteSpace = '';
   }
-  fsZh.style.whiteSpace = '';
 }
 function drawFs(){
   const c = scene.cards[cardIdx];
@@ -1046,9 +1049,11 @@ function drawFs(){
   $('fsNext').disabled = cardIdx === scene.cards.length-1;
   fsDots.innerHTML = scene.cards.map((_,i)=>`<i class="${i===cardIdx?'on':''}"></i>`).join('');
 }
-function openFs(i){ stopSpeak(); cardIdx = i; drawFs(); fs.hidden = false; document.body.style.overflow='hidden'; }
+function openFs(i){ stopSpeak(); cardIdx = i; fs.hidden = false; document.body.style.overflow='hidden'; drawFs(); }
 function closeFs(){ stopSpeak(); fs.hidden = true; document.body.style.overflow=''; }
 function go(d){ const n = cardIdx + d; if(n<0 || n>=scene.cards.length) return; stopSpeak(); cardIdx = n; drawFs(); }
+window.addEventListener('resize', ()=>{ if(!fs.hidden && scene) drawFs(); });
+window.addEventListener('orientationchange', ()=>{ if(!fs.hidden && scene) setTimeout(drawFs, 120); });
 $('fsClose').onclick = closeFs;
 $('fsPrev').onclick = ()=>go(-1);
 $('fsNext').onclick = ()=>go(1);
