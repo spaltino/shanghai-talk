@@ -152,6 +152,7 @@
     border-radius:8px; padding:2px 6px;
   }
   .card .top + .zh{margin-top:2px}
+  .nw{white-space:nowrap}
   .hint{font-size:11.5px; color:var(--dim); text-align:center; margin:16px 0 0; line-height:1.6}
 
   /* ---------- fullscreen ---------- */
@@ -548,6 +549,12 @@ const PLACES = [
 }
 ];
 
+/* 숫자·시간은 줄바꿈으로 쪼개지 않게 */
+const fmt = s => s.replace(/[0-9]+/g, m => '<span class="nw">' + m + '</span>');
+
+/* 숫자·시간은 줄바꿈으로 쪼개지 않게 */
+const fmt = s => s.replace(/[0-9]+/g, m => '<span class="nw">' + m + '</span>');
+
 /* ============ STATE ============ */
 let place = null, scene = null, cardIdx = 0;
 const $ = id => document.getElementById(id);
@@ -589,7 +596,7 @@ function renderCards(){
         ${c.q ? `<div class="qline">← ${c.q}</div>` : ''}
         <div class="zoom">크게</div>
       </div>
-      <div class="zh">${c.zh}</div>
+      <div class="zh">${fmt(c.zh)}</div>
       <div class="py">${c.py}</div>
       <div class="ko">${c.ko}</div>
     </button>`).join('');
@@ -631,9 +638,9 @@ function fitSize(len){
 }
 function drawFs(){
   const c = scene.cards[cardIdx];
-  if(c.q){ fsQ.hidden = false; fsQ.innerHTML = '<b>' + c.q + '</b>'; }
+  if(c.q){ fsQ.hidden = false; fsQ.innerHTML = '<b>' + fmt(c.q) + '</b>'; }
   else fsQ.hidden = true;
-  fsZh.textContent = c.zh;
+  fsZh.innerHTML = fmt(c.zh);
   fsZh.style.fontSize = fitSize(c.zh.length) + 'px';
   fsPy.textContent = c.py;
   fsKo.textContent = c.ko;
