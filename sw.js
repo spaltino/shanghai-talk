@@ -1,7 +1,7 @@
 /* 상하이 소통카드 — 오프라인 캐시
    페이지(문서)는 네트워크 우선 + 3.5초 타임아웃 후 캐시로 폴백:
    온라인이면 항상 최신, 중국처럼 느리거나 막혀도 저장된 화면으로 바로 뜹니다. */
-const CACHE = 'shanghai-talk-v11';
+const CACHE = 'shanghai-talk-v12';
 const ASSETS = ['./', './index.html', './manifest.json', './icon.svg'];
 const TIMEOUT = 3500;
 
