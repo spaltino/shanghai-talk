@@ -158,23 +158,23 @@
   .fs{
     position:fixed; inset:0; z-index:100; background:#fff; color:#000;
     display:flex; flex-direction:column;
-    padding:calc(12px + env(safe-area-inset-top)) 18px calc(12px + env(safe-area-inset-bottom));
+    padding:calc(12px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom));
     touch-action:pan-y;
   }
   .fs[hidden]{display:none}
-  .fs .bar{display:flex; align-items:center; justify-content:space-between; gap:10px; flex:0 0 auto}
+  .fs .bar{display:flex; align-items:center; justify-content:space-between; gap:10px; flex:0 0 auto; width:100%; max-width:860px; margin:0 auto}
   .fs .count{font-size:13px; font-weight:700; color:#111; background:#f1f2f4; border-radius:999px; padding:5px 11px}
   .fs .close{
     width:44px; height:44px; border-radius:50%; background:#f1f2f4; color:#111;
     font-size:20px; font-weight:700; display:flex; align-items:center; justify-content:center;
   }
-  .fs .body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:10px 0 4px; min-height:0}
+  .fs .body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:10px 0 4px; min-height:0; width:100%; max-width:860px; margin:0 auto}
   .fs .q{font-size:15px; color:#666; margin-bottom:14px; line-height:1.45; max-width:100%}
   .fs .q b{color:#111; font-weight:700}
-  .fs .zh{font-weight:800; line-height:1.36; letter-spacing:-.3px; color:#000; overflow-wrap:anywhere; word-break:keep-all}
+  .fs .zh{font-weight:800; line-height:1.42; letter-spacing:-.3px; color:#000; word-break:normal; line-break:strict; overflow-wrap:break-word; text-wrap:balance}
   .fs .py{font-size:15px; color:#5b6b80; margin-top:16px; font-weight:600; overflow-wrap:anywhere}
   .fs .ko{font-size:14.5px; color:#666; margin-top:18px; padding-top:14px; border-top:1px solid #e3e5e9; line-height:1.5}
-  .fs .ctrl{flex:0 0 auto; display:flex; gap:10px; align-items:stretch}
+  .fs .ctrl{flex:0 0 auto; display:flex; gap:10px; align-items:stretch; width:100%; max-width:700px; margin:0 auto}
   .fs .ctrl button{
     flex:1 1 0; height:62px; border-radius:16px; background:#f1f2f4; color:#111;
     font-size:17px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:8px;
@@ -182,7 +182,7 @@
   }
   .fs .ctrl button:active{background:#e6e8ec}
   .fs .ctrl button:disabled{opacity:.35}
-  .fs .dots{display:flex; gap:4px; justify-content:center; padding:10px 0 0; flex-wrap:wrap}
+  .fs .dots{display:flex; gap:4px; justify-content:center; padding:9px 0 1px; flex-wrap:wrap; flex:0 0 auto}
   .fs .dots i{width:5px; height:5px; border-radius:50%; background:#d6d9de}
   .fs .dots i.on{background:#111; width:14px; border-radius:3px}
 
