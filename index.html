@@ -131,14 +131,17 @@
     background:var(--card); border:1px solid var(--line);
     display:block; position:relative;
   }
+  .card{cursor:pointer; -webkit-user-select:none; user-select:none}
   .card:active{background:var(--card2)}
-  .card .top{display:flex; align-items:center; gap:8px; margin-bottom:7px; padding-right:54px}
+  .card.on{border-color:rgba(255,138,61,.65); box-shadow:0 0 0 1px rgba(255,138,61,.35) inset}
+  .card .top{display:flex; align-items:center; gap:8px; margin-bottom:7px}
   .card .idx{
     font-size:11px; font-weight:800; color:#9fb2cb; min-width:20px;
     width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,.06);
     display:flex; align-items:center; justify-content:center;
   }
   .card .qline{
+    flex:1 1 auto; min-width:0;
     font-size:11.5px; color:#ffb787; background:rgba(255,138,61,.10);
     border:1px solid rgba(255,138,61,.24); border-radius:999px;
     padding:2px 9px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
@@ -146,12 +149,49 @@
   .card .zh{font-size:22px; font-weight:700; line-height:1.42; letter-spacing:-.2px; color:#fff; word-break:keep-all; overflow-wrap:anywhere}
   .card .py{font-size:12px; color:var(--blue); margin-top:5px; opacity:.9; overflow-wrap:anywhere}
   .card .ko{font-size:13px; color:var(--muted); margin-top:5px}
-  .card .zoom{
-    position:absolute; top:12px; right:12px;
-    font-size:10.5px; color:var(--dim); border:1px solid var(--line);
-    border-radius:8px; padding:2px 6px;
-  }
   .card .top + .zh{margin-top:2px}
+
+  /* ---------- 🔊 TTS ---------- */
+  .spk{
+    flex:0 0 auto; margin-left:auto; width:48px; height:48px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:0; background:none; border:0; touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .spk .ico{
+    pointer-events:none; width:44px; height:44px; border-radius:13px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; line-height:1; color:#ffb787;
+    background:rgba(255,138,61,.12); border:1px solid rgba(255,138,61,.34);
+    transition:background .12s ease, color .12s ease, transform .08s ease;
+  }
+  .spk:active .ico{transform:scale(.93)}
+  .spk.on .ico{background:var(--accent); border-color:var(--accent); color:#12181f}
+  body.no-tts .spk, body.no-tts .speakbar{display:none}
+
+  .speakbar{flex:0 0 auto; display:flex; gap:10px; width:100%; max-width:700px; margin:0 auto 9px}
+  .speakbar button{
+    height:56px; border-radius:16px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; gap:7px;
+  }
+  #fsSpeak{flex:1 1 auto; font-size:17px; background:var(--accent); color:#1a1108; border:1px solid #ef7d2b}
+  #fsSpeak:active{background:#f47c2b}
+  #fsSpeak.on{background:#111; color:#fff; border-color:#111}
+  #fsRate{
+    flex:0 0 auto; min-width:116px; padding:0 14px; font-size:15px;
+    background:#f1f2f4; color:#111; border:1px solid #e3e5e9;
+  }
+  #fsRate:active{background:#e6e8ec}
+
+  .toast{
+    position:fixed; left:50%; bottom:calc(22px + env(safe-area-inset-bottom));
+    transform:translateX(-50%) translateY(8px); z-index:200;
+    max-width:min(88vw,420px); padding:11px 16px; border-radius:12px;
+    background:rgba(18,26,40,.96); color:#fff; font-size:13px; line-height:1.45; text-align:center;
+    opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
   .nw{white-space:nowrap}
   .hint{font-size:11.5px; color:var(--dim); text-align:center; margin:16px 0 0; line-height:1.6}
 
@@ -250,12 +290,18 @@
     <div class="py" id="fsPy"></div>
     <div class="ko" id="fsKo"></div>
   </div>
+  <div class="speakbar">
+    <button id="fsSpeak" aria-pressed="false">🔊 듣기</button>
+    <button id="fsRate" aria-label="재생 속도 바꾸기">보통 0.95x</button>
+  </div>
   <div class="ctrl">
     <button id="fsPrev">‹ 이전</button>
     <button id="fsNext">다음 ›</button>
   </div>
   <div class="dots" id="fsDots"></div>
 </div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 /* ============ DATA ============ */
@@ -587,21 +633,23 @@ function renderScenes(){
 function renderCards(){
   $('ledeScene').textContent = scene.name;
   $('cardList').innerHTML = scene.cards.map((c,i)=>`
-    <button class="card" data-card="${i}">
+    <div class="card" data-card="${i}" role="button" tabindex="0" aria-label="${i+1}번 카드 크게 보기">
       <div class="top">
         <div class="idx">${i+1}</div>
         ${c.q ? `<div class="qline">← ${c.q}</div>` : ''}
-        <div class="zoom">크게</div>
+        <button class="spk" data-speak="${i}" aria-label="중국어로 듣기" aria-pressed="false"><span class="ico">🔊</span></button>
       </div>
       <div class="zh">${fmt(c.zh)}</div>
       <div class="py">${c.py}</div>
       <div class="ko">${c.ko}</div>
-    </button>`).join('');
+    </div>`).join('');
+  paintSpeak();
   window.scrollTo({top:0});
 }
 
 /* ============ VIEWS ============ */
 function show(n){
+  stopSpeak();
   [view1,view2,view3].forEach((v,i)=>v.hidden = (i+1!==n));
   btnBack.hidden = n===1;
   btnHome.hidden = n===1;
@@ -614,6 +662,7 @@ btnBack.onclick = () => { if(view3.hidden===false) show(2); else show(1); };
 btnHome.onclick = () => { closeFs(); show(1); };
 
 document.addEventListener('click', e=>{
+  if(e.target.closest('[data-speak]')) return;   // 🔊 전용: 카드 확대(풀스크린)로 절대 넘어가지 않는다
   const p = e.target.closest('[data-place]');
   if(p){ place = PLACES.find(x=>x.id===p.dataset.place); renderScenes(); show(2); return; }
   const s = e.target.closest('[data-scene]');
@@ -646,9 +695,9 @@ function drawFs(){
   $('fsNext').disabled = cardIdx === scene.cards.length-1;
   fsDots.innerHTML = scene.cards.map((_,i)=>`<i class="${i===cardIdx?'on':''}"></i>`).join('');
 }
-function openFs(i){ cardIdx = i; drawFs(); fs.hidden = false; document.body.style.overflow='hidden'; }
-function closeFs(){ fs.hidden = true; document.body.style.overflow=''; }
-function go(d){ const n = cardIdx + d; if(n<0 || n>=scene.cards.length) return; cardIdx = n; drawFs(); }
+function openFs(i){ stopSpeak(); cardIdx = i; drawFs(); fs.hidden = false; document.body.style.overflow='hidden'; }
+function closeFs(){ stopSpeak(); fs.hidden = true; document.body.style.overflow=''; }
+function go(d){ const n = cardIdx + d; if(n<0 || n>=scene.cards.length) return; stopSpeak(); cardIdx = n; drawFs(); }
 $('fsClose').onclick = closeFs;
 $('fsPrev').onclick = ()=>go(-1);
 $('fsNext').onclick = ()=>go(1);
@@ -669,6 +718,139 @@ fs.addEventListener('touchend', e=>{
   const dy = e.changedTouches[0].clientY - sy;
   if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)*1.4){ go(dx < 0 ? 1 : -1); }
 });
+
+/* ============ 🔊 TTS (Web Speech API · 외부 호출 없음) ============ */
+const synth = window.speechSynthesis;
+const TTS = {
+  ok: !!(synth && typeof window.SpeechSynthesisUtterance === 'function'),
+  voice: null,
+  rate: 0.95
+};
+let playing = null;   // 'list:3' | 'fs'
+let speakSeq = 0;
+
+if(!TTS.ok) document.body.classList.add('no-tts');
+
+/* 중국어 음성 고르기(있으면). 없으면 u.lang='zh-CN'로 기기 기본 선택에 맡긴다. */
+function loadVoices(){
+  if(!TTS.ok) return;
+  let vs = [];
+  try { vs = synth.getVoices() || []; } catch(e){ vs = []; }
+  if(!vs.length) return;
+  TTS.voice = vs.find(v => /^zh[-_]?(CN|Hans)/i.test(v.lang))
+           || vs.find(v => /^zh/i.test(v.lang))
+           || null;
+}
+loadVoices();
+if(TTS.ok && synth.addEventListener){
+  synth.addEventListener('voiceschanged', loadVoices);
+  setTimeout(loadVoices, 600);
+}
+
+let toastTimer = null;
+function toast(msg){
+  const t = $('toast');
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove('show'), 3200);
+}
+
+function paintSpeak(){
+  document.querySelectorAll('[data-speak]').forEach(b=>{
+    const on = playing === 'list:' + b.dataset.speak;
+    b.classList.toggle('on', on);
+    const ico = b.querySelector('.ico');
+    if(ico) ico.textContent = on ? '⏹' : '🔊';
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    const card = b.closest('[data-card]');
+    if(card) card.classList.toggle('on', on);
+  });
+  const fb = $('fsSpeak');
+  if(fb){
+    const on = playing === 'fs';
+    fb.classList.toggle('on', on);
+    fb.textContent = on ? '⏹ 정지' : '🔊 듣기';
+    fb.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+}
+
+function stopSpeak(){
+  speakSeq++;
+  if(TTS.ok){ try { synth.cancel(); } catch(e){} }
+  if(playing){ playing = null; paintSpeak(); }
+  else paintSpeak();
+}
+
+/* 사용자 탭 핸들러 안에서 동기적으로 cancel → speak (iOS Safari 필수 조건) */
+function speakNow(text, key){
+  if(!TTS.ok){ toast('이 브라우저에서는 음성을 재생할 수 없습니다. 화면의 문장을 보여 주세요.'); return; }
+  speakSeq++;
+  const seq = speakSeq;
+  try { synth.cancel(); } catch(e){}
+  const u = new SpeechSynthesisUtterance(String(text));
+  u.lang = 'zh-CN';
+  if(TTS.voice) u.voice = TTS.voice;
+  u.rate = TTS.rate;
+  u.pitch = 1;
+  let done = false, wd = null;
+  const settle = ()=>{ done = true; if(wd) clearTimeout(wd); };
+  u.onstart = ()=>{ if(seq !== speakSeq) return; settle(); playing = key; paintSpeak(); };
+  u.onend   = ()=>{ if(seq !== speakSeq) return; settle(); playing = null; paintSpeak(); };
+  u.onerror = (ev)=>{ if(seq !== speakSeq) return; settle(); playing = null; paintSpeak();
+    const err = ev && ev.error;
+    if(err !== 'interrupted' && err !== 'canceled')
+      toast('음성을 재생하지 못했습니다. 기기에 중국어 음성이 없으면 설정에서 내려받아 주세요.'); };
+  wd = setTimeout(()=>{
+    if(seq !== speakSeq || done) return;
+    playing = null; paintSpeak();
+    toast('음성이 재생되지 않았습니다. 기기 설정에서 중국어 음성을 내려받아 주세요.');
+  }, 2500);
+  try { synth.speak(u); } catch(e){ settle(); playing = null; paintSpeak(); toast('음성을 재생하지 못했습니다.'); return; }
+  playing = key; paintSpeak();   // 반응을 즉시 보여 주고, 이벤트가 오면 실제 상태로 맞춘다
+}
+
+/* 카드 목록: 🔊는 카드 클릭(확대)으로 번지지 않고 그 자리에서 음성만 나온다 */
+$('cardList').addEventListener('click', e=>{
+  const b = e.target.closest('[data-speak]');
+  if(!b) return;
+  e.stopPropagation();
+  e.preventDefault();
+  const i = +b.dataset.speak;
+  if(playing === 'list:' + i){ stopSpeak(); return; }
+  speakNow(scene.cards[i].zh, 'list:' + i);
+});
+/* 터치: 버튼 안 터치는 카드로 전혀 전달하지 않는다 */
+$('cardList').addEventListener('touchstart', e=>{
+  if(e.target.closest('[data-speak]')) e.stopPropagation();
+}, {passive:true});
+
+/* 키보드로 카드 열기 */
+$('cardList').addEventListener('keydown', e=>{
+  if(e.key !== 'Enter' && e.key !== ' ') return;
+  if(e.target.closest('[data-speak]')) return;
+  const c = e.target.closest('[data-card]');
+  if(!c) return;
+  e.preventDefault();
+  openFs(+c.dataset.card);
+});
+
+/* 풀스크린: 듣기 / 정지 · 속도 토글 */
+const RATES = [{r:0.95, label:'보통 0.95x'}, {r:0.7, label:'천천히 0.7x'}];
+let rateIdx = 0;
+$('fsSpeak').onclick = ()=>{
+  if(playing === 'fs'){ stopSpeak(); return; }
+  speakNow(scene.cards[cardIdx].zh, 'fs');
+};
+$('fsRate').onclick = ()=>{
+  rateIdx = (rateIdx + 1) % RATES.length;
+  TTS.rate = RATES[rateIdx].r;
+  $('fsRate').textContent = RATES[rateIdx].label;
+  if(playing === 'fs') speakNow(scene.cards[cardIdx].zh, 'fs');
+};
+
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stopSpeak(); });
 
 /* init */
 renderPlaces();
