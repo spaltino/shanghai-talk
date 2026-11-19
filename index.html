@@ -552,9 +552,6 @@ const PLACES = [
 /* 숫자·시간은 줄바꿈으로 쪼개지 않게 */
 const fmt = s => s.replace(/[0-9]+/g, m => '<span class="nw">' + m + '</span>');
 
-/* 숫자·시간은 줄바꿈으로 쪼개지 않게 */
-const fmt = s => s.replace(/[0-9]+/g, m => '<span class="nw">' + m + '</span>');
-
 /* ============ STATE ============ */
 let place = null, scene = null, cardIdx = 0;
 const $ = id => document.getElementById(id);
