@@ -227,6 +227,120 @@
   .fs .dots i{width:5px; height:5px; border-radius:50%; background:#d6d9de}
   .fs .dots i.on{background:#111; width:14px; border-radius:3px}
 
+  /* ---------- 11/26 실전 동선 ---------- */
+  .route{
+    margin:14px 0 0; border-radius:18px; overflow:hidden;
+    border:1px solid rgba(255,138,61,.30);
+    background:linear-gradient(158deg, rgba(255,138,61,.11), rgba(47,211,164,.06) 55%, rgba(18,29,46,.96));
+  }
+  .route-head{display:block; width:100%; text-align:left; padding:14px 14px 12px}
+  .rh-top{display:flex; align-items:flex-start; gap:9px}
+  .rh-em{flex:0 0 auto; font-size:21px; line-height:1.15}
+  .rh-t{flex:1 1 auto; min-width:0}
+  .rh-t b{display:block; font-size:16px; font-weight:800; letter-spacing:-.3px; color:#fff}
+  .rh-t span{display:block; font-size:11.5px; color:var(--muted); margin-top:2px}
+  .rh-arrow{flex:0 0 auto; color:var(--accent); font-size:12px; margin-top:4px; transition:transform .18s ease}
+  .route.open .rh-arrow{transform:rotate(180deg)}
+  .rh-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-top:11px}
+  .rh-strip i{
+    font-style:normal; text-align:center; padding:5px 2px; border-radius:9px;
+    background:rgba(255,255,255,.05); border:1px solid var(--line);
+    font-size:9.5px; color:var(--muted); line-height:1.25; letter-spacing:-.2px;
+  }
+  .rh-strip i b{display:block; font-size:11px; font-weight:800; color:#ffb787; letter-spacing:0}
+  .rh-cta{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    margin-top:10px; padding-top:9px; border-top:1px solid rgba(255,255,255,.08);
+    font-size:12px; font-weight:800; color:var(--accent);
+  }
+  .route-body{padding:2px 14px 8px; border-top:1px solid rgba(255,255,255,.08)}
+  .step{padding:13px 0; border-bottom:1px solid rgba(255,255,255,.06)}
+  .step:last-of-type{border-bottom:0; padding-bottom:4px}
+  .stp-h{display:flex; align-items:flex-start; gap:9px; margin-bottom:8px}
+  .stp-n{
+    flex:0 0 auto; width:24px; height:24px; border-radius:8px; margin-top:1px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,138,61,.16); border:1px solid rgba(255,138,61,.36);
+    color:#ffb787; font-size:12px; font-weight:800;
+  }
+  .stp-tx{flex:1 1 auto; min-width:0}
+  .stp-tx b{display:block; font-size:14.5px; font-weight:800; letter-spacing:-.2px; color:#fff; line-height:1.35}
+  .stp-tx span{display:block; font-size:11px; color:var(--accent2); margin-top:2px; font-weight:700}
+  .stp-l{list-style:none; margin:0; padding:0 0 0 33px; display:flex; flex-direction:column; gap:6px}
+  .stp-l li{position:relative; font-size:12.5px; color:var(--muted); line-height:1.62; overflow-wrap:anywhere}
+  .stp-l li::before{content:''; position:absolute; left:-11px; top:9px; width:4px; height:4px; border-radius:50%; background:var(--dim)}
+  .stp-l li b{color:#e8f0fa; font-weight:800}
+  .stp-l li.tiny{font-size:11px; color:var(--dim)}
+  .zh{font-weight:800; color:#fff; white-space:nowrap; letter-spacing:.2px}
+  .addr{
+    display:inline-block; white-space:nowrap; padding:0 6px; border-radius:6px;
+    background:rgba(72,184,245,.13); border:1px solid rgba(72,184,245,.32);
+    color:#d6ecff; font-weight:800; font-size:1.02em; line-height:1.55;
+  }
+  .chks{display:flex; flex-direction:column; gap:6px; padding-left:33px}
+  .chk{
+    display:flex; align-items:flex-start; gap:8px; width:100%; text-align:left;
+    padding:8px 10px; border-radius:10px;
+    background:rgba(255,255,255,.04); border:1px solid var(--line);
+    font-size:12px; color:var(--muted); line-height:1.5;
+  }
+  .chk i{
+    flex:0 0 auto; width:16px; height:16px; margin-top:1px; border-radius:5px;
+    border:1.5px solid #3d4f6b; display:flex; align-items:center; justify-content:center;
+    font-style:normal; font-size:10px; font-weight:800; color:transparent;
+  }
+  .chk b{color:#e8f0fa; font-weight:800}
+  .chk.done{background:rgba(47,211,164,.08); border-color:rgba(47,211,164,.34)}
+  .chk.done i{background:var(--accent2); border-color:var(--accent2); color:#0b1220}
+  .chk.done b{color:var(--dim)}
+  .alert{
+    display:flex; gap:6px; margin:9px 0 0 33px; padding:8px 10px; border-radius:10px;
+    background:rgba(255,95,110,.10); border:1px solid rgba(255,95,110,.28);
+    font-size:11.5px; color:#ffb3bb; line-height:1.5;
+  }
+  .route-foot{margin:10px 0 0; padding-top:9px; border-top:1px dashed rgba(255,255,255,.10); font-size:11px; color:var(--dim); line-height:1.55; text-align:center}
+
+  /* ---------- 동선 도식 · 장소별 지도 ---------- */
+  .mapsec{padding:12px 0 6px; border-bottom:1px solid rgba(255,255,255,.06)}
+  .mapsec h3, .spots h3{margin:0 0 3px; font-size:12.5px; font-weight:800; color:#fff; letter-spacing:-.2px}
+  .mapsec .cap, .spots .cap{margin:0 0 9px; font-size:10.5px; color:var(--dim); line-height:1.55; overflow-wrap:anywhere}
+  .svgwrap{background:rgba(8,14,24,.55); border:1px solid var(--line); border-radius:12px; padding:6px 4px 4px}
+  .svgwrap svg{display:block; width:100%; max-width:430px; height:auto; margin:0 auto}
+  .sv1{font-size:12px; font-weight:800; fill:#fff}
+  .sv2{font-size:10px; fill:#96a7be}
+  .sv8{font-size:10.5px; fill:#96a7be}
+  .sv3{font-size:10.5px; font-weight:800; fill:#ffb787}
+  .sv4{font-size:10px; font-weight:800; fill:#2fd3a4}
+  .sv5{font-size:14px; font-weight:800; fill:#fff; letter-spacing:.3px}
+  .sv6b{font-size:10px; fill:#9fb2cb; font-weight:600}
+  .sv7{font-size:10px; fill:#48b8f5; font-weight:700}
+
+  .spots{margin-top:11px; padding-top:11px; border-top:1px solid rgba(255,255,255,.06)}
+  .spot{padding:10px 0; border-bottom:1px dashed rgba(255,255,255,.07)}
+  .spot:last-of-type{border-bottom:0; padding-bottom:2px}
+  .sp-h{display:flex; align-items:center; gap:7px}
+  .sp-n{
+    flex:0 0 auto; min-width:20px; height:18px; padding:0 5px; border-radius:6px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.07); border:1px solid var(--line);
+    font-size:9.5px; font-weight:800; color:#9fb2cb;
+  }
+  .sp-h b{font-size:12.5px; font-weight:800; color:#e8f0fa; line-height:1.35}
+  .sp-a{margin:5px 0 0 27px}
+  .sp-a .addr{font-size:13px}
+  .sp-b{display:flex; flex-wrap:wrap; gap:5px; margin:7px 0 0 27px}
+  .mbtn{
+    display:inline-flex; align-items:center; justify-content:center; gap:3px;
+    height:30px; padding:0 9px; border-radius:8px;
+    font-size:10.5px; font-weight:700; letter-spacing:-.2px;
+    background:rgba(255,255,255,.05); border:1px solid var(--line);
+    color:#cfe0f5; text-decoration:none; line-height:1;
+  }
+  .mbtn.amap{border-color:rgba(72,184,245,.32); background:rgba(72,184,245,.12); color:#d6ecff}
+  .mbtn.copy{border-color:rgba(47,211,164,.32); background:rgba(47,211,164,.10); color:#c6f5e6}
+  .mbtn:active{opacity:.7}
+  .mbtn.copied{background:var(--accent2); border-color:var(--accent2); color:#0b1220}
+
   @media (min-width:620px){
     .grid{grid-template-columns:repeat(3,1fr)}
     .card .zh{font-size:24px}
@@ -255,6 +369,218 @@
       <div class="steps"><i class="on">1 장소</i><i>2 상황</i><i>3 카드</i></div>
     </div>
     <div class="grid" id="placeGrid"></div>
+
+    <!-- 11/26 실전 동선 -->
+    <section class="route" id="route" aria-labelledby="routeTitle">
+      <button class="route-head" id="routeToggle" aria-expanded="false" aria-controls="routeBody">
+        <span class="rh-top">
+          <span class="rh-em">📋</span>
+          <span class="rh-t">
+            <b id="routeTitle">11/26 당일 실전 동선</b>
+            <span>지하철 중심 · 제주 07:50 → 상하이 20:10</span>
+          </span>
+          <span class="rh-arrow">▾</span>
+        </span>
+        <span class="rh-strip">
+          <i><b>08:25</b>착륙</i>
+          <i><b>10:20</b>약국</i>
+          <i><b>12:15</b>런지</i>
+          <i><b>13:30</b>난징동루</i>
+          <i><b>17:15</b>공항</i>
+        </span>
+        <span class="rh-cta" id="routeCta">▾ 동선 펼쳐 보기</span>
+      </button>
+      <div class="route-body" id="routeBody" hidden>
+        <div class="mapsec">
+          <h3>🗺️ 동선 한눈에</h3>
+          <p class="cap">푸동공항 → 2호선 → 世纪大道 환승 → 6호선 → 上海儿童医学中心 → 다시 6·2호선 → 南京东路 → 2호선 직통 → 공항</p>
+          <div class="svgwrap">
+            <svg viewBox="0 0 320 408" role="img" aria-label="푸동공항 T2에서 2호선으로 世纪大道까지, 6호선으로 上海儿童医学中心, 다시 6호선과 2호선으로 南京东路, 2호선 직통으로 푸동공항 복귀하는 동선 도식">
+              <defs>
+                <marker id="arwG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#4fd06a"/></marker>
+                <marker id="arwP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#c95fe0"/></marker>
+              </defs>
+
+              <rect x="6" y="8" width="308" height="44" rx="11" fill="#16233a" stroke="#2b3d58"/>
+              <text class="sv1" x="18" y="33">✈️ 浦东国际机场 T2</text>
+              <text class="sv3" x="302" y="33" text-anchor="end">08:25 착륙</text>
+
+              <line x1="160" y1="52" x2="160" y2="86" stroke="#4fd06a" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
+              <circle cx="172" cy="72" r="3" fill="#4fd06a"/>
+              <text class="sv2" x="180" y="75">2号线 · 徐泾东 방향</text>
+
+              <rect x="40" y="90" width="240" height="46" rx="11" fill="#16233a" stroke="#4fd06a" stroke-opacity=".55"/>
+              <text class="sv5" x="160" y="112" text-anchor="middle">世纪大道</text>
+              <text class="sv6b" x="160" y="128" text-anchor="middle">스지다다오 · 환승 (약 55~60분)</text>
+
+              <line x1="160" y1="136" x2="160" y2="166" stroke="#c95fe0" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwP)"/>
+              <circle cx="172" cy="154" r="3" fill="#c95fe0"/>
+              <text class="sv2" x="180" y="157">6号线 东方体育中心 방향</text>
+
+              <rect x="6" y="170" width="308" height="58" rx="11" fill="#16233a" stroke="#c95fe0" stroke-opacity=".55"/>
+              <text class="sv5" x="18" y="191">上海儿童医学中心</text>
+              <text class="sv4" x="302" y="191" text-anchor="end">2·3번 출구</text>
+              <text class="sv8" x="18" y="207">10:20 약국 — 런지약국 동원점 东方路1621号</text>
+              <text class="sv8" x="18" y="221">런지병원 국제의료부 北园路33号</text>
+
+              <line x1="160" y1="228" x2="160" y2="260" stroke="url(#l62)" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
+              <linearGradient id="l62" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c95fe0"/><stop offset="1" stop-color="#4fd06a"/>
+              </linearGradient>
+              <circle cx="172" cy="241" r="3" fill="#8f7ce8"/>
+              <text class="sv2" x="180" y="238">6→2号线 · 약 25~30분</text>
+              <text class="sv7" x="180" y="251">황푸강 건너 푸시</text>
+
+              <rect x="6" y="264" width="308" height="54" rx="11" fill="#16233a" stroke="#4fd06a" stroke-opacity=".55"/>
+              <text class="sv5" x="18" y="286">南京东路</text>
+              <text class="sv3" x="302" y="286" text-anchor="end">13:30~17:15</text>
+              <text class="sv8" x="18" y="302">제1의약상점 본점 616号 · 익풍 인민로 905号</text>
+
+              <line x1="160" y1="318" x2="160" y2="346" stroke="#4fd06a" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwG)"/>
+              <circle cx="172" cy="334" r="3" fill="#4fd06a"/>
+              <text class="sv2" x="180" y="337">2号线 직통 · 약 65분</text>
+
+              <rect x="6" y="350" width="308" height="48" rx="11" fill="#16233a" stroke="#2b3d58"/>
+              <text class="sv1" x="18" y="373">✈️ 浦东国际机场 T2</text>
+              <text class="sv3" x="302" y="373" text-anchor="end">20:10 9C8573</text>
+              <text class="sv8" x="18" y="390">카운터 J·M · 18:10까지 수속</text>
+            </svg>
+          </div>
+        </div>
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">0</div>
+            <div class="stp-tx"><b>출국 전 체크</b><span>눌러서 하나씩 체크</span></div>
+          </div>
+          <div class="chks">
+            <button class="chk" data-k="alipay" aria-pressed="false"><i></i><span>알리페이 카드 + <b>상하이 지하철 QR(Metro)</b> 활성화</span></button>
+            <button class="chk" data-k="home" aria-pressed="false"><i></i><span><b>shanghai-talk</b> 홈 화면 추가 (오프라인 대비)</span></button>
+            <button class="chk" data-k="rx" aria-pressed="false"><i></i><span>한국 <b>2.5mg</b> 처방전 · 약통 사진</span></button>
+            <button class="chk" data-k="cold" aria-pressed="false"><i></i><span>보냉백 · 단단히 언 <b>100ml 이하</b> 팩 (위탁 0kg · 기내 7kg)</span></button>
+            <button class="chk" data-k="ticket" aria-pressed="false"><i></i><span>e-티켓 PDF <b>(BMUYIVL)</b></span></button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">1</div>
+            <div class="stp-tx"><b>08:25 착륙 → 푸둥 이동</b><span>약 55~60분</span></div>
+          </div>
+          <ul class="stp-l">
+            <li>08:25 푸동 T2 도착 · 짐 없음(위탁 0kg) → 입국심사</li>
+            <li>지하철 <span class="zh">2号线</span> <span class="zh">徐泾东</span> 방향 → <span class="zh">世纪大道</span>역 환승 → <span class="zh">6号线</span> <span class="zh">东方体育中心</span> 방향 → <span class="zh">上海儿童医学中心</span>역 하차 (2·3번 출구)</li>
+            <li class="tiny">일부 열차는 <span class="zh">广兰路</span> 종점 — 그 역에서 갈아타면 됩니다</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">2</div>
+            <div class="stp-tx"><b>10:20~12:00 오전 · 푸둥 약국 선공격</b><span>런지 12:15 전에 먼저</span></div>
+          </div>
+          <ul class="stp-l">
+            <li><span class="zh">런지약국 동원점</span> <span class="addr">东方路1621号</span> — 도보 5분</li>
+            <li>안 되면 <span class="zh">국대약방 린이런점</span> <span class="addr">临沂路359号</span></li>
+            <li><b>💊 약국 1번 카드</b>를 그대로 보여 주세요</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">3</div>
+            <div class="stp-tx"><b>12:00~13:30 본게임 · 런지병원 동원</b><span>12:15 예약</span></div>
+          </div>
+          <ul class="stp-l">
+            <li>일반외래 <span class="addr">浦建路160号</span> 아닙니다 → <b>국제의료부</b> <span class="addr">北园路33号</span> (건강관리센터 1층)</li>
+            <li>여권 원본 + 진찰료 <b>508위안</b>(알리페이)</li>
+            <li>받을 것: <b>5mg 1펜</b> · 종이 처방전 <span class="zh">纸质处方</span> · 병원 직인 <span class="zh">公章</span> · 정식 영수증 <span class="zh">发票</span> · 아이스팩</li>
+          </ul>
+          <div class="alert">오전 약국 구매분은 진료실에서 꺼내지 마세요 — 1펜 제한이 더 조여질 수 있습니다.</div>
+        </div>
+
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">4</div>
+            <div class="stp-tx"><b>13:30~17:15 오후 · 난징동루 이동</b><span>약 25~30분</span></div>
+          </div>
+          <ul class="stp-l">
+            <li><span class="zh">上海儿童医学中心</span>역 <span class="zh">6号线</span> → <span class="zh">世纪大道</span> 환승 → <span class="zh">2号线</span> → <span class="zh">南京东路</span>역 하차</li>
+            <li><span class="zh">제1의약상점 본점</span> <span class="addr">南京东路616号</span> 등 도심 약국 · 식사 · 미니소</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <div class="stp-h">
+            <div class="stp-n">5</div>
+            <div class="stp-tx"><b>17:15~20:10 공항 복귀</b><span>2호선 직통 약 65분</span></div>
+          </div>
+          <ul class="stp-l">
+            <li>늦어도 <b>17:15~17:30</b> <span class="zh">南京东路</span>역 → <span class="zh">2号线</span> 직통 → <span class="zh">浦东国际机场</span>역</li>
+            <li>T2 <b>카운터 J·M</b> · <b>20:10</b> <span class="zh">9C8573</span> 귀국</li>
+            <li>젤 아이스팩 <b>100ml 이하</b> · 기내 반입 규정 주의</li>
+          </ul>
+        </div>
+        <div class="spots">
+          <h3>📍 장소별 지도 바로 열기</h3>
+          <p class="cap">중국에서는 Apple지도·고덕지도(Amap)가 정확합니다 · 오프라인이면 주소를 복사해 두세요</p>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">1·5</span><b>푸동공항 T2</b></div>
+            <div class="sp-a"><span class="addr">浦东国际机场2号航站楼</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E6%B5%A6%E4%B8%9C%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA2%E5%8F%B7%E8%88%AA%E7%AB%99%E6%A5%BC" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E6%B5%A6%E4%B8%9C%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA2%E5%8F%B7%E8%88%AA%E7%AB%99%E6%A5%BC&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="浦东国际机场2号航站楼">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">2</span><b>런지약국 동원점</b></div>
+            <div class="sp-a"><span class="addr">东方路1621号</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E4%B8%9C%E6%96%B9%E8%B7%AF1621%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E4%B8%9C%E6%96%B9%E8%B7%AF1621%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="东方路1621号">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">2</span><b>국대약방 린이런점</b></div>
+            <div class="sp-a"><span class="addr">临沂路359号</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E4%B8%B4%E6%B2%82%E8%B7%AF359%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E4%B8%B4%E6%B2%82%E8%B7%AF359%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="临沂路359号">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">3</span><b>런지병원 동원 국제의료부</b></div>
+            <div class="sp-a"><span class="addr">北园路33号</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%8C%97%E5%9B%AD%E8%B7%AF33%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E5%8C%97%E5%9B%AD%E8%B7%AF33%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="北园路33号">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">4</span><b>제1의약상점 본점</b></div>
+            <div class="sp-a"><span class="addr">南京东路616号</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E5%8D%97%E4%BA%AC%E4%B8%9C%E8%B7%AF616%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E5%8D%97%E4%BA%AC%E4%B8%9C%E8%B7%AF616%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="南京东路616号">📋 주소 복사</button>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">4</span><b>익풍대약방 인민로점</b></div>
+            <div class="sp-a"><span class="addr">人民路905号</span></div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E4%BA%BA%E6%B0%91%E8%B7%AF905%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E8%B7%AF905%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="人民路905号">📋 주소 복사</button>
+            </div>
+          </div>
+        </div>
+        <p class="route-foot">중국어 역명·주소는 그대로 보여 주세요 · 인터넷 없이도 열립니다</p>
+      </div>
+    </section>
     <p class="hint">카드를 누르면 화면 가득 크게 뜹니다.<br>상대방에게 폰을 내밀고 보여주세요. · 인터넷 없이도 열립니다</p>
   </section>
 
@@ -858,6 +1184,72 @@ $('fsRate').onclick = ()=>{
 };
 
 document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stopSpeak(); });
+
+/* ============ 11/26 실전 동선 (접기/펼치기 · 체크 저장) ============ */
+const routeSec = $('route'), routeBody = $('routeBody'), routeToggle = $('routeToggle'), routeCta = $('routeCta');
+if(routeToggle && routeBody){
+  routeToggle.addEventListener('click', ()=>{
+    const open = routeBody.hidden;
+    routeBody.hidden = !open;
+    routeSec.classList.toggle('open', open);
+    routeToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    routeCta.textContent = open ? '▴ 동선 접기' : '▾ 동선 펼쳐 보기';
+  });
+}
+
+const CHK_KEY = 'st26chk-v1';
+let chkState = {};
+try { chkState = JSON.parse(localStorage.getItem(CHK_KEY) || '{}') || {}; } catch(e){ chkState = {}; }
+function paintChk(){
+  document.querySelectorAll('.chk').forEach(b=>{
+    const on = !!chkState[b.dataset.k];
+    b.classList.toggle('done', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    const i = b.querySelector('i');
+    if(i) i.textContent = on ? '✓' : '';
+  });
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('.chk');
+  if(!b) return;
+  chkState[b.dataset.k] = !chkState[b.dataset.k];
+  try { localStorage.setItem(CHK_KEY, JSON.stringify(chkState)); } catch(err){}
+  paintChk();
+});
+paintChk();
+
+/* 주소 복사 (오프라인 대비) */
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-copy]');
+  if(!b) return;
+  const txt = b.dataset.copy;
+  const done = ()=>{
+    b.classList.add('copied');
+    const old = b.textContent;
+    b.textContent = '✓ 복사됨';
+    toast('주소 복사: ' + txt);
+    setTimeout(()=>{ b.classList.remove('copied'); b.textContent = old; }, 1600);
+  };
+  const fallback = ()=>{
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if(ok) done();
+      else toast('복사가 안 됐어요. 주소를 길게 눌러 직접 선택해 주세요: ' + txt);
+    }catch(err){
+      toast('복사가 안 됐어요. 주소를 길게 눌러 직접 선택해 주세요: ' + txt);
+    }
+  };
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(fallback);
+    } else fallback();
+  }catch(err){ fallback(); }
+});
 
 /* init */
 renderPlaces();
