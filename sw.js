@@ -1,5 +1,5 @@
 /* 상하이 소통카드 — 오프라인 캐시 (인터넷이 끊겨도 열립니다) */
-const CACHE = 'shanghai-talk-v3';
+const CACHE = 'shanghai-talk-v4';
 const ASSETS = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', e => {

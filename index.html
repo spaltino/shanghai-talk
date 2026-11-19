@@ -550,7 +550,7 @@ const PLACES = [
 ];
 
 /* 숫자·시간은 줄바꿈으로 쪼개지 않게 */
-const fmt = s => s.replace(/[0-9]+/g, m => '<span class="nw">' + m + '</span>');
+const fmt = s => s.replace(/([0-9][0-9.]*(?:[点時时][0-9]+分?)?(?:毫克|毫升|公斤|厘米|公里|小时|分钟|个月|月|周|次|天|号|楼|层|元|支|个|位|种|瓶|盒|张|份|家|度)?)/g, m => '<span class="nw">' + m + '</span>');
 
 /* ============ STATE ============ */
 let place = null, scene = null, cardIdx = 0;
