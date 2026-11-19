@@ -367,6 +367,29 @@
     font-size:11px; color:#ffc79c; line-height:1.55; overflow-wrap:anywhere;
   }
   .mg-cred{margin:11px 0 0; padding-top:8px; border-top:1px dashed rgba(255,255,255,.10); font-size:9px; color:#54667f; line-height:1.55; overflow-wrap:anywhere}
+  /* 표지판 도해 카드 (실제 표지판 색·한자·화살표를 그대로 그린 인라인 SVG) */
+  .mg-sign{margin:11px 0 0; border-radius:12px; overflow:hidden; background:#0a1120; border:1px solid rgba(255,255,255,.14); max-width:100%; min-width:0}
+  .mg-sign svg{display:block; width:100%; max-width:100%; height:auto}
+  .mg-sign-cap{padding:8px 9px 9px; font-size:10.5px; line-height:1.55; color:var(--muted); border-top:1px solid rgba(255,255,255,.08); overflow-wrap:anywhere}
+  .mg-sign-cap > b:first-child{display:block; font-size:11px; font-weight:800; color:#fff; margin-bottom:2px}
+  .mg-sign-cap b{color:#fff; font-weight:800}
+  .mg-sign-cap em{display:block; font-style:normal; font-size:9px; color:#5d6f89; margin-top:4px; line-height:1.4}
+  /* 하차 후 도보 갈림길 */
+  .mg-walk{margin:10px 0 0; padding:10px 10px 7px; border-radius:12px; border:1px solid rgba(72,184,245,.30); background:rgba(72,184,245,.07); max-width:100%; min-width:0}
+  .mg-walk h4{margin:0 0 6px; font-size:11.5px; font-weight:800; color:#d6ecff; letter-spacing:-.1px; overflow-wrap:anywhere}
+  .mg-walk ol{margin:0; padding:0 0 0 17px; font-size:11.5px; color:var(--muted); line-height:1.65}
+  .mg-walk li{margin:3px 0; overflow-wrap:anywhere; min-width:0}
+  .mg-walk li b{color:#eef5fd; font-weight:800}
+  .mg-walk li .zh{font-weight:800; color:#fff}
+  .mg-walk .wtag{display:inline-block; margin-left:4px; padding:1px 6px; border-radius:999px; font-size:9.5px; font-weight:800; background:rgba(47,211,164,.14); border:1px solid rgba(47,211,164,.34); color:#7ff0cd; white-space:nowrap}
+  /* 복귀 시간 계산표 */
+  .ret-tbl{margin:9px 0 0; width:100%; border-collapse:collapse; table-layout:fixed; font-size:10.5px}
+  .ret-tbl th, .ret-tbl td{padding:5px 4px; text-align:left; vertical-align:top; border-bottom:1px solid rgba(255,255,255,.08); overflow-wrap:anywhere; line-height:1.4}
+  .ret-tbl th{font-size:9px; font-weight:700; color:#8fa3bf; letter-spacing:.1px}
+  .ret-tbl td{color:var(--muted)}
+  .ret-tbl td b{color:#fff; font-weight:800}
+  .ret-tbl tr:last-child td{border-bottom:0}
+  .ret-tbl td.warn{color:#ffb3bb; font-weight:800}
 
   /* ---------- 동선 도식 · 장소별 지도 ---------- */
   .mapsec{padding:12px 0 6px; border-bottom:1px solid rgba(255,255,255,.06)}
@@ -585,17 +608,42 @@
               </div>
               <ul class="mg-l">
                 <li>입국심사 통과하고 짐 찾는 곳을 지나 <b>1층 도착층</b>으로 나옵니다(위탁 0kg면 바로).</li>
-                <li>천장 표지판에서 <b>地铁 Metro</b>(빨간 M 로고) · <b>轨道交通</b> · <b>磁浮</b>를 찾으세요. 지하철과 자기부상 모두 <b>T1·T2 사이 중앙 교통센터</b>에 있습니다.</li>
-                <li>T2에서 중앙 통로까지 약 150m(무빙워크) · 도보 5분. <b>2호선 站厅은 통로 남쪽(오른쪽)</b>, 자기부상(<span class="zh">磁浮</span>)은 반대쪽입니다. 우리는 <b>地铁 2号线</b>.</li>
+                <li>천장의 <b>남색(진남색) 긴 표지판</b>에서 초록 사각 배지 안 <b>地铁 Metro</b>를 찾으세요. 같은 표지판 줄에 <b>磁浮 Maglev</b>(자기부상)·<b>长途汽车站</b>도 같이 붙어 있으니 <b>地铁</b>만 고르면 됩니다.</li>
+                <li>지하철·자기부상 모두 <b>T1·T2 사이 중앙 교통센터</b>에 있습니다. T2에서 중앙 통로까지 약 150m(무빙워크) · 도보 5분. <b>2호선 站厅은 통로 남쪽(오른쪽)</b>, 자기부상(<span class="zh">磁浮</span>)은 반대쪽입니다. 우리는 <b>地铁 2号线</b>.</li>
                 <li>站厅 입구 개찰구(闸机)에서 알리페이 <b>出行 → 上海地铁乘车码</b> QR을 스캔해 통과. QR이 안 되면 옆 발권기에서 1회권(도착역 <span class="zh">上海儿童医学中心</span> 선택).</li>
               </ul>
+
+              <div class="mg-sign">
+                <svg viewBox="0 0 320 112" role="img" aria-label="푸동공항 천장 표지판 도해 — 남색 패널에 초록 배지와 흰 글씨 地铁 Metro와 흰 화살표, 그 아래 흐린 磁浮 Maglev 패널">
+                  <rect width="320" height="112" fill="#0a1120"/>
+                  <rect x="6" y="8" width="234" height="48" rx="3" fill="#1b2a5e" stroke="#31437a" stroke-width="1"/>
+                  <rect x="14" y="15" width="34" height="34" rx="3" fill="#00843d"/>
+                  <text x="31" y="39" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">M</text>
+                  <text x="56" y="37" font-size="19" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">地铁</text>
+                  <text x="57" y="50" font-size="9.5" font-weight="600" fill="#cfd9ee" font-family="Helvetica,Arial,sans-serif">Metro</text>
+                  <path d="M186 28 H208 V21 L224 32 L208 43 V36 H186 Z" fill="#fff"/>
+                  <rect x="6" y="64" width="164" height="40" rx="3" fill="#16213c" stroke="#26324e" stroke-width="1"/>
+                  <rect x="13" y="71" width="26" height="26" rx="3" fill="#22304c"/>
+                  <text x="26" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#7f8ca6" font-family="Helvetica,Arial,sans-serif">M</text>
+                  <text x="47" y="83" font-size="14" font-weight="700" fill="#93a2ba" font-family="Helvetica,Arial,sans-serif">磁浮</text>
+                  <text x="47" y="96" font-size="8" fill="#6d7f9b" font-family="Helvetica,Arial,sans-serif">Maglev · 龙阳路 (우리 아님)</text>
+                  <text x="178" y="82" font-size="9" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">↑ 위 地铁 표지판이</text>
+                  <text x="178" y="94" font-size="9" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">우리가 탈 길</text>
+                </svg>
+                <p class="mg-sign-cap"><b>이 표지판을 찾으세요</b>남색 패널 · 초록 사각 배지 · 흰 글씨 <b>地铁 Metro</b>가 상하이 지하철 표지판의 기본형입니다. 화살표 방향은 통로마다 다르니 <b>地铁</b> 쪽 화살표만 따라가면 됩니다. 옆의 <b>磁浮</b>는 龙阳路로 가는 다른 열차 — 타지 마세요.</p>
+              </div>
+
               <figure class="mg-fig">
                 <img src="assets/metro/01-t2-terminal2.jpg" width="700" height="525" loading="lazy" decoding="async" alt="상하이 푸동공항 2터미널 내부 홀 — 천장 표지판을 따라 중앙 교통센터로 이동하는 출발점">
                 <figcaption><b>① 푸동공항 T2 내부</b>여기서 천장의 地铁 Metro·磁浮 표지판을 따라 중앙 교통센터로.<em>사진 Windmemories / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
               <figure class="mg-fig">
-                <img src="assets/metro/02-metro-gate.jpg" width="700" height="525" loading="lazy" decoding="async" alt="공항 안 지하철역 입구와 개찰구, 上海地铁 빨간 M 로고">
-                <figcaption><b>② 지하철역 입구·개찰구</b>빨간 M 로고가 上海地铁. 이 개찰구에서 알리페이 QR로 통과합니다.<em>사진 MNXANL / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <img src="assets/metro/10-pvg-metro-sign.jpg" width="700" height="525" loading="lazy" decoding="async" alt="푸동공항 실내 통로에 매달린 지하철 안내 표지판 — 남색 패널에 초록 배지와 地铁 Metro, 옆에 磁浮 Maglev·长途汽车站 표지">
+                <figcaption><b>② 地铁 Metro 표지판 (실물)</b>남색 패널 + 초록 배지 + 地铁 Metro. 오른쪽에 磁浮 Maglev·长途汽车站 표지가 나란히 있습니다.<em>사진 MNXANL / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+              </figure>
+              <figure class="mg-fig">
+                <img src="assets/metro/02-metro-gate.jpg" width="700" height="525" loading="lazy" decoding="async" alt="공항 안 지하철역 입구와 개찰구, 기둥의 上海地铁 빨간 로고">
+                <figcaption><b>③ 지하철역 입구·개찰구</b>기둥의 빨간 로고가 上海地铁. 이 개찰구에서 알리페이 QR로 통과합니다.<em>사진 MNXANL / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
             </div>
 
@@ -609,15 +657,19 @@
                 <li>이 역이 2호선 동쪽 시종착이라 <b>방향을 고를 필요가 없습니다</b> — 들어오는 2호선 아무거나 타면 世纪大道로 갑니다.</li>
                 <li>이 역 승강장은 <b>내리는 쪽 / 타는 쪽 두 개로 나뉘어</b> 있습니다. 계단 위 안내(乘车·上客)를 따라 타는 쪽으로 가세요.</li>
                 <li>14번째 역이 <b>世纪大道</b>(Century Avenue · 스지다다오). 차내 노선도·방송으로 확인. <b>약 49분</b>.</li>
-                <li>평일 아침에는 일부 <b>4량 열차가 广兰路까지만</b> 갑니다. 종점 표시가 <span class="zh">广兰路</span>면 그 역에서 같은 승강장 건너편 열차로 갈아타면 됩니다(그 외 시간대는 대부분 직통).</li>
+                <li>평일 아침 첨두에만 일부 <b>4량 열차가 广兰路까지만</b> 갑니다. 종점 표시가 <span class="zh">广兰路</span>면 그 역 같은 승강장 건너편 열차로 갈아타면 됩니다. 그 외 시간대(저녁 포함)는 <b>8량 직통</b>.</li>
               </ul>
               <figure class="mg-fig">
                 <img src="assets/metro/03-line2-platform.jpg" width="700" height="525" loading="lazy" decoding="async" alt="푸동공항 浦东1号2号航站楼역 2호선 승강장, 벽면 역명판과 연두색 띠">
-                <figcaption><b>③ 2호선 승강장 (浦东1号2号航站楼)</b>벽면 역명판 옆 <b>연두색 띠</b>가 2호선 표시. 이 방향 열차를 탑니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <figcaption><b>④ 2호선 승강장</b>벽면 역명판 옆 <b>연두색 띠</b>가 2호선 표시. 이 방향 열차를 탑니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+              </figure>
+              <figure class="mg-fig">
+                <img src="assets/metro/12-line2-platform-2026.jpg" width="700" height="525" loading="lazy" decoding="async" alt="2026년 2월 촬영한 浦东1号2号航站楼역 2호선 승강장, 벽면에 큰 역명 浦东1号2号航站楼과 연두색 2호선 띠">
+                <figcaption><b>⑤ 역명이 바뀌었습니다</b>2024-09-28부로 <span class="zh">浦东国际机场</span>역 → <b>浦东1号2号航站楼</b>역. 앱·옛 표지판에 <span class="zh">浦东国际机场</span>로 남아 있어도 같은 역입니다.<em>사진 Windmemories / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
               <figure class="mg-fig">
                 <img src="assets/metro/04-line2-train.jpg" width="700" height="525" loading="lazy" decoding="async" alt="흰 바탕에 연두색 띠를 두른 상하이 지하철 2호선 열차">
-                <figcaption><b>④ 타는 열차 — 2호선</b>흰 바탕에 <b>연두색 띠</b>. 이 색 열차가 2호선입니다.<em>사진 A Chinese ID / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <figcaption><b>⑥ 타는 열차 — 2호선</b>흰 바탕에 <b>연두색 띠</b>. 이 색 열차가 2호선입니다.<em>사진 A Chinese ID / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
             </div>
 
@@ -629,16 +681,44 @@
               <ul class="mg-l">
                 <li>내리면 <b>개찰구 밖으로 나가지 말고</b> 안쪽에서 <b>6号线 Line 6</b> 표지를 따라 이동합니다.</li>
                 <li>世纪大道는 2·4·6·9호선이 만나는 큰 역 — <b>표지판 색으로 구분</b>합니다. 2호선 연두 / 4호선 진보라 / <b>6호선 자주(마젠타)</b> / 9호선 하늘색.</li>
-                <li>초록 천장이 2호선 站厅입니다(사진 ⑤). 여기서 <b>6号线</b> 표지를 따라 계단·에스컬레이터로 내려가세요.</li>
-                <li>6호선 승강장에서 <b>东方体育中心</b>(Oriental Sports Center) 방면 탑승. <b>반대편 港城路 방면은 반대 방향</b>이니 타기 전에 행선지 표시를 꼭 확인하세요.</li>
+                <li>환승 통로에 붙은 <b>대형 안내판</b>이 핵심입니다(사진 ⑦). <b>东方体育中心 방향 = A厅(→)</b>, <b>港城路 방향 = B厅(←)</b>. 우리는 <b>东方体育中心</b> 쪽 화살표만 따라가면 됩니다.</li>
+                <li>초록 천장이 2호선 站厅입니다(사진 ⑧). 여기서 <b>6号线</b> 표지를 따라 계단·에스컬레이터로 내려가세요.</li>
+                <li>6호선 승강장에서 <b>东方体育中心</b>(Oriental Sports Center) 방면 탑승. <b>港城路 방면은 정반대</b>이니 타기 전에 행선지 표시를 꼭 확인하세요.</li>
               </ul>
+
+              <div class="mg-sign">
+                <svg viewBox="0 0 320 132" role="img" aria-label="6호선 방향 표지판 도해 — 자주색 6号线 배지에 东方体育中心 흰 글씨와 오른쪽 화살표, 아래는 회색 港城路 행선지에 빨간 엑스 표시">
+                  <rect width="320" height="132" fill="#0a1120"/>
+                  <rect x="6" y="8" width="308" height="56" rx="3" fill="#111" stroke="#3a3a3a" stroke-width="1"/>
+                  <rect x="14" y="16" width="40" height="40" rx="3" fill="#d40068"/>
+                  <text x="34" y="44" text-anchor="middle" font-size="23" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">6</text>
+                  <text x="64" y="30" font-size="10" font-weight="700" fill="#cfd6e2" font-family="Helvetica,Arial,sans-serif">号线 Line 6</text>
+                  <text x="64" y="51" font-size="16" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">东方体育中心</text>
+                  <text x="64" y="61" font-size="7" fill="#9aa6b8" font-family="Helvetica,Arial,sans-serif">Oriental Sports Center</text>
+                  <path d="M236 31 H292 V23 L308 37 L292 51 V43 H236 Z" fill="#fff"/>
+                  <text x="6" y="76" font-size="8.5" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">이 화살표(东方体育中心) — 우리 방향</text>
+                  <rect x="6" y="82" width="308" height="42" rx="3" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+                  <rect x="14" y="88" width="30" height="30" rx="3" fill="#3a3f4b"/>
+                  <text x="29" y="109" text-anchor="middle" font-size="17" font-weight="800" fill="#9aa3b2" font-family="Helvetica,Arial,sans-serif">6</text>
+                  <text x="52" y="101" font-size="14" font-weight="700" fill="#8b95a5" font-family="Helvetica,Arial,sans-serif">港城路</text>
+                  <text x="52" y="113" font-size="7.5" fill="#6c7684" font-family="Helvetica,Arial,sans-serif">Gangcheng Road</text>
+                  <path d="M236 94 L256 114 M256 94 L236 114" stroke="#ff5f6e" stroke-width="4" stroke-linecap="round"/>
+                  <text x="264" y="109" font-size="11" font-weight="800" fill="#ff8d97" font-family="Helvetica,Arial,sans-serif">반대</text>
+                </svg>
+                <p class="mg-sign-cap"><b>행선지 이름으로 고르세요</b>6호선 표지판은 검은 바탕에 자주색 <b>6</b> 배지입니다. <b>东方体育中心</b>이 적힌 쪽으로만 가고, <b>港城路</b>가 적힌 쪽은 반대입니다. 역 안내판에는 A厅·B厅으로도 적혀 있습니다(사진 ⑦).</p>
+              </div>
+
               <figure class="mg-fig">
-                <img src="assets/metro/05-century-ave-concourse.jpg" width="700" height="525" loading="lazy" decoding="async" alt="世纪大道역 2호선 站厅, 초록 천장과 기둥, 천장에 2号线 표지판">
-                <figcaption><b>⑤ 世纪大道 2호선 站厅</b>초록 천장·기둥이 2호선 구역. 여기서 <b>6号线</b> 표지 화살표를 따라 이동합니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <img src="assets/metro/11-century-transfer-sign.jpg" width="700" height="743" loading="lazy" decoding="async" alt="世纪大道역 환승 안내판 — 위 B厅은 왼쪽 화살표로 换乘6号线 港城路方向, 아래 A厅은 오른쪽 화살표로 东方体育中心方向 换乘6号线">
+                <figcaption><b>⑦ 世纪大道 환승 안내판 (실물)</b> 노란 <b>A厅 →</b>이 <b>东方体育中心 방향 · 换乘 6号线</b>(우리 길), <b>B厅 ←</b>가 <b>港城路 방향</b>. 같은 판에 上海儿童医学中心이 A厅 줄에 있습니다.<em>사진 4084470 0.smil / Wikimedia Commons · CC BY 4.0 · 9호선 승강장에서 촬영</em></figcaption>
               </figure>
               <figure class="mg-fig">
-                <img src="assets/metro/06-line6-platform.jpg" width="700" height="525" loading="lazy" decoding="async" alt="世纪大道역 6호선 승강장과 자주색 띠를 두른 6호선 열차">
-                <figcaption><b>⑥ 6호선 승강장 — 자주색</b>역명판과 열차의 <b>자주색(品红) 띠</b>가 6호선 표시. 이 승강장에서 东方体育中心 방면 탑승.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <img src="assets/metro/05-century-ave-concourse.jpg" width="700" height="525" loading="lazy" decoding="async" alt="世纪大道역 2호선 站厅, 초록 천장과 기둥, 천장에 2号线 표지판">
+                <figcaption><b>⑧ 世纪大道 2호선 站厅</b>초록 천장·기둥이 2호선 구역. 여기서 <b>6号线</b> 표지 화살표를 따라 이동합니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+              </figure>
+              <figure class="mg-fig">
+                <img src="assets/metro/06-line6-platform.jpg" width="700" height="525" loading="lazy" decoding="async" alt="世纪大道역 6호선 승강장과 자주색 기둥, 6호선 열차">
+                <figcaption><b>⑨ 6호선 승강장 — 자주색</b>기둥·역명판의 <b>자주색(品红) 띠</b>가 6호선 표시. 이 승강장에서 东方体育中心 방면 탑승.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
             </div>
 
@@ -669,8 +749,12 @@
                 </svg>
               </div>
               <figure class="mg-fig">
+                <img src="assets/metro/13-line6-platform-2025.jpg" width="700" height="525" loading="lazy" decoding="async" alt="世纪大道역 6호선 승강장 (2025년 촬영) — 역명판 위 행선 표시와 문 옆 자주색 띠, 천장에 노란 화살표 안내판">
+                <figcaption><b>⑩ 6호선 승강장에서 한 번 더 확인</b>역명판 윗줄에 행선지(<b>体育中心</b>)가 보이면 우리 방향. 문 옆 <b>자주색 띠</b>가 6호선 열차입니다. 천장 검은 안내판의 노란 화살표를 따라 타세요.<em>사진 4084470 0.smil / Wikimedia Commons · CC BY 4.0 · 东方体育中心 행 승강장</em></figcaption>
+              </figure>
+              <figure class="mg-fig">
                 <img src="assets/metro/07-scmc-platform.jpg" width="700" height="525" loading="lazy" decoding="async" alt="上海儿童医学中心역 6호선 승강장, 주황색 벽과 역명판">
-                <figcaption><b>⑦ 上海儿童医学中心 승강장</b>주황색 벽 + 역명판. 이 역에서 내리면 됩니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <figcaption><b>⑪ 上海儿童医学中心 승강장</b>주황색 벽 + 역명판. 이 역에서 내리면 됩니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
             </div>
 
@@ -680,24 +764,63 @@
                 <div class="mg-t"><b>3번 출구 → 런지약국 → 런지 국제의료부</b><span>도보 5~10분 · 3号口 (东方路)</span></div>
               </div>
               <ul class="mg-l">
-                <li>개찰구 나와 <b>3号口(3번 출구, 东方路)</b>. 1번 출구도 东方路·北园路 쪽이지만 3번 출구 표지에 <b>上海儿童医学中心·北园路</b>가 함께 붙어 있습니다.</li>
-                <li>출구 지붕에 <b>3号口 / 上海儿童医学中心</b> 표지(사진 ⑧). 나오면 큰길이 <span class="zh">东方路</span>, 옆으로 <span class="zh">北园路</span>.</li>
-                <li><b>런지약국 동원점</b> <span class="addr">东方路1621号</span> — 3번 출구에서 <b>도보 약 5분</b>.</li>
-                <li><b>런지병원 동원 국제의료부</b> <span class="addr">北园路33号</span> <b>15号楼(健康管理中心) 1층</b> — 일반외래 <span class="zh">浦建路160号</span>가 아닙니다. 3번 출구에서 <b>도보 약 5~8분</b>, 안내데스크에 <b>"国际医疗部 15号楼"</b>를 보여 주세요.</li>
-                <li class="tiny">돌아올 때는 반대로: 6호선 <span class="zh">港城路</span> 방면 → 世纪大道 → 2호선 <span class="zh">浦东1号2号航站楼</span> 방면(약 49분)</li>
+                <li>개찰구 나와 <b>3号口(3번 출구)</b>. 노란 번호판과 <b>出口 Exit</b> 표지를 따라 지상으로. 1번 출구도 같은 블록이지만 3번 출구 표지에 <b>上海儿童医学中心·北园路</b>가 함께 붙어 있습니다.</li>
+                <li>출구 지붕에 <b>6号线 上海儿童医学中心站 3号口</b> 표지(사진 ⑫). 나오면 동쪽 큰길이 <span class="zh">东方路</span>, 출구 바로 북쪽이 <span class="zh">北园路</span>입니다.</li>
+                <li>출구 앞은 보도블록 광장 — 자전거·전동스쿠터가 빠르게 지나갑니다. 한 번 멈춰 서서 지도를 확인하세요.</li>
               </ul>
               <figure class="mg-fig">
                 <img src="assets/metro/08-exit3-scmc.jpg" width="700" height="525" loading="lazy" decoding="async" alt="上海儿童医学中心역 3번 출구(3号口) 지붕 표지판과 계단 입구">
-                <figcaption><b>⑧ 3번 출구 (3号口)</b>지붕에 출구 번호와 역명. 여기서 나오면 东方路·北园路입니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <figcaption><b>⑫ 3번 출구 (3号口)</b>지붕에 <b>6号线 · 上海儿童医学中心站 · 3号口</b>. 여기서 나오면 东方路·北园路입니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
               <figure class="mg-fig">
                 <img src="assets/metro/09-exit1-scmc.jpg" width="700" height="525" loading="lazy" decoding="async" alt="上海儿童医学中心역 1번 출구(1号口) 외관">
-                <figcaption><b>⑨ 1번 출구 (1号口)</b>같은 东方路·北园路 쪽, 3번이 붐비면 대안으로 쓰세요.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+                <figcaption><b>⑬ 1번 출구 (1号口)</b>같은 东方路·北园路 쪽, 3번이 붐비면 대안으로 쓰세요.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
               </figure>
+
+              <div class="mg-walk">
+                <h4>🚶 출구에서 갈림길 — 약국과 병원은 반대쪽입니다</h4>
+                <svg viewBox="0 0 320 250" role="img" aria-label="약도: 위가 북쪽. 역 3번출구에서 东方路를 따라 북쪽 450m에 런지약국 东方路1621호, 北园路를 따라 서쪽 250m에 北园路33호 정문과 15호楼 건물">
+                  <rect x="0" y="38" width="320" height="13" fill="#1c2740"/>
+                  <rect x="0" y="158" width="320" height="13" fill="#1c2740"/>
+                  <rect x="212" y="0" width="14" height="250" fill="#1c2740"/>
+                  <text x="5" y="33" font-size="10" font-weight="700" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">浦建路</text>
+                  <text x="314" y="33" text-anchor="end" font-size="7.5" fill="#6c7f99" font-family="Helvetica,Arial,sans-serif">일반외래 160号 →</text>
+                  <text x="5" y="155" font-size="10" font-weight="700" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">北园路</text>
+                  <text x="206" y="20" text-anchor="end" font-size="10" font-weight="700" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">东方路</text>
+                  <rect x="34" y="58" width="172" height="96" rx="3" fill="#132033" stroke="#2b3d58" stroke-dasharray="4 3"/>
+                  <text x="42" y="76" font-size="10" font-weight="700" fill="#cfe0f5" font-family="Helvetica,Arial,sans-serif">仁济医院东院 (동원)</text>
+                  <rect x="126" y="84" width="66" height="42" rx="3" fill="#1d3350" stroke="#48b8f5"/>
+                  <text x="159" y="102" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">15号楼</text>
+                  <text x="159" y="116" text-anchor="middle" font-size="7.5" fill="#d6ecff" font-family="Helvetica,Arial,sans-serif">健康管理中心 1층</text>
+                  <rect x="143" y="152" width="16" height="8" fill="#0a1120"/>
+                  <text x="100" y="150" text-anchor="end" font-size="8" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">北园路33号 정문</text>
+                  <circle cx="219" cy="196" r="8" fill="#0b1220" stroke="#d40068" stroke-width="3"/>
+                  <text x="233" y="200" font-size="10" font-weight="800" fill="#ff9fc6" font-family="Helvetica,Arial,sans-serif">3号口</text>
+                  <text x="206" y="222" text-anchor="end" font-size="8" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">上海儿童医学中心역 (6号线)</text>
+                  <rect x="258" y="94" width="56" height="34" rx="4" fill="#0f2a24" stroke="#2fd3a4"/>
+                  <text x="286" y="110" text-anchor="middle" font-size="10" font-weight="800" fill="#c6f5e6" font-family="Helvetica,Arial,sans-serif">런지약국</text>
+                  <text x="286" y="121" text-anchor="middle" font-size="7" fill="#8fe0c4" font-family="Helvetica,Arial,sans-serif">东方路1621号</text>
+                  <path d="M219 188 V106 H254" fill="none" stroke="#7ff0cd" stroke-width="2" stroke-dasharray="4 3"/>
+                  <path d="M254 106 L247 102 L247 110 Z" fill="#7ff0cd"/>
+                  <text x="225" y="152" font-size="7.5" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">450m · 6분</text>
+                  <path d="M211 165 H151 V128" fill="none" stroke="#7ff0cd" stroke-width="2" stroke-dasharray="4 3"/>
+                  <path d="M151 128 L147 135 L155 135 Z" fill="#7ff0cd"/>
+                  <text x="150" y="184" font-size="7.5" fill="#7ff0cd" font-family="Helvetica,Arial,sans-serif">250m · 4분</text>
+                  <path d="M22 240 V222 M17 229 L22 221 L27 229" fill="none" stroke="#9fb2cb" stroke-width="1.6"/>
+                  <text x="30" y="239" font-size="9" font-weight="700" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">N</text>
+                  <text x="48" y="239" font-size="7.5" fill="#6c7f99" font-family="Helvetica,Arial,sans-serif">점선 = 도보 동선 · 위가 북쪽</text>
+                </svg>
+                <ol>
+                  <li><b>런지약국 동원점</b> <span class="zh">东方路1621号</span> — 3号口에서 <b>东方路를 따라 북쪽</b>(浦建路 방향)으로 <b>약 450m · 도보 6분</b>. 길 동편, 仁济医院 담장 맞은편. <span class="wtag">☎ 021-5089-7060</span></li>
+                  <li><b>런지병원 동원 국제의료부</b> <span class="zh">北园路33号</span> — 반대로 <b>北园路를 따라 서쪽</b>으로 <b>약 250m · 도보 4분</b>. 담장을 따라가면 <b>北园路33号 정문</b>.</li>
+                  <li>정문 안으로 들어가 <b>15号楼(健康管理中心) 1층</b>. 경비에게 <b>"国际医疗部, 15号楼"</b>를 보여 주세요. 1층 접수(特约门诊)에서 여권을 내면 끝.</li>
+                  <li><b>주의</b> — <span class="zh">浦建路160号</span>는 일반외래 정문입니다. 국제의료부와 캠퍼스 반대쪽이니 그리로 들어가면 한 바퀴 돌아야 합니다.</li>
+                </ol>
+              </div>
             </div>
 
             <div class="mg-tip"><span>💡</span><span>지하철역·열차 안에서는 <b>上海儿童医学中心</b>만 기억하면 됩니다. 世纪大道에서 6号线 표지가 안 보이면 역무원에게 <b>"6号线 东方体育中心"</b>을 보여 주세요.</span></div>
-            <p class="mg-cred">사진 출처: Wikimedia Commons (CC BY-SA 4.0 · CC BY 4.0) — 촬영자 Windmemories · MNXANL · Kmchang28 · A Chinese ID. 각 사진 아래에 촬영자·라이선스를 표기했습니다. 표지판·열차 도색은 촬영 시점 기준이며 현장에서 바뀔 수 있습니다.</p>
+            <p class="mg-cred">사진 출처: Wikimedia Commons (CC BY-SA 4.0 · CC BY 4.0) — 촬영자 Windmemories · MNXANL · Kmchang28 · A Chinese ID · 4084470 0.smil. 각 사진 아래에 촬영자·라이선스를 표기했습니다. 표지판·열차 도색은 촬영 시점 기준이며 현장에서 바뀔 수 있습니다. 이 페이지의 표지판 카드와 약도는 실제 표지판 색·한자·화살표를 보고 그린 <b>도해(SVG)</b>이며 사진이 아닙니다.</p>
           </div>
         </div>
 
@@ -742,12 +865,28 @@
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">5</div>
-            <div class="stp-tx"><b>17:15~20:10 공항 복귀</b><span>2호선 직통 약 65분</span></div>
+            <div class="stp-tx"><b>17:15~17:30 복귀 · 人民广场 → T2</b><span>2호선 8량 직통 약 58~65분</span></div>
           </div>
           <ul class="stp-l">
-            <li>늦어도 <b>17:15~17:30</b> <span class="zh">人民广场</span> 또는 <span class="zh">南京东路</span>역 → <span class="zh">2号线</span> 직통 → <span class="zh">浦东国际机场</span>역</li>
-            <li>T2 <b>카운터 J·M</b> · <b>20:10</b> <span class="zh">9C8573</span> 귀국</li>
+            <li><span class="zh">人民广场</span>(또는 <span class="zh">南京东路</span>)역 2호선 승강장에서 <b>往浦东1号2号航站楼</b> 방면 탑승. 영문 표기는 <b>To Pudong Airport T1&amp;2</b>.</li>
+            <li>저녁은 <b>8량 편성 직통</b> — <span class="zh">广兰路</span>에서 갈아타지 않습니다. 4량은 평일 아침 첨두에만 섞여 나옵니다.</li>
+            <li>막차 <span class="zh">人民广场</span> → 공항 방면 <b>22:33</b> (17시대엔 해당 없음)</li>
+            <li>T2 <b>체크인 카운터 J (J19~J34)</b> · <b>20:10</b> <span class="zh">9C8573</span> · 탑승구는 당일 표시(G게이트)</li>
+            <li>역에서 T2까지 도보 5~8분 — 역이 T1·T2 사이 중앙에 있어 <b>2号航站楼</b> 표지를 따라 3층 출국장으로</li>
+          </ul>
+          <table class="ret-tbl">
+            <thead><tr><th>人民广场 출발</th><th>공항역 도착</th><th>T2 카운터</th><th>19:25 마감까지</th></tr></thead>
+            <tbody>
+              <tr><td><b>17:15</b></td><td>18:13</td><td>18:20</td><td>65분</td></tr>
+              <tr><td><b>17:30</b></td><td>18:28</td><td>18:35</td><td>50분</td></tr>
+              <tr><td><b>17:45</b></td><td>18:43</td><td>18:50</td><td class="warn">35분 · 위험</td></tr>
+            </tbody>
+          </table>
+          <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">지하철 58~62분(2호선 공식 시각표 기준, 人民广场 22:33 → 机场 23:31) + 역에서 T2까지 도보 7분으로 계산한 예상치입니다.</p>
+          <div class="alert"><b>19:25</b> 카운터 마감(출발 45분 전) · <b>19:40</b> 탑승구 마감(30분 전). <span class="zh">南京东路</span>에서 타면 약 3분 빠릅니다. 17:45 이후는 보안검색 줄이 길면 놓칩니다.</div>
+          <ul class="stp-l">
             <li>젤 아이스팩 <b>100ml 이하</b> · 기내 반입 규정 주의</li>
+            <li>돌아오는 지하철: 6호선 <span class="zh">港城路</span> 방면 → 世纪大道 → 2호선 <span class="zh">浦东1号2号航站楼</span> 방면(약 49분)</li>
           </ul>
         </div>
         <div class="spots">

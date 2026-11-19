@@ -1,7 +1,7 @@
 /* 상하이 소통카드 — 오프라인 캐시
    페이지(문서)는 네트워크 우선 + 3.5초 타임아웃 후 캐시로 폴백:
    온라인이면 항상 최신, 중국처럼 느리거나 막혀도 저장된 화면으로 바로 뜹니다. */
-const CACHE = 'shanghai-talk-v13';
+const CACHE = 'shanghai-talk-v14';
 const ASSETS = [
   './', './index.html', './manifest.json', './icon.svg',
   './assets/metro/01-t2-terminal2.jpg',
@@ -12,7 +12,11 @@ const ASSETS = [
   './assets/metro/06-line6-platform.jpg',
   './assets/metro/07-scmc-platform.jpg',
   './assets/metro/08-exit3-scmc.jpg',
-  './assets/metro/09-exit1-scmc.jpg'
+  './assets/metro/09-exit1-scmc.jpg',
+  './assets/metro/10-pvg-metro-sign.jpg',
+  './assets/metro/11-century-transfer-sign.jpg',
+  './assets/metro/12-line2-platform-2026.jpg',
+  './assets/metro/13-line6-platform-2025.jpg'
 ];
 const TIMEOUT = 3500;
 
