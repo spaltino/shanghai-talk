@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dev · shanghai-talk 320/390 폭 검증</title>
+<style>
+  html,body{margin:0;background:#1a1a1a;color:#eee;font:12px/1.4 -apple-system,system-ui,sans-serif}
+  .wrap{display:flex;gap:10px;align-items:flex-start;padding:8px;flex-wrap:wrap}
+  .box{background:#2a2a2a;padding:4px;border-radius:4px}
+  .cap{padding:2px 0 4px;font-weight:700;color:#7ff0cd}
+  iframe{border:0;background:#0b1220;height:940px;width:390px;display:block}
+  iframe.w320{width:320px}
+  pre{white-space:pre-wrap;font-size:11px;max-width:560px;background:#111;padding:8px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="box"><div class="cap">390px</div><iframe id="f390" src="./index.html"></iframe></div>
+  <div class="box"><div class="cap">320px</div><iframe id="f320" class="w320" src="./index.html"></iframe></div>
+  <pre id="out">measuring…</pre>
+</div>
+<script>
+function measure(fr, label){
+  const d = fr.contentDocument, w = fr.contentWindow;
+  const vw = w.innerWidth;
+  const bad = [];
+  d.querySelectorAll('body *').forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.width === 0 && r.height === 0) return;
+    if(r.right > vw + 1 || r.left < -1){
+      bad.push(el.tagName.toLowerCase() + '.' + (el.className || '') + (el.id ? '#' + el.id : '') + ' right=' + Math.round(r.right) + ' vw=' + vw);
+    }
+  });
+  const imgs = [...d.images].filter(i=>!i.complete || i.naturalWidth === 0).length;
+  return label + ' vw=' + vw + ' scrollW=' + d.documentElement.scrollWidth + ' overflow=' + bad.length + ' brokenImg=' + imgs
+    + (bad.length ? '\n  ' + bad.slice(0,10).join('\n  ') : '');
+}
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    const out = [];
+    ['f390','f320'].forEach(id=>{
+      const fr = document.getElementById(id);
+      const d = fr.contentDocument;
+      const rt = d.getElementById('routeToggle');
+      if(rt && d.getElementById('routeBody').hidden) rt.click();
+      out.push(measure(fr, id + ' [동선 펼침]'));
+      const gl = d.getElementById('glToggle');
+      if(gl && d.getElementById('glBody').hidden) gl.click();
+      out.push(measure(fr, id + ' [공리 가이드 펼침]'));
+      const body = d.getElementById('glBody');
+      if(body) body.scrollIntoView({block:'start'});
+    });
+    document.getElementById('out').textContent = out.join('\n\n');
+  }, 1800);
+});
+</script>
+</body>
+</html>
