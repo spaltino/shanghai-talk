@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="상하이톡" />
 <meta property="og:title" content="상하이 소통카드" />
-<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 217장" />
+<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 243장" />
 <meta property="og:type" content="website" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23ff8a3d' font-family='sans-serif'%3E%E8%AF%B4%3C/text%3E%3C/svg%3E" />
@@ -304,11 +304,11 @@
     font-size:11.5px; color:#ffb3bb; line-height:1.5;
   }
 
-  /* ---------- 🏥 공리병원 가이드 전용 (문장 보여주기 카드·도해) ---------- */
-  .gongli-guide{border-color:rgba(72,184,245,.34)!important;
+  /* ---------- 🏥 파크웨이 구베이 가이드 전용 (문장 보여주기 카드·도해) ---------- */
+  .pw-guide{border-color:rgba(72,184,245,.34)!important;
     background:linear-gradient(160deg, rgba(72,184,245,.13), rgba(47,211,164,.10) 58%, rgba(10,17,28,.96))!important}
-  .gongli-guide .mg-tx span{color:#9fd8ff!important}
-  .gongli-guide .mg-arw,.gongli-guide .mg-cta{color:#8fd2ff!important}
+  .pw-guide .mg-tx span{color:#9fd8ff!important}
+  .pw-guide .mg-arw,.pw-guide .mg-cta{color:#8fd2ff!important}
   .talk{margin:9px 0 0; padding:10px 11px 11px; border-radius:12px;
     background:rgba(255,138,61,.10); border:1px solid rgba(255,138,61,.34); max-width:100%; min-width:0}
   .talk .tag{display:inline-block; margin-bottom:5px; padding:1px 7px; border-radius:999px;
@@ -486,7 +486,7 @@
           <span class="rh-em">📋</span>
           <span class="rh-t">
             <b id="routeTitle">11/26 당일 실전 동선</b>
-            <span>지하철 + 마지막 택시 · 제주 07:50 → 상하이 20:10 (현지 시각)</span>
+            <span>지하철 + 택시 3번 · 제주 07:50 → 상하이 20:10 (현지 시각)</span>
           </span>
           <span class="rh-arrow">▾</span>
         </span>
@@ -494,18 +494,18 @@
           <i><b>08:25</b>착륙</i>
           <i><b>10:20</b>약국</i>
           <i><b>12:15</b>런지</i>
-          <i><b>13:30</b>펑양루</i>
-          <i><b>16:00</b>공리병원</i>
-          <i><b>17:05</b>공항행</i>
+          <i><b>13:35</b>펑양루</i>
+          <i><b>15:00</b>파크웨이</i>
+          <i><b>16:15</b>공항행</i>
         </span>
         <span class="rh-cta" id="routeCta">▾ 동선 펼쳐 보기</span>
       </button>
       <div class="route-body" id="routeBody" hidden>
         <div class="mapsec">
           <h3>🗺️ 동선 한눈에</h3>
-          <p class="cap">푸동공항 → 2호선 → 世纪大道 환승 → 6호선 → 上海儿童医学中心 → (택시 20분) → 人民广场 第一医药 凤阳路店 → 南京东路 → (택시 24분) → <b>公利医院 비만 클리닉</b> → (택시 34분) → 공항</p>
+          <p class="cap">푸동공항 → 2호선 → 世纪大道 환승 → 6호선 → 上海儿童医学中心 → (도보) 런지약국·<b>런지병원 12:15</b> → (택시 21분) → 人民广场 第一医药 凤阳路店 → (택시 19분) → <b>파크웨이 구베이 클리닉 15:00</b> → (택시 50분) → 공항</p>
           <div class="svgwrap">
-                        <svg viewBox="0 0 320 566" role="img" aria-label="푸동공항 T2에서 2호선으로 世纪大道까지, 6호선으로 上海儿童医学中心, 택시로 人民广场 第一医药 凤阳路店, 이어서 南京东路, 택시로 公利医院(苗圃路219号) 비만 클리닉, 다시 택시로 푸동공항 T2로 복귀하는 동선 도식">
+                        <svg viewBox="0 0 320 560" role="img" aria-label="푸동공항 T2에서 2호선으로 世纪大道까지, 6호선으로 上海儿童医学中心, 도보로 런지약국과 런지병원(12:15), 택시로 人民广场 第一医药 凤阳路店, 다시 택시로 파크웨이 구베이 클리닉(黄金城道776호, 15:00), 마지막으로 택시로 푸동공항 T2로 복귀하는 동선 도식">
               <defs>
                 <marker id="arwG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#4fd06a"/></marker>
                 <marker id="arwP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,0 L9,5 L1,10 z" fill="#c95fe0"/></marker>
@@ -536,38 +536,38 @@
 
               <line x1="160" y1="228" x2="160" y2="258" stroke="#ffb787" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwA)"/>
               <circle cx="172" cy="241" r="3" fill="#ffb787"/>
-              <text class="sv2" x="180" y="241">🚕 택시 약 20분 · 13.1km</text>
+              <text class="sv2" x="180" y="241">🚕 택시 약 21분 · 13.0km</text>
               <text class="sv2" x="180" y="254">또는 6→2号线 · 人民广场</text>
 
               <rect x="6" y="262" width="308" height="90" rx="11" fill="#16233a" stroke="#ffb787" stroke-opacity=".65"/>
               <text class="sv5" x="18" y="282">人民广场</text>
-              <text class="sv3" x="302" y="282" text-anchor="end">13:30~15:20</text>
+              <text class="sv3" x="302" y="282" text-anchor="end">13:35~14:15</text>
               <text class="sv8" x="18" y="300">第一医药 凤阳路店 · 凤阳路274号 1층</text>
               <text class="sv8" x="18" y="316">08:30–20:30 · ☎ 021-6312-8993</text>
               <text class="sv8" x="18" y="333">9번 출구 도보 170m · 오후 1순위</text>
-              <text class="sv8" x="18" y="348">14:30 南京东路616号(본점)도 같은 약국 계열</text>
+              <text class="sv8" x="18" y="348">14:15 출발 — 파크웨이 15:00 예약</text>
 
               <line x1="160" y1="352" x2="160" y2="382" stroke="#ffb787" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwA)"/>
               <circle cx="172" cy="366" r="3" fill="#ffb787"/>
-              <text class="sv2" x="180" y="366">🚕 택시 24분 · 8.8km</text>
-              <text class="sv2" x="180" y="379">난징동루 15:20 출발</text>
+              <text class="sv2" x="180" y="366">🚕 택시 19분 · 10.0km</text>
+              <text class="sv2" x="180" y="379">14:34 도착 → 15:00 예약</text>
 
-              <rect x="6" y="386" width="308" height="92" rx="11" fill="#16233a" stroke="#48b8f5" stroke-opacity=".8"/>
-              <text class="sv5" x="18" y="406">公利医院</text>
-              <text class="sv3" x="302" y="406" text-anchor="end">16:00 접수</text>
-              <text class="sv8" x="18" y="424">苗圃路219号 · 门诊楼 1층 建卡·挂号</text>
-              <text class="sv8" x="18" y="440">3층 内分泌科 肥胖专病门诊 (목요일 오후)</text>
-              <text class="sv8" x="18" y="458">1층 收费·药房 → 정문 옆 龙威大药房(백업)</text>
+              <rect x="6" y="386" width="308" height="80" rx="11" fill="#16233a" stroke="#48b8f5" stroke-opacity=".8"/>
+              <text class="sv5" x="18" y="406">百汇医疗 古北门诊部</text>
+              <text class="sv3" x="302" y="406" text-anchor="end">15:00 예약</text>
+              <text class="sv8" x="18" y="424">黄金城道776号 2층 · 창닝구 구베이</text>
+              <text class="sv8" x="18" y="440">가정의학과 김현익 선생님 · 한국어 진료</text>
+              <text class="sv8" x="18" y="456">5mg 3펜 · 원내 수령 · 진단서·영수증</text>
 
-              <line x1="160" y1="478" x2="160" y2="508" stroke="#ffb787" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwA)"/>
-              <circle cx="172" cy="491" r="3" fill="#ffb787"/>
-              <text class="sv2" x="180" y="490">🚕 택시 34분 · 34.3km</text>
-              <text class="sv2" x="180" y="503">17:05 출발 → 17:39 T2</text>
+              <line x1="160" y1="466" x2="160" y2="496" stroke="#ffb787" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arwA)"/>
+              <circle cx="172" cy="479" r="3" fill="#ffb787"/>
+              <text class="sv2" x="180" y="479">🚕 택시 50분 · 51.3km</text>
+              <text class="sv2" x="180" y="492">16:15 출발 → 17:05 T2</text>
 
-              <rect x="6" y="512" width="308" height="48" rx="11" fill="#16233a" stroke="#2b3d58"/>
-              <text class="sv1" x="18" y="535">✈️ 浦东国际机场 T2</text>
-              <text class="sv3" x="302" y="535" text-anchor="end">20:10 9C8573</text>
-              <text class="sv8" x="18" y="552">카운터 J · 체크인 19:25 마감</text>
+              <rect x="6" y="500" width="308" height="48" rx="11" fill="#16233a" stroke="#2b3d58"/>
+              <text class="sv1" x="18" y="523">✈️ 浦东国际机场 T2</text>
+              <text class="sv3" x="302" y="523" text-anchor="end">20:10 9C8573</text>
+              <text class="sv8" x="18" y="540">카운터 J · 체크인 19:25 마감</text>
             </svg>
           </div>
         </div>
@@ -579,9 +579,10 @@
           <div class="chks">
             <button class="chk" data-k="alipay" aria-pressed="false"><i></i><span>알리페이 카드 + <b>상하이 지하철 QR(Metro)</b> 활성화</span></button>
             <button class="chk" data-k="home" aria-pressed="false"><i></i><span><b>shanghai-talk</b> 홈 화면 추가 (오프라인 대비)</span></button>
-            <button class="chk" data-k="rx" aria-pressed="false"><i></i><span>한국 <b>2.5mg</b> 처방전 · 약통 사진</span></button>
+            <button class="chk" data-k="rx" aria-pressed="false"><i></i><span>한국 <b>처방전·진료기록</b> 원본 · 약통 사진</span></button>
             <button class="chk" data-k="cold" aria-pressed="false"><i></i><span>보냉백 · 단단히 언 <b>100ml 이하</b> 팩 (위탁 0kg · 기내 7kg)</span></button>
             <button class="chk" data-k="ticket" aria-pressed="false"><i></i><span>e-티켓 PDF <b>(BMUYIVL)</b></span></button>
+            <button class="chk" data-k="pw" aria-pressed="false"><i></i><span><b>파크웨이</b> 15:00 예약 메일 · 여권 영문명 <b>HONG TEAK LIM</b></span></button>
           </div>
         </div>
 
@@ -849,6 +850,7 @@
           <ul class="stp-l">
             <li><span class="zh">런지약국 동원점</span> <span class="addr">东方路1621号</span> — 3号口에서 <b>도보 450m·6분</b>(东方路 북쪽) · <a href="tel:+862150897060">☎ 021-5089-7060</a></li>
             <li><b>💊 약국 1번 카드</b>를 그대로 보여 주세요 — 여권 + 병원 처방전(<span class="zh">纸质处方</span>)</li>
+            <li><b>같은 블록 2순위</b> <span class="zh">国大龙威大药房</span> <span class="addr">浦建路111号</span> — 런지약국에서 <b>도보 9분·0.6km</b>(런지 국제의료부에서는 도보 6분). 여권 구매 가능 여부·재고를 물어보세요.</li>
             <li>안 되면 <span class="zh">국대약방 린이루점</span> <span class="addr">临沂路359号</span> — <b>걸어갈 거리가 아닙니다</b>(아래)</li>
           </ul>
           <div class="mg-walk">
@@ -866,12 +868,13 @@
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">3</div>
-            <div class="stp-tx"><b>12:00~13:30 본게임 · 런지병원 동원</b><span>12:15 예약</span></div>
+            <div class="stp-tx"><b>12:00~13:30 본게임 · 런지병원 동원</b><span>12:15 예약 · 13:15 택시 출발</span></div>
           </div>
           <ul class="stp-l">
             <li>일반외래 <span class="addr">浦建路160号</span> 아닙니다 → <b>국제의료부</b> <span class="addr">北园路33号</span> (건강관리센터 1층)</li>
             <li>여권 원본 + 진찰료 <b>508위안</b>(알리페이)</li>
             <li>받을 것: <b>5mg 1펜</b> · 종이 처방전 <span class="zh">纸质处方</span> · 병원 직인 <span class="zh">公章</span> · 정식 영수증 <span class="zh">发票</span> · 아이스팩</li>
+            <li><b>13:15 택시 출발 → 펑양루점</b>(21분·13.0km). 파크웨이 15:00 예약 때문에 늦어지면 약국을 건너뛰고 바로 구베이로 가세요.</li>
           </ul>
           <div class="alert">오전 약국 구매분은 진료실에서 꺼내지 마세요 — 1펜 제한이 더 조여질 수 있습니다.</div>
         </div>
@@ -879,14 +882,15 @@
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">4</div>
-            <div class="stp-tx"><b>13:30~15:20 오후 · 펑양루 → 난징동루</b><span>런지 직후 택시 20분 · 15:20 공리행 출발</span></div>
+            <div class="stp-tx"><b>13:35~14:15 오후 · 펑양루 약국만 짧게</b><span>런지 직후 택시 21분 · 14:15 구베이행 출발</span></div>
           </div>
           <ul class="stp-l">
-            <li><b>1순위</b> <span class="zh">第一医药 凤阳路店</span> <span class="addr">凤阳路274号 1층(底层)</span> — 런지 <span class="addr">北园路33号</span>에서 택시 약 20분(13.1km) · 지하철이면 <span class="zh">6→2号线</span> <span class="zh">人民广场</span>역 <b>9번 출구</b></li>
+            <li><b>1순위</b> <span class="zh">第一医药 凤阳路店</span> <span class="addr">凤阳路274号 1층(底层)</span> — 런지 <span class="addr">北园路33号</span>에서 택시 약 <b>21분(13.0km)</b> · 지하철이면 <span class="zh">6→2号线</span> <span class="zh">人民广场</span>역 <b>9번 출구</b></li>
             <li>영업 <b>08:30~20:30</b>(지도 표기) · <a href="tel:+862163128993">☎ 021-6312-8993</a> — 늦어질 것 같으면 먼저 전화</li>
             <li>여권으로 <b>현장 온라인 처방</b> 구매까지 된 지점 — 오후 약국은 여기부터</li>
-            <li><b>2순위</b> <span class="zh">第一医药商店 본점</span> <span class="addr">南京东路616号</span> — 도보 900m·13~15분 또는 2호선 1정거장 + 도보 350m</li>
+            <li><b>2순위</b> <span class="zh">第一医药商店 본점</span> <span class="addr">南京东路616号</span> — 도보 900m·13~15분. <b>시간이 없으면 생략</b> — 15:00 파크웨이 예약이 먼저입니다.</li>
           </ul>
+          <div class="alert">파크웨이에서 <b>3펜</b>을 받으면 오늘 사는 총량이 세관 기준(3개월분)에 딱 맞습니다. 약국에서는 <b>재고·가격만 확인</b>하고, 추가 구매는 파크웨이 처방 결과를 보고 결정하세요.</div>
 
           <div class="mg-walk">
             <h4>🚶 人民广场역 → 凤阳路274号 — 9번 출구가 정답</h4>
@@ -935,18 +939,17 @@
           </div>
 
           <div class="mg-walk">
-            <h4>🚶 凤阳路 → 南京东路616号 → 17:15 복귀</h4>
+            <h4>🚶 凤阳路 → 南京东路616号 (시간이 남으면)</h4>
             <ol>
               <li><b>걸어서</b> <span class="zh">凤阳路</span>→<span class="zh">南京西路</span>→<span class="zh">南京东路步行街</span> <b>900m · 13~15분</b>. 쇼핑 거리라 걷기 좋습니다.</li>
               <li><b>2호선으로</b> <span class="zh">人民广场</span>역 1정거장 → <span class="zh">南京东路</span>역. 역에서 본점까지 <b>도보 350~550m</b>.</li>
               <li><b>출구 선택</b> — <span class="zh">南京东路</span>역 <b>1·4번 출구(山西南路)</b>가 본점에서 <b>350m·6분</b>으로 가장 가깝습니다. <b>2·3번 출구(河南中路)</b>로 나오면 <b>550m·8분</b> 되돌아 걷습니다.</li>
               <li>본점은 <span class="zh">世纪广场</span> 옆·<span class="zh">浙江中路</span> 동쪽 — 큰 약국 간판이 보입니다. <a href="tel:+862163506610">☎ 021-6350-6610</a></li>
-              <li><b>15:20 공리행 출발</b> — 본점(南京东路616号) 앞은 보행자 거리라 택시가 못 들어옵니다. <span class="zh">山西南路·九江路</span> 쪽 큰길로 나와 <b>디디 호출(승차점 지정)</b>. 공리병원까지 <b>24분 · 8.8km</b>.</li>
-              <li class="tiny">👉 공리병원을 건너뛰기로 하면 이 시각에 <b>1번 출구</b>로 들어가 <span class="zh">2号线 往浦东1号2号航站楼</span> 직통(약 62분) — 아래 6단계에 시간표 있습니다.</li>
+              <li><b>14:15 구베이행 출발</b> — 본점(南京东路616号) 앞은 보행자 거리라 택시가 못 들어옵니다. <span class="zh">山西南路·九江路</span> 쪽 큰길로 나와 <b>디디 호출(승차점 지정)</b>. 파크웨이까지 <b>22분 · 10.5km</b>.</li>
             </ol>
             <figure class="mg-fig">
               <img src="assets/metro/16-enr-exit1.jpg" width="700" height="525" loading="lazy" decoding="async" alt="南京东路역 1번 출구 — 붉은 건물 아래 출입구, 상단 안내판에 2·10호선 南京东路站과 1号口 Exit 표시">
-              <figcaption><b>⑯ 南京东路역 1번 출구 (山西南路)</b>복귀 때 이 출구로 들어가 2호선을 탑니다. 본점에서 <b>350m·6분</b>.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
+              <figcaption><b>⑯ 南京东路역 1번 출구 (山西南路)</b>본점에서 <b>350m·6분</b>. 10호선 伊犁路 방면으로 바로 갈 때도 이 역입니다.<em>사진 Kmchang28 / Wikimedia Commons · CC BY-SA 4.0</em></figcaption>
             </figure>
           </div>
         </div>
@@ -955,241 +958,186 @@
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">5</div>
-            <div class="stp-tx"><b>16:00~17:05 공리병원 · 비만 클리닉</b><span>접수 16:00 → 진료 16:30 → 약국 17:00 → 공항행</span></div>
+            <div class="stp-tx"><b>15:00~16:10 파크웨이 구베이 · 김현익 선생님</b><span>14:50 접수 → 15:00 진료 → 16:00 약·서류 → 16:15 공항행</span></div>
           </div>
           <ul class="stp-l">
-            <li><span class="zh">上海市浦东新区公利医院</span> <span class="addr">苗圃路219号</span> — 3급(三甲) 공립 종합병원. <b>门诊楼</b>가 <b>苗圃路 쪽 입구</b>입니다.</li>
-            <li><b>목요일 오후</b> 진료: <b>内分泌科 · 肥胖专病门诊</b> = <b>门诊三楼</b>. 같은 날 오후 대안은 <b>普外科 · 减重代谢</b> = <b>门诊二楼</b>.</li>
-            <li>접수 마감 <b>16:30</b> · 오후 진료 <b>13:30~17:00</b> · <a href="tel:+862158858730">☎ 021-58858730</a>(예약센터 내선 5104·5106)</li>
-            <li>일반외래 진찰료 <b>25위안 선</b>(2026-11 조사·중국인 기준) — 외국인은 비급여로 조금 더 나올 수 있습니다. <b>알리페이</b> 결제.</li>
-            <li class="tiny">👉 바로 아래 <b>🏥 공리병원 비만 클리닉 진입·접수 가이드</b>에 현장 사진·창구 문장·시간표가 순서대로 있습니다.</li>
+            <li><span class="zh">百汇医疗 古北门诊部</span> (ParkwayHealth Gubei) <span class="addr">黄金城道776号 2층</span> — 창닝구 <span class="zh">古北</span>(구베이), 홍차오공항 쪽 한인·외국인 밀집 지역입니다.</li>
+            <li>예약 <b>11/26(목) 15:00 · 가정의학과 김현익 선생님 — 한국어 진료</b>. 초진 정보(HONG TEAK LIM · 1982-04-05 · +82 10-9925-7979)는 메일로 전달 완료 · <b>여권 원본</b> 지참.</li>
+            <li><b>한국 처방전 + 진료기록</b>을 보여 주면 <b>5mg(20mg/펜) 최대 3펜</b> 일괄 처방. 진료비 <b>500위안</b>(한국인 할인) + <b>펜당 1,097.55위안</b> → 3펜 <b>3,792.65위안</b>.</li>
+            <li>약은 <b>원내에서 바로 수령</b> — <b>진단서 · 비용명세서 · 영수증</b>까지 요청하세요(세관 제출용).</li>
+            <li class="tiny">👉 바로 아래 <b>🏥 파크웨이 구베이 진입 가이드</b>에 층·창구·보여줄 문장·시간표가 순서대로 있습니다.</li>
           </ul>
         </div>
 
-        <!-- 🏥 공리병원 비만 클리닉 진입·접수 가이드 (기본 닫힘) -->
-        <div class="metro-guide gongli-guide" id="gongliGuide">
-          <button class="mg-toggle" id="glToggle" type="button" aria-expanded="false" aria-controls="glBody">
+        <!-- 🏥 파크웨이 구베이 진입·접수 가이드 (기본 닫힘) -->
+        <div class="metro-guide pw-guide" id="pwGuide">
+          <button class="mg-toggle" id="pwToggle" type="button" aria-expanded="false" aria-controls="pwBody">
             <span class="mg-top">
               <span class="mg-em">🏥</span>
               <span class="mg-tx">
-                <b>공리병원 비만 클리닉 진입·접수 가이드</b>
-                <span>현장 사진 순서대로 · 하차 → 1층 접수 → 3층 진료 → 1층 약국</span>
+                <b>파크웨이 구베이 진입·접수 가이드</b>
+                <span>2층 접수 → 김현익 선생님 한국어 진료 → 수납·서류 → 원내 약국</span>
               </span>
-              <span class="mg-arw" id="glArw">▾</span>
+              <span class="mg-arw" id="pwArw">▾</span>
             </span>
-            <span class="mg-cta" id="glCta">▾ 사진으로 단계별 보기</span>
+            <span class="mg-cta" id="pwCta">▾ 단계별로 보기</span>
           </button>
-          <div class="mg-body" id="glBody" hidden>
-            <p class="mg-lead"><b>15:56 하차 → 16:00 접수 → 16:30 진료 → 17:05 출발.</b> 公利医院는 여권만 가진 외국인도 <b>1층 유인창구</b>에서 진료카드를 만들어 현장 접수할 수 있는 구조입니다. 접수(挂号) 마감 <b>16:30</b> — <b>16:00까지 창구에 서 있어야</b> 합니다.</p>
+          <div class="mg-body" id="pwBody" hidden>
+            <p class="mg-lead"><b>14:34 도착 → 14:50 접수 → 15:00 진료 → 16:00 약·서류 → 16:15 출발.</b> 외국인 진료 클리닉이라 <b>여권만 있으면 접수</b>됩니다. 예약 이름은 여권 영문명 <b>HONG TEAK LIM</b>.</p>
             <div class="mg-chips">
-              <span class="mg-chip walk">🕓 접수 마감 16:30</span>
-              <span class="mg-chip l6">🏢 门诊三楼</span>
-              <span class="mg-chip l2">💊 약국 1층</span>
-              <span class="mg-chip walk">🚕 공항 34분</span>
+              <span class="mg-chip walk">🕒 15:00 예약</span>
+              <span class="mg-chip l6">🏢 2층 접수</span>
+              <span class="mg-chip l2">💊 원내 약국</span>
+              <span class="mg-chip walk">🚕 공항 50분</span>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">1</div>
-                <div class="mg-t"><b>택시 하차 — 苗圃路219号 · 门诊楼 앞</b><span>난징동루에서 24분 · 8.8km</span></div>
+                <div class="mg-t"><b>도착 — 黄金城道776号 2층</b><span>펑양루에서 택시 19분 · 지하철이면 10호선 伊犁路역</span></div>
               </div>
               <ul class="mg-l">
-                <li>디디 목적지는 <span class="zh">浦东新区公利医院（门诊部）</span>. 기사에게는 아래 문장 하나만 보여 주세요.</li>
-                <li>내리면 <b>붉은 벽돌 门诊楼</b>와 그 앞 <b>화강암 석비(公利醫院 CONGLI HOSPITAL)</b>가 기준점입니다(사진 ①).</li>
-                <li>차가 병원 경내로 들어가면 <b>门急诊大楼 앞</b>에서 바로 내릴 수 있습니다(사진 ② — 병원 안 정류장). 정문에서 걸어도 1~2분.</li>
-                <li><b>巨野路207号</b> 게이트도 같은 병원이지만 반대편입니다 — <b>苗圃路</b>로 오세요.</li>
+                <li>디디 목적지는 <span class="zh">百汇医疗 古北门诊部</span>. 기사에게는 아래 문장 하나만 보여 주세요.</li>
+                <li>건물 <b>2층</b> — 입구 안내판에서 <span class="zh">百汇医疗</span> / <b>ParkwayHealth</b> 표지를 확인하고 엘리베이터로 올라갑니다.</li>
+                <li><b>지하철 대안</b>: <span class="zh">10号线 伊犁路站</span> 하차 → <b>3号口</b> → 도보 약 <b>1.1km · 15~20분</b>(Google 지도). 예약 시간이 있어 <b>택시를 권장</b>합니다.</li>
+                <li>南京东路에서 오면 <span class="zh">10号线 南京东路站</span> → <span class="zh">伊犁路</span> 방면 직통(환승 없음)도 됩니다.</li>
               </ul>
-              <figure class="mg-fig">
-                <img src="assets/gongli/01-entrance-stone.jpg" width="1000" height="750" loading="lazy" decoding="async" alt="공리병원 정문 — 화강암 석비에 公利醫院 CONGLI HOSPITAL, 뒤로 붉은 벽돌 门诊楼(OUTPATIENT) 간판과 입구 캐노피">
-                <figcaption><b>① 하차 기준점 — 公利醫院 석비</b>석비 뒤 붉은 건물이 <b>门诊楼</b>입니다. 여기서 건물 입구로 들어가면 됩니다.<em>사진 澎湃新闻 (2025-09-28 보도)</em></figcaption>
-              </figure>
-              <figure class="mg-fig">
-                <img src="assets/gongli/02-gate-dropoff.jpg" width="1000" height="666" loading="lazy" decoding="async" alt="공리병원 경내 — 붉은 벽돌 门急诊大楼 앞 정류장에 선 시내버스 두 대와 公利班线 표지">
-                <figcaption><b>② 병원 안 하차 지점</b>경내로 들어가면 <b>门急诊大楼 앞</b>에서 내립니다. 병원 순환버스(公利班线)도 여기 섭니다.<em>사진 文汇网 (2023-07-06 보도)</em></figcaption>
-              </figure>
               <div class="talk">
                 <span class="tag">🚕 기사에게</span>
-                <b>请去浦东新区公利医院（门诊部），苗圃路219号。到了请开进医院里面，在门诊楼门口停。</b>
-                <span class="py">Qǐng qù Pǔdōng xīnqū Gōnglì Yīyuàn (ménzhěn bù), Miáopǔ lù èrbǎiyīshíjiǔ hào. Dào le qǐng kāi jìn yīyuàn lǐmiàn, zài ménzhěn lóu ménkǒu tíng.</span>
+                <b>请去长宁区黄金城道776号，百汇医疗古北门诊部。到了请停在门诊部门口，我下午三点有预约。</b>
+                <span class="py">Qǐng qù Chángníng qū Huángjīnchéng dào qībǎiqīshíliù hào, Bǎihuì Yīliáo Gǔběi ménzhěn bù. Dào le qǐng tíng zài ménzhěn bù ménkǒu, wǒ xiàwǔ sān diǎn yǒu yùyuē.</span>
               </div>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">2</div>
-                <div class="mg-t"><b>门诊楼 1층 — 建卡(진료카드) → 挂号(접수)</b><span>유인창구 · 여권 원본</span></div>
+                <div class="mg-t"><b>2층 접수 — 예약 확인 · 여권</b><span>14:50 도착 목표 · 한국어 가능</span></div>
               </div>
               <ul class="mg-l">
-                <li>중국인은 微信·自助机로 끝내지만, <b>여권만 있는 외국인은 1층 유인창구(人工窗口)</b>로 가야 합니다. 찾을 표지: <span class="zh">挂号收费</span> · <span class="zh">建卡</span> · <span class="zh">办卡</span>.</li>
-                <li>순서: <b>여권 제시 → 就诊卡(진료카드) 발급 → 진찰료 결제 → 挂号条(접수증) 수령</b>. 카드 발급은 무료이거나 소액이며, 진찰료는 선불입니다.</li>
-                <li>접수할 과: <b>内分泌科 → 肥胖专病门诊</b>(목요일 오후). 전용 창구가 없으면 <b>内分泌科 普通号(일반号)</b>로 접수해도 같은 과 의사가 봅니다.</li>
-                <li>만일 <b>内分泌科 오후 마감</b>이면 → <b>普外科 · 减重代谢</b>(门诊二楼·목요일 오후)로 우회. 그래도 안 되면 内分泌科 다음 진료일을 물어보세요.</li>
-                <li>받아 둘 것: <b>就诊卡</b> · <b>挂号条</b> · (필요하면) 병력수첩 <span class="zh">病历本</span></li>
+                <li>접수 데스크에서 <b>예약 시간(15:00)</b>과 <b>여권 영문명</b>을 말하고 <b>여권 원본</b>을 냅니다.</li>
+                <li>초진 서류(영문 이름·생년월일·연락처)는 메일로 보냈지만, 현장에서 한 번 더 확인합니다.</li>
+                <li>결제는 <b>자비(自费)</b> — 알리페이·카드 가능 여부를 접수 때 확인하세요.</li>
+                <li>대기 시간이 길면 16:15 출발이 밀립니다. 접수할 때 <b>"당일 비행기"</b>를 미리 말해 두세요.</li>
               </ul>
-              <div class="mg-sign">
-                <svg viewBox="0 0 320 186" role="img" aria-label="도해: 门诊楼 1층에서 ①建卡·挂号 유인창구 → ②电梯 7·8호기로 3층 内分泌科 → ③1층 收费 → ④1층 药房 순서. 2순위는 门诊二楼 普外科 减重代谢">
-                  <rect width="320" height="186" fill="#0a1120"/>
-                  <text x="8" y="15" font-size="10" font-weight="800" fill="#9fd8ff" font-family="Helvetica,Arial,sans-serif">门诊楼 1층 · 유인창구 동선 (도해)</text>
-                  <rect x="6" y="24" width="92" height="48" rx="6" fill="#1d3350" stroke="#48b8f5"/>
-                  <text x="52" y="44" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="Helvetica,Arial,sans-serif">①建卡 · 挂号</text>
-                  <text x="52" y="60" text-anchor="middle" font-size="8" fill="#cfe4ff" font-family="Helvetica,Arial,sans-serif">유인창구 · 여권</text>
-                  <rect x="113" y="24" width="88" height="48" rx="6" fill="#132033" stroke="#2b3d58"/>
-                  <text x="157" y="44" text-anchor="middle" font-size="11" font-weight="800" fill="#e8f0fa" font-family="Helvetica,Arial,sans-serif">③收费</text>
-                  <text x="157" y="60" text-anchor="middle" font-size="8" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">수납 · 처방 제출</text>
-                  <rect x="216" y="24" width="98" height="48" rx="6" fill="#0f2a24" stroke="#2fd3a4"/>
-                  <text x="265" y="44" text-anchor="middle" font-size="11" font-weight="800" fill="#c6f5e6" font-family="Helvetica,Arial,sans-serif">④药房</text>
-                  <text x="265" y="60" text-anchor="middle" font-size="8" fill="#8fe0c4" font-family="Helvetica,Arial,sans-serif">取药 · 1층</text>
-                  <path d="M100 48 H110" stroke="#7ff0cd" stroke-width="1.6"/><path d="M110 48 L105 45 L105 51 Z" fill="#7ff0cd"/>
-                  <path d="M203 48 H213" stroke="#7ff0cd" stroke-width="1.6"/><path d="M213 48 L208 45 L208 51 Z" fill="#7ff0cd"/>
-                  <rect x="6" y="90" width="308" height="36" rx="6" fill="#1b2942" stroke="#c95fe0" stroke-opacity=".6"/>
-                  <text x="160" y="105" text-anchor="middle" font-size="10.5" font-weight="800" fill="#f0d8ff" font-family="Helvetica,Arial,sans-serif">②电梯 7·8号 → 门诊三楼 内分泌科</text>
-                  <text x="160" y="119" text-anchor="middle" font-size="8" fill="#d9c6ee" font-family="Helvetica,Arial,sans-serif">내려서 分诊台에 挂号条 제시 → 대기번호</text>
-                  <rect x="6" y="136" width="308" height="32" rx="6" fill="#132033" stroke="#2b3d58" stroke-dasharray="4 3"/>
-                  <text x="160" y="156" text-anchor="middle" font-size="9" font-weight="700" fill="#9fb2cb" font-family="Helvetica,Arial,sans-serif">2순위 · 门诊二楼 普外科 减重代谢 (목요일 오후)</text>
-                </svg>
-                <p class="mg-sign-cap"><b>1층은 접수 → 수납 → 약국이 한 층에 있습니다</b>창구 번호·호실은 확인되지 않아 적지 않았습니다. 1층에서 <span class="zh">挂号收费</span>·<span class="zh">建卡</span> 표지를 따라가면 되고, 진료는 <b>电梯 7·8号</b>로 3층입니다.</p>
+              <div class="talk">
+                <span class="tag">💬 접수 데스크</span>
+                <b>您好，我预约了今天下午三点，金医生（家庭医学科）。我的名字是 HONG TEAK LIM，这是我的护照。</b>
+                <span class="py">Nín hǎo, wǒ yùyuē le jīntiān xiàwǔ sān diǎn, Jīn yīshēng (jiātíng yīxuékē). Wǒ de míngzi shì HONG TEAK LIM, zhè shì wǒ de hùzhào.</span>
               </div>
               <div class="talk">
-                <span class="tag">💬 1층 접수창구 — 그대로 보여주기</span>
-                <b>您好，我是韩国人，没有中国身份证，第一次来。请问今天周四下午的肥胖（减重）专病门诊，还能现场挂号吗？</b>
-                <span class="py">Nín hǎo, wǒ shì Hánguórén, méiyǒu Zhōngguó shēnfènzhèng, dì-yī cì lái. Qǐngwèn jīntiān zhōusì xiàwǔ de féipàng (jiǎnzhòng) zhuānbìng ménzhěn, hái néng xiànchǎng guàhào ma?</span>
-              </div>
-              <div class="talk">
-                <span class="tag">💬 전용号가 없을 때</span>
-                <b>如果没有专病号，请给我挂内分泌科普通号。用自费，可以刷卡或支付宝。</b>
-                <span class="py">Rúguǒ méiyǒu zhuānbìng hào, qǐng gěi wǒ guà nèifēnbì kē pǔtōng hào. Yòng zìfèi, kěyǐ shuā kǎ huò Zhīfùbǎo.</span>
+                <span class="tag">💬 한국어 통역 요청</span>
+                <b>我是韩国人，中文说得不好。请问可以安排会韩语的同事吗？我当天要回韩国。</b>
+                <span class="py">Wǒ shì Hánguórén, Zhōngwén shuō de bù hǎo. Qǐngwèn kěyǐ ānpái huì Hányǔ de tóngshì ma? Wǒ dāngtiān yào huí Hánguó.</span>
               </div>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">3</div>
-                <div class="mg-t"><b>3층 内分泌科 — 分诊台 → 대기 → 진료</b><span>肥胖专病门诊 · 门诊三楼</span></div>
+                <div class="mg-t"><b>15:00 진료 — 김현익 선생님 (한국어)</b><span>한국 처방전·진료기록 → 5mg 3펜</span></div>
               </div>
               <ul class="mg-l">
-                <li>3층에 내려 <b>分诊台(간호 데스크)</b>에 <b>挂号条</b>를 내고 대기번호를 받습니다. 벽면 스크린에 번호·진료실이 뜹니다(사진 ③).</li>
-                <li>이 구역은 <b>국가표준화 대사질환 관리센터(MMC · 标准化代谢性疾病管理中心)</b>로 표시돼 있습니다 — 内分泌과 대기 구역의 표지입니다.</li>
-                <li>진료 때: 여권 · 한국 처방전(2.5mg) · 약통 사진을 꺼내고 <b>5mg 1펜</b>을 요청하세요. 진료는 10~15분이면 끝납니다.</li>
-                <li>처방은 상하이 규정상 <b>1건 1펜</b>이 상한입니다(2~8℃ 냉장약은 12주 연장 대상 아님). 2펜 이상은 나오지 않습니다.</li>
+                <li>준비물: <b>여권</b> · <b>한국 처방전</b> · <b>진료기록(투약 이력)</b> · 약통 사진. 한국어로 진료하니 그대로 설명하면 됩니다.</li>
+                <li>요청: <b>5mg(20mg/펜) 3펜</b> 일괄 처방(3개월분). 재고가 3펜보다 적으면 <b>받을 수 있는 수량</b>을 먼저 확인하세요.</li>
+                <li>진료비 <b>500위안</b>(한국인 할인)은 수납 때, 약값은 <b>펜당 1,097.55위안</b>입니다.</li>
+                <li>세관 대비: <b>진단서 · 비용명세서 · 영수증</b>을 요청하고, 이름이 여권과 같은지 확인하세요.</li>
               </ul>
-              <figure class="mg-fig">
-                <img src="assets/gongli/03-endocrine-wait.jpg" width="1000" height="322" loading="lazy" decoding="async" alt="공리병원 3층 内分泌科 대기 구역 — 벽면에 국가표준화 대사질환 관리센터(MMC) 표시, 대기번호 스크린, 분홍색 分诊·접수 데스크, 대기 환자들">
-                <figcaption><b>③ 3층 内分泌科 대기 구역 (실물)</b>왼쪽 주황 벽이 <b>MMC(국가표준화 대사질환 관리센터)</b>, 가운데 스크린이 <b>대기번호</b>입니다. 오른쪽 분홍 데스크가 分诊·접수.<em>사진 공리병원 공식 홈페이지 (2026-10 보도)</em></figcaption>
-              </figure>
               <div class="talk">
                 <span class="tag">💬 의사에게 — 처방 요청</span>
-                <b>医生您好。我想开一支穆峰达（替尔泊肽）5毫克。我在韩国用2.5毫克两个月了，今天当天回韩国，请开纸质处方和发票。</b>
-                <span class="py">Yīshēng nín hǎo. Wǒ xiǎng kāi yì zhī Mùfēngdá (Tì'ěrbótài) wǔ háokè. Wǒ zài Hánguó yòng èr diǎn wǔ háokè liǎng ge yuè le, jīntiān dāngtiān huí Hánguó, qǐng kāi zhǐzhì chùfāng hé fāpiào.</span>
+                <b>我在韩国一直用替尔泊肽（穆峰达）2.5毫克，已经两个月了。今天想开5毫克，最多三支。这是韩国的处方和诊疗记录。</b>
+                <span class="py">Wǒ zài Hánguó yìzhí yòng Tì'ěrbótài (Mùfēngdá) èr diǎn wǔ háokè, yǐjīng liǎng ge yuè le. Jīntiān xiǎng kāi wǔ háokè, zuìduō sān zhī. Zhè shì Hánguó de chùfāng hé zhěnliáo jìlù.</span>
+              </div>
+              <div class="talk">
+                <span class="tag">💬 서류 요청</span>
+                <b>请给我诊断书、费用明细和正式发票，名字要和护照一致。我当天回韩国，海关要看。</b>
+                <span class="py">Qǐng gěi wǒ zhěnduànshū, fèiyòng míngxì hé zhèngshì fāpiào, míngzi yào hé hùzhào yízhì. Wǒ dāngtiān huí Hánguó, hǎiguān yào kàn.</span>
               </div>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">4</div>
-                <div class="mg-t"><b>1층 收费(수납) → 처방전·发票</b><span>내려와서 바로, 카드 결제</span></div>
+                <div class="mg-t"><b>수납 — 진료비 500위안 + 약값</b><span>3펜 기준 3,792.65위안</span></div>
               </div>
               <ul class="mg-l">
-                <li>진료가 끝나면 <b>1층 收费 창구</b>로 내려와 <b>就诊卡 + 처방전</b>을 냅니다. 알리페이 QR로 결제.</li>
-                <li>받을 것: <b>收费收据(영수증)</b> · <b>发票(정식 세금계산서)</b> · <b>处方(처방전)</b> 원본. 세관 제출용이니 <b>이름이 여권과 같은지</b> 확인하세요.</li>
-                <li>1펜 가격은 5mg 기준 <b>551위안</b>대(2026-11 런지 기준). 公利 가격은 창구에서 확인 — 차이가 크면 결제 전에 물어보세요.</li>
-                <li>진단서가 필요하면 <span class="zh">病情证明</span>을 따로 요청해야 합니다(당일 발급 가능 여부는 창구 확인).</li>
+                <li>결제: 진료비 <b>500위안</b> + 1,097.55위안 × 수량. <b>3펜이면 3,792.65위안</b>(약 76만 원).</li>
+                <li>영수증에 <b>약 이름(穆峰达/替尔泊肽)과 수량</b>이 적혀 있는지 확인하세요.</li>
+                <li>사본 한 부를 더 요청해 두면 세관·보험 정산에 편합니다.</li>
               </ul>
               <div class="talk">
-                <span class="tag">💬 수납 창구</span>
-                <b>请给我发票和处方原件，名字要和护照一致。我当天回韩国，海关要看。</b>
-                <span class="py">Qǐng gěi wǒ fāpiào hé chùfāng yuánjiàn, míngzi yào hé hùzhào yízhì. Wǒ dāngtiān huí Hánguó, hǎiguān yào kàn.</span>
+                <span class="tag">💬 수납</span>
+                <b>诊察费是500元（韩国人优惠），药费每支1,097.55元，三支一共3,792.65元，对吗？请给我正式发票和两份清单。</b>
+                <span class="py">Zhěncháfèi shì wǔbǎi yuán (Hánguórén yōuhuì), yàofèi měi zhī yìqiān líng jiǔshíqī diǎn wǔwǔ yuán, sān zhī yígòng sānqiān qībǎi jiǔshí'èr diǎn liùwǔ yuán, duì ma? Qǐng gěi wǒ zhèngshì fāpiào hé liǎng fèn qīngdān.</span>
               </div>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">5</div>
-                <div class="mg-t"><b>1층 药房(약국) 수령 — 품절이면 정문 옆 龙威</b><span>收费收据 + 处方 제출</span></div>
+                <div class="mg-t"><b>원내 약국 수령 — 냉장·아이스팩</b><span>안내받은 창구 · 2~8℃</span></div>
               </div>
               <ul class="mg-l">
-                <li><b>1층 药房(取药)</b>에 <b>영수증 + 처방전</b>을 내고 받습니다. 냉장약이라 <b>아이스팩</b>을 요청하세요(<span class="zh">请给我冰袋</span>).</li>
-                <li>원내 재고가 없으면 <b>외배처방(外配处方)</b>을 요청 → 정문 옆 같은 번지 <b>龙威大药房 苗圃路店</b> <span class="addr">苗圃路219~221号</span>에서 수령. 병원에서 도보 1~2분.</li>
-                <li>약국에서도 <b>여권 + 처방전 + 发票</b>을 챙기세요. 영수증이 없으면 세관에서 곤란합니다.</li>
-                <li><b>17:00</b>까지 약국을 나와야 17:05 택시 출발이 지켜집니다. 늦어지면 바로 아래 6단계 시간표대로 판단하세요.</li>
+                <li>처방전·영수증을 내고 <b>5mg 3펜</b>을 받습니다. <b>2~8℃ 냉장</b> 약이라 <b>아이스팩</b>을 요청하세요.</li>
+                <li>보냉백에 넣고, <b>기내 100ml 이하 젤 아이스팩</b> 규정을 지키세요.</li>
+                <li>약국을 <b>16:10까지</b> 나오면 16:15 출발이 지켜집니다.</li>
               </ul>
               <div class="talk">
                 <span class="tag">💬 약국 창구</span>
-                <b>这个需要冷藏，请给我冰袋。如果没有货，请开外配处方，我去门口的龙威大药房。</b>
-                <span class="py">Zhège xūyào lěngcáng, qǐng gěi wǒ bīngdài. Rúguǒ méiyǒu huò, qǐng kāi wàipèi chùfāng, wǒ qù ménkǒu de Lóngwēi dàyàofáng.</span>
+                <b>这个需要冷藏，请给我冰袋。请把处方和发票一起给我，我要带回韩国。</b>
+                <span class="py">Zhège xūyào lěngcáng, qǐng gěi wǒ bīngdài. Qǐng bǎ chùfāng hé fāpiào yìqǐ gěi wǒ, wǒ yào dài huí Hánguó.</span>
               </div>
             </div>
 
             <div class="mg-step">
               <div class="mg-sh">
                 <div class="mg-n">6</div>
-                <div class="mg-t"><b>시간 역산 — 16:00 접수 기준</b><span>17:05 출발이면 19:25 마감까지 80분 여유</span></div>
+                <div class="mg-t"><b>시간 역산 — 15:00 예약 기준</b><span>16:15 출발이면 19:25 마감까지 2시간 10분</span></div>
               </div>
               <table class="ret-tbl">
                 <thead><tr><th>시각</th><th>할 일</th><th>비고</th></tr></thead>
                 <tbody>
-                  <tr><td><b>15:20</b></td><td>南京东路 출발(택시)</td><td>24분 · 8.8km</td></tr>
-                  <tr><td><b>15:44</b></td><td>공리병원 도착</td><td>苗圃路219号</td></tr>
-                  <tr><td><b>16:00</b></td><td>1층 建卡·挂号</td><td>접수 마감 16:30</td></tr>
-                  <tr><td><b>16:30</b></td><td>3층 진료</td><td>10~15분</td></tr>
-                  <tr><td><b>16:50</b></td><td>1층 收费 · 发票</td><td>알리페이</td></tr>
-                  <tr><td><b>17:00</b></td><td>1층 药房 수령</td><td>아이스팩 요청</td></tr>
-                  <tr><td><b>17:05</b></td><td>택시 출발 → T2</td><td>34분 · 34.3km</td></tr>
-                  <tr><td><b>17:39</b></td><td>T2 도착 · 카운터 J</td><td>19:25 마감</td></tr>
+                  <tr><td><b>14:15</b></td><td>凤阳路274号 출발(택시)</td><td>19분 · 10.0km</td></tr>
+                  <tr><td><b>14:34</b></td><td>파크웨이 구베이 도착</td><td>黄金城道776号 2층</td></tr>
+                  <tr><td><b>14:50</b></td><td>2층 접수 · 여권</td><td>15:00 예약</td></tr>
+                  <tr><td><b>15:00</b></td><td>김현익 선생님 진료</td><td>한국어 · 5mg 3펜</td></tr>
+                  <tr><td><b>15:45</b></td><td>수납 · 진단서·영수증</td><td>3,792.65위안</td></tr>
+                  <tr><td><b>16:00</b></td><td>원내 약국 · 아이스팩</td><td>2~8℃</td></tr>
+                  <tr><td><b>16:15</b></td><td>택시 출발 → T2</td><td>50분 · 51.3km</td></tr>
+                  <tr><td><b>17:05</b></td><td>T2 도착 · 카운터 J</td><td>19:25 마감</td></tr>
                 </tbody>
               </table>
-              <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">이동 시간은 2026-11-20 조회한 Google 지도 차량 경로(15:20·17:15 출발 기준)입니다. 당일 교통·대기 상황에 따라 달라집니다.</p>
+              <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">이동 시간은 2026-11-21 조회한 Google 지도 차량 경로(11/26 14:15·16:15 출발 기준)입니다. 당일 교통·진료 대기 상황에 따라 달라집니다.</p>
             </div>
 
-            <div class="mg-tip"><span>⚠️</span><span>병원 안팎에서 <b>"특효약 있다"</b>며 말을 거는 사람은 <b>医托(브로커)</b>입니다. 병원 벽면에도 <span class="zh">谨防医托</span> 안내가 붙어 있습니다. <b>정식 창구·정식 약국</b>만 이용하세요.</span></div>
-            <div class="mg-tip"><span>⏰</span><span><b>16:30을 넘기면</b> 이 날 공리병원 접수는 끝입니다. 그때는 ① 普外科 减重代谢(门诊二楼)로 우회 ② 안 되면 바로 공항으로 — 오전·점심에 확보한 1펜이 본전입니다. 무리하지 마세요.</span></div>
-            <p class="mg-cred">사진 출처: ① 澎湃新闻(thepaper.cn) 2025-09-28 보도 ② 文汇网(whb.cn) 2023-07-06 보도 ③ 공리병원 공식 홈페이지(glhospital.com) 2026-10 보도. 병원 진료과·층수는 공식 专病门诊 일람표(2024-06) 기준이며, 2026년 여름 <b>门诊 标识(안내표지) 개선 공사</b>가 있었으니 현장 표지가 사진과 다를 수 있습니다. 오후 진료시간은 병원 공지 <b>13:30–17:00</b>(접수 11:00–16:30)이고, 일부 안내 사이트는 <b>13:00–16:30</b>으로 적고 있습니다 — 어느 쪽이든 <b>접수 마감은 16:30</b>입니다. 창구 번호·호실·약국 창구 수는 확인되지 않아 기재하지 않았습니다.</p>
+            <div class="mg-tip"><span>⚠️</span><span><b>15:45를 넘기면</b> 수납·약국이 급해집니다. 진료실에서 <b>진단서·영수증</b>을 한 번에 요청하고, 16:15에는 무조건 차에 오르세요. 파크웨이에서 받은 서류가 세관 본전입니다.</span></div>
+            <p class="mg-cred">클리닉 정보: 파크웨이 한국부 메일 회신(2026-11-21, Helena Zhu) — 11/26 김현익(가정의학과·한국어) 진료, 5mg 최대 3펜, 진료비 500위안(한국인 할인)·펜당 1,097.55위안, 원내 수령 + 진단서·비용명세서·영수증. ☎ 대표 400-819-6622 · 한국부 130-0217-1199(위챗 동일). 건물 층·창구 위치는 현장 안내를 따르세요.</p>
           </div>
         </div>
 
         <div class="step">
           <div class="stp-h">
             <div class="stp-n">6</div>
-            <div class="stp-tx"><b>17:05~17:40 복귀 · 공리 → T2 (택시)</b><span>34분 · 34.3km · 통행료 포함</span></div>
+            <div class="stp-tx"><b>16:15~17:05 복귀 · 구베이 → T2 (택시)</b><span>50분 · 51.3km · 16:15 출발 기준</span></div>
           </div>
           <ul class="stp-l">
-            <li><b>공리병원 정문(苗圃路219号)에서 디디 호출 → T2</b>. 17시대는 퇴근 정체 전이라 <b>34분·34.3km</b>(통행료 포함) — 지하철보다 30분 빠릅니다.</li>
-            <li>약국을 17:00에 나오면 <b>17:39 T2 도착 → 18:00 카운터 J</b>. 19:25 마감까지 85분 여유. 17:15까지 나오면 여유 70분.</li>
-            <li>택시가 안 잡히면 <b>6호선 北洋泾路역</b>(병원에서 도보 600m·10분) → 世纪大道 → 2호선 <span class="zh">往浦东1号2号航站楼</span>. 도보 포함 약 1시간 40분 — 이 경우 17:00엔 출발해야 합니다.</li>
+            <li><b>黄金城道776号 앞에서 디디 호출 → T2</b>. 16:15 출발 <b>50분·51.3km</b>(Google 지도 11/26 16:15 기준) — 홍차오 쪽에서 강을 건너 푸동까지 한 번에 갑니다.</li>
+            <li>17:05 T2 도착 → <b>17:15 카운터 J</b>. <b>19:25 마감까지 2시간 10분</b> 여유.</li>
+            <li>택시가 안 잡히면 <b>10호선 伊犁路 → 南京东路 환승 → 2호선 往浦东1号2号航站楼</b>. 환승 포함 <b>1시간 30분~1시간 40분</b>(계산치) — 이 경우 16:00엔 출발해야 합니다.</li>
           </ul>
           <table class="ret-tbl">
-            <thead><tr><th>공리 출발</th><th>T2 도착</th><th>카운터 J</th><th>19:25 마감까지</th></tr></thead>
+            <thead><tr><th>구베이 출발</th><th>T2 도착</th><th>카운터 J</th><th>19:25 마감까지</th></tr></thead>
             <tbody>
-              <tr><td><b>17:00</b></td><td>17:34</td><td>17:45</td><td>100분</td></tr>
-              <tr><td><b>17:15</b></td><td>17:49</td><td>18:00</td><td>85분</td></tr>
-              <tr><td><b>17:30</b></td><td>18:04</td><td>18:15</td><td class="warn">70분 · 정체 시 위험</td></tr>
+              <tr><td><b>16:00</b></td><td>16:50</td><td>17:00</td><td>145분</td></tr>
+              <tr><td><b>16:15</b></td><td>17:05</td><td>17:15</td><td>130분</td></tr>
+              <tr><td><b>16:45</b></td><td>17:35</td><td>17:45</td><td class="warn">100분 · 이 시각이 한계</td></tr>
             </tbody>
           </table>
-          <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">17:15 출발 기준 Google 지도 차량 경로 34분·34.3km(통행료·고속도로 포함). 카운터 도착은 공항 진입·도보 10분을 더한 예상치입니다.</p>
-          <div class="alert"><b>19:25</b> 카운터 마감(출발 45분 전) · <b>19:40</b> 탑승구 마감(30분 전). 17:30 이후 출발은 사고·정체 한 번에 놓칩니다.</div>
-
-          <div class="mg-walk">
-            <h4>🚇 공리병원을 건너뛸 때 — 人民广场·南京东路 → 2호선 직통</h4>
-            <ul class="stp-l" style="padding-left:0">
-            <li><b>17:15</b>까지 <span class="zh">人民广场</span>(또는 <span class="zh">南京东路</span>)역 2호선 승강장에서 <b>往浦东1号2号航站楼</b> 방면 탑승. 영문 표기는 <b>To Pudong Airport T1&amp;2</b>.</li>
-            <li><b>4량 편성은 2019년 폐지</b> — 전 시간 8량입니다. 다만 평일 출퇴근 시간대에는 <span class="zh">广兰路</span> 종점(小交路) 열차가 섞입니다 — 승강장 표시·차내 방송에서 <b>往浦东1号2号航站楼</b>를 확인하고 그 열차만 타세요. 잘못 타면 <span class="zh">广兰路</span>에서 전부 내려 3번 승강장으로 건너가야 합니다(5~8분 손실).</li>
-            <li>막차 <span class="zh">人民广场</span> → 공항 방면 <b>22:33</b> (17시대엔 해당 없음)</li>
-            <li>T2 <b>체크인 카운터 J (J19~J34)</b> · <b>20:10</b> <span class="zh">9C8573</span> · 탑승구는 당일 표시(G게이트)</li>
-            <li>역에서 T2까지 도보 5~8분 — 역이 T1·T2 사이 중앙에 있어 <b>2号航站楼</b> 표지를 따라 3층 출국장으로</li>
-            </ul>
-          <table class="ret-tbl">
-            <thead><tr><th>人民广场 출발</th><th>공항역 도착</th><th>T2 카운터</th><th>19:25 마감까지</th></tr></thead>
-            <tbody>
-              <tr><td><b>17:15</b></td><td>18:13</td><td>18:20</td><td>65분</td></tr>
-              <tr><td><b>17:30</b></td><td>18:28</td><td>18:35</td><td>50분</td></tr>
-              <tr><td><b>17:45</b></td><td>18:43</td><td>18:50</td><td class="warn">35분 · 위험</td></tr>
-            </tbody>
-          </table>
-          <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">지하철 58~62분(2호선 공식 시각표 기준, 人民广场 22:33 → 机场 23:31) + 역에서 T2까지 도보 7분으로 계산한 예상치입니다.</p>
-          <div class="alert"><b>19:25</b> 카운터 마감(출발 45분 전) · <b>19:40</b> 탑승구 마감(30분 전). <span class="zh">南京东路</span>에서 타면 약 3분 빠릅니다. 17:45 이후는 보안검색 줄이 길면 놓칩니다.</div>
-          </div>
+          <p class="mg-cred" style="margin:5px 0 0; padding-top:0; border-top:0">16:15·16:30 출발 기준 Google 지도 차량 경로 50분·51.3km. 카운터 도착은 공항 진입·도보 10분을 더한 예상치입니다.</p>
+          <div class="alert"><b>19:25</b> 카운터 마감(출발 45분 전) · <b>19:40</b> 탑승구 마감(30분 전). 17:00 이후 출발은 사고·정체 한 번에 놓칩니다.</div>
           <ul class="stp-l">
             <li>젤 아이스팩 <b>100ml 이하</b> · 기내 반입 규정 주의</li>
-            <li>세관: 처방전·<span class="zh">发票</span>·여권 명의가 같아야 합니다. 3개월분(3펜) 초과는 반입 불가.</li>
+            <li>세관: 처방전·<span class="zh">发票</span>·여권 명의가 같아야 합니다. <b>3개월분(3펜)</b>을 넘는 수량은 반입이 어렵습니다.</li>
           </ul>
         </div>
         <div class="spots">
@@ -1235,7 +1183,7 @@
             <div class="sp-h"><span class="sp-n">4·1</span><b>제일의약 펑양루점 · 오후 1순위</b></div>
             <div class="sp-a">
               <span class="addr">凤阳路274号 1층(底层)</span>
-              <div class="sp-m">第一医药 (凤阳路店) · 영업 <b>08:30–20:30</b>(지도 표기) · <a href="tel:+862163128993">☎ 021-6312-8993</a><br><b>9번 출구</b> 도보 170m(2~3분) · 8번 출구 200m · 런지병원에서 택시 약 20분(13.1km)</div>
+              <div class="sp-m">第一医药 (凤阳路店) · 영업 <b>08:30–20:30</b>(지도 표기) · <a href="tel:+862163128993">☎ 021-6312-8993</a><br><b>9번 출구</b> 도보 170m(2~3분) · 8번 출구 200m · 런지병원에서 택시 약 21분(13.0km)</div>
             </div>
             <div class="sp-b">
               <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E5%87%A4%E9%98%B3%E8%B7%AF274%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
@@ -1265,32 +1213,32 @@
               <button class="mbtn copy" type="button" data-copy="人民路905号">📋 주소 복사</button>
             </div>
           </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">5</span><b>파크웨이 구베이 클리닉 (百汇医疗 古北门诊部)</b></div>
+            <div class="sp-a">
+              <span class="addr">黄金城道776号 2층</span>
+              <div class="sp-m">ParkwayHealth Gubei · 가정의학과 <b>김현익</b>(한국어 진료) · 11/26 15:00 예약<br>한국 처방전·진료기록 지참 시 <b>5mg 최대 3펜</b> · 진료비 <b>500위안</b> + 펜당 <b>1,097.55위안</b> · 원내 수령·진단서·영수증<br>☎ <a href="tel:+864008196622">400-819-6622</a> · 한국부 <a href="tel:+8613002171199">130-0217-1199</a>(위챗 동일) · 10호선 伊犁路역 3번 출구 도보 약 1.1km</div>
+            </div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E7%99%BE%E6%B1%87%E5%8C%BB%E7%96%97%E5%8F%A4%E5%8C%97%E9%97%A8%E8%AF%8A%E9%83%A8" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E7%99%BE%E6%B1%87%E5%8C%BB%E7%96%97%E5%8F%A4%E5%8C%97%E9%97%A8%E8%AF%8A%E9%83%A8&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="黄金城道776号 百汇医疗古北门诊部 2楼">📋 주소 복사</button>
+              <a class="mbtn" href="tel:+864008196622">☎ 전화</a>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="sp-h"><span class="sp-n">2·B</span><b>국대룽웨이 대약방 푸젠루점 (약국 2순위)</b></div>
+            <div class="sp-a">
+              <span class="addr">浦建路111号</span>
+              <div class="sp-m">国大龙威大药房 · 런지약국에서 <b>도보 9분·0.6km</b> · 런지 국제의료부에서는 도보 6분<br>여권 구매 가능 여부·5mg 재고는 <b>매장에서 확인</b></div>
+            </div>
+            <div class="sp-b">
+              <a class="mbtn apple" href="https://maps.apple.com/?q=%E5%9B%BD%E5%A4%A7%E9%BE%99%E5%A8%81%E5%A4%A7%E8%8D%AF%E6%88%BF%20%E6%B5%A6%E5%BB%BA%E8%B7%AF111%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
+              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E5%9B%BD%E5%A4%A7%E9%BE%99%E5%A8%81%E5%A4%A7%E8%8D%AF%E6%88%BF&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
+              <button class="mbtn copy" type="button" data-copy="浦建路111号 国大龙威大药房">📋 주소 복사</button>
+            </div>
+          </div>
         </div>
-          <div class="spot">
-            <div class="sp-h"><span class="sp-n">5</span><b>공리병원 · 门诊楼 (비만 클리닉)</b></div>
-            <div class="sp-a">
-              <span class="addr">苗圃路219号</span>
-              <div class="sp-m">上海市浦东新区公利医院 · <b>门诊楼 1층 建卡·挂号</b> → 3층 内分泌科 肥胖专病(목요일 오후) → 1층 收费·药房<br>진료 <b>08:00–11:30</b> · <b>13:30–17:00</b> (접수 7:30–11:00 / 11:00–16:30) · <a href="tel:+862158858730">☎ 021-58858730</a> (예약센터 5104·5106)</div>
-            </div>
-            <div class="sp-b">
-              <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E8%8B%97%E5%9C%83%E8%B7%AF219%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
-              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E5%85%AC%E5%88%A9%E5%8C%BB%E9%99%A2&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
-              <button class="mbtn copy" type="button" data-copy="苗圃路219号">📋 주소 복사</button>
-              <a class="mbtn" href="tel:+862158858730">☎ 전화</a>
-            </div>
-          </div>
-          <div class="spot">
-            <div class="sp-h"><span class="sp-n">5·B</span><b>龙威大药房 苗圃路店 · 약국 백업</b></div>
-            <div class="sp-a">
-              <span class="addr">苗圃路219~221号</span>
-              <div class="sp-m">公利医院 정문 옆 같은 번지 · 도보 1~2분 · 원내 약국 품절 시 <b>외배처방(外配)</b> 수령</div>
-            </div>
-            <div class="sp-b">
-              <a class="mbtn apple" href="https://maps.apple.com/?q=%E9%BE%99%E5%A8%81%E5%A4%A7%E8%8D%AF%E6%88%BF%20%E8%8B%97%E5%9C%83%E8%B7%AF%E5%BA%97" target="_blank" rel="noopener">🗺️ Apple지도</a>
-              <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E9%BE%99%E5%A8%81%E5%A4%A7%E8%8D%AF%E6%88%BF&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
-              <button class="mbtn copy" type="button" data-copy="苗圃路219号 龙威大药房">📋 주소 복사</button>
-            </div>
-          </div>
         <p class="route-foot">중국어 역명·주소는 그대로 보여 주세요 · 인터넷 없이도 열립니다</p>
       </div>
     </section>
@@ -1349,9 +1297,9 @@ const C = (zh, py, ko, q) => ({zh, py, ko, q});
 
 const PLACES = [
 {
-  id:'hospital', em:'🏥', name:'병원', note:'런지병원 동원 · 내분비과 예약 12:15',
+  id:'hospital', em:'🏥', name:'병원', note:'런지 12:15 · 파크웨이 구베이 15:00',
   scenes:[
-    { name:'접수 · 예약 확인', sub:'1층 국제의료부 접수 → 여권 제시', cards:[
+    { name:'런지 접수 · 예약 확인', sub:'1층 국제의료부 접수 → 여권 제시', cards:[
       C('你好。','nǐ hǎo','안녕하세요.'),
       C('我预约了今天12点15分，内分泌科。','wǒ yùyuē le jīntiān shí\'èr diǎn shíwǔ fēn, nèifēnbì kē','오늘 12시 15분 내분비과 예약했습니다.'),
       C('我的名字是 HONG TEAK LIM。','wǒ de míngzi shì HONG TEAK LIM','제 이름은 HONG TEAK LIM입니다. (여권 영문명)'),
@@ -1371,7 +1319,7 @@ const PLACES = [
       C('大概要等多久？','dàgài yào děng duōjiǔ','얼마나 기다려야 해요?'),
       C('诊室在几楼？','zhěnshì zài jǐ lóu','진료실은 몇 층이에요?'),
     ]},
-    { name:'진료 · 마운자로 처방', sub:'5mg 1펜 · 종이 처방전 요청', cards:[
+    { name:'런지 진료 · 마운자로 처방', sub:'5mg 1펜 · 종이 처방전 요청', cards:[
       C('医生，您好。','yīshēng, nín hǎo','의사 선생님, 안녕하세요.'),
       C('我想开一支穆峰达5毫克。','wǒ xiǎng kāi yì zhī Mùfēngdá wǔ háokè','마운자로 5mg 1펜을 처방해 주세요.'),
       C('替尔泊肽5毫克，一支。','Tì\'ěrbótài wǔ háokè, yì zhī','터르제파타이드(성분명) 5mg, 1펜입니다.'),
@@ -1392,7 +1340,7 @@ const PLACES = [
       C('请问诊察费是多少？','qǐngwèn zhěncháfèi shì duōshǎo','진찰료가 얼마인가요?'),
       C('今天能拿到药吗？','jīntiān néng ná dào yào ma','오늘 약을 받을 수 있나요?'),
     ]},
-    { name:'수납 · 영수증(发票)', sub:'알리페이 결제 → 정식 영수증', cards:[
+    { name:'런지 수납 · 영수증(发票)', sub:'알리페이 결제 → 정식 영수증', cards:[
       C('请问在哪里缴费？','qǐngwèn zài nǎlǐ jiǎofèi','수납은 어디서 해요?'),
       C('一共多少钱？','yígòng duōshǎo qián','전부 얼마예요?'),
       C('可以用支付宝吗？','kěyǐ yòng Zhīfùbǎo ma','알리페이로 결제할 수 있나요?'),
@@ -1407,7 +1355,7 @@ const PLACES = [
       C('需要，请给我正式发票。','xūyào, qǐng gěi wǒ zhèngshì fāpiào','네, 정식 영수증 주세요.','需要发票吗？'),
       C('请给我一张收据。','qǐng gěi wǒ yì zhāng shōujù','영수증 한 장 주세요.'),
     ]},
-    { name:'약국 · 약 받기', sub:'원내 약국 · 재고 없으면 옆 약국', cards:[
+    { name:'런지 약국 · 약 받기', sub:'원내 약국 · 재고 없으면 옆 약국', cards:[
       C('请问药房在哪里？','qǐngwèn yàofáng zài nǎlǐ','약국이 어디예요?'),
       C('这是我的处方。','zhè shì wǒ de chùfāng','처방전 여기 있습니다.'),
       C('我来取穆峰达5毫克。','wǒ lái qǔ Mùfēngdá wǔ háokè','마운자로 5mg을 받으러 왔습니다.'),
@@ -1420,6 +1368,32 @@ const PLACES = [
       C('一共多少钱？','yígòng duōshǎo qián','전부 얼마예요?'),
       C('请给我发票。','qǐng gěi wǒ fāpiào','영수증 주세요.'),
       C('谢谢，辛苦了。','xièxie, xīnkǔ le','감사합니다, 수고하셨어요.'),
+    ]},
+    { name:'파크웨이 구베이 · 15:00', sub:'2층 접수 → 김현익 선생님 한국어 진료 → 5mg 3펜', cards:[
+      C('你好，我预约了今天下午三点。','nǐ hǎo, wǒ yùyuē le jīntiān xiàwǔ sān diǎn','안녕하세요, 오늘 오후 3시 예약했습니다.'),
+      C('我跟金医生有预约，家庭医学科，下午三点。','wǒ gēn Jīn yīshēng yǒu yùyuē, jiātíng yīxuékē, xiàwǔ sān diǎn','김 선생님(가정의학과) 오후 3시 예약입니다.'),
+      C('我的名字是 HONG TEAK LIM。','wǒ de míngzi shì HONG TEAK LIM','제 이름은 HONG TEAK LIM입니다.'),
+      C('这是我的护照。','zhè shì wǒ de hùzhào','여권 여기 있습니다.'),
+      C('请问百汇医疗古北门诊部是在二楼吗？','qǐngwèn Bǎihuì Yīliáo Gǔběi ménzhěn bù shì zài èr lóu ma','백회의료 구베이 외래부가 2층인가요?'),
+      C('请问在哪里报到？','qǐngwèn zài nǎlǐ bàodào','접수는 어디서 해요?'),
+      C('请问有会韩语的同事吗？','qǐngwèn yǒu huì Hányǔ de tóngshì ma','한국어 하시는 분 계신가요?'),
+      C('我是韩国人，中文说得不好。','wǒ shì Hánguórén, Zhōngwén shuō de bù hǎo','한국인이라 중국어를 잘 못합니다.'),
+      C('我是初诊，没有这里的就诊卡。','wǒ shì chūzhěn, méiyǒu zhèlǐ de jiùzhěn kǎ','초진이고 이 병원 진료카드는 없습니다.'),
+      C('我当天要回韩国，请尽量快一点。','wǒ dāngtiān yào huí Hánguó, qǐng jǐnliàng kuài yìdiǎn','당일 한국으로 돌아가니 조금 서둘러 주세요.'),
+      C('我在韩国一直用替尔泊肽（穆峰达）2.5毫克，已经两个月了。','wǒ zài Hánguó yìzhí yòng Tì\'ěrbótài (Mùfēngdá) èr diǎn wǔ háokè, yǐjīng liǎng ge yuè le','한국에서 마운자로 2.5mg을 두 달째 쓰고 있습니다.'),
+      C('这是韩国的处方和诊疗记录。','zhè shì Hánguó de chùfāng hé zhěnliáo jìlù','한국 처방전과 진료기록입니다.'),
+      C('今天想开5毫克，最多三支。','jīntiān xiǎng kāi wǔ háokè, zuìduō sān zhī','오늘 5mg로 최대 3펜 처방받고 싶습니다.'),
+      C('三支都可以吗？','sān zhī dōu kěyǐ ma','3펜 모두 가능한가요?'),
+      C('我的体重90公斤，身高178厘米，没有糖尿病。','wǒ de tǐzhòng jiǔshí gōngjīn, shēngāo yìbǎi qīshíbā límǐ, méiyǒu tángniàobìng','체중 90kg, 키 178cm이고 당뇨는 없습니다.'),
+      C('诊察费是500元吗？','zhěncháfèi shì wǔbǎi yuán ma','진찰료가 500위안인가요?'),
+      C('今天可以在医院拿药吗？','jīntiān kěyǐ zài yīyuàn ná yào ma','오늘 병원에서 약을 받을 수 있나요?'),
+      C('请给我诊断书、费用明细和正式发票，名字要和护照一致。','qǐng gěi wǒ zhěnduànshū, fèiyòng míngxì hé zhèngshì fāpiào, míngzi yào hé hùzhào yízhì','진단서·비용명세서·정식 영수증을 주세요. 이름은 여권과 같아야 합니다.'),
+      C('可以开英文诊断书吗？','kěyǐ kāi yīngwén zhěnduànshū ma','영문 진단서를 발급해 주실 수 있나요?'),
+      C('这个需要冷藏，请给我冰袋。','zhège xūyào lěngcáng, qǐng gěi wǒ bīngdài','냉장 보관해야 하니 아이스팩 주세요.'),
+      C('请问可以用支付宝付款吗？','qǐngwèn kěyǐ yòng Zhīfùbǎo fùkuǎn ma','알리페이로 결제할 수 있나요?'),
+      C('有，我预约了今天下午三点。','yǒu, wǒ yùyuē le jīntiān xiàwǔ sān diǎn','네, 오늘 오후 3시 예약했습니다.','您有预约吗？'),
+      C('金医生，家庭医学科。','Jīn yīshēng, jiātíng yīxuékē','김 선생님, 가정의학과입니다.','您预约的是哪位医生？'),
+      C('三支，三个月的量。','sān zhī, sān ge yuè de liàng','3펜, 3개월분입니다.','您要几支？'),
     ]},
   ]
 },
@@ -1472,11 +1446,13 @@ const PLACES = [
       C('上海市浦东新区北园路33号，仁济医院东院国际医疗部。','Shànghǎi shì Pǔdōng xīnqū Běiyuán lù sānshísān hào, Rénjì Yīyuàn Dōngyuàn guójì yīliáo bù','상하이 푸동신구 북원로 33호, 런지병원 동원 국제의료부. (병원행·기사에게 보여주기)'),
       C('上海市浦东新区浦建路160号，仁济医院东院。','Shànghǎi shì Pǔdōng xīnqū Pǔjiàn lù yìbǎi liùshí hào, Rénjì Yīyuàn Dōngyuàn','상하이 푸동신구 푸졘로 160호, 런지병원 동원. (일반외래 정문)'),
       C('请去第一医药（凤阳路店），地址是黄浦区凤阳路274号，人民广场地铁站9号口附近。','Qǐng qù Dìyī Yīyào (Fèngyánglù diàn), dìzhǐ shì Huángpǔqū Fèngyánglù èrqīsì hào, Rénmín Guǎngchǎng dìtiězhàn jiǔ hào kǒu fùjìn.','제일의약 펑양루점으로 가주세요 (인민광장역 9번 출구 근처)'),
-      C('请去浦东新区公利医院（门诊部），地址是浦东新区苗圃路219号。','Qǐng qù Pǔdōng xīnqū Gōnglì Yīyuàn (ménzhěn bù), dìzhǐ shì Pǔdōng xīnqū Miáopǔ lù èrbǎiyīshíjiǔ hào.','공리병원(외래부)으로 가 주세요. 주소는 푸동신구 먀오푸로 219호. (기사에게 보여주기)'),
+      C('请去长宁区黄金城道776号，百汇医疗古北门诊部。','Qǐng qù Chángníng qū Huángjīnchéng dào qībǎiqīshíliù hào, Bǎihuì Yīliáo Gǔběi ménzhěn bù.','창닝구 황진청다오 776호, 백회의료 구베이 외래부로 가 주세요. (파크웨이 구베이)'),
+      C('到了请停在门诊部门口，我下午三点有预约。','dào le qǐng tíng zài ménzhěn bù ménkǒu, wǒ xiàwǔ sān diǎn yǒu yùyuē','도착하면 외래부 입구에 세워 주세요. 오후 3시 예약입니다.'),
       C('请开进医院里面，在门诊楼门口停。','Qǐng kāi jìn yīyuàn lǐmiàn, zài ménzhěn lóu ménkǒu tíng.','병원 안으로 들어가서 외래동(门诊楼) 입구 앞에 세워 주세요.'),
       C('请尽量快一点，我19点25分前要到浦东机场。','Qǐng jǐnliàng kuài yìdiǎn, wǒ shíjiǔ diǎn èrshíwǔ fēn qián yào dào Pǔdōng jīchǎng.','좀 서둘러 주세요, 19시 25분 전까지 푸동공항에 도착해야 합니다.'),
       C('上海浦东国际机场2号航站楼。','Shànghǎi Pǔdōng guójì jīchǎng èr hào hángzhàn lóu','상하이 푸동국제공항 T2 터미널. (춘추항공)'),
       C('请开快一点，我12点15分有预约。','qǐng kāi kuài yìdiǎn, wǒ shí\'èr diǎn shíwǔ fēn yǒu yùyuē','좀 빨리 가 주세요, 12시 15분 예약이 있어요.'),
+      C('请开快一点，我15点有预约。','qǐng kāi kuài yìdiǎn, wǒ shíwǔ diǎn yǒu yùyuē','좀 빨리 가 주세요, 15시 예약이 있어요.'),
       C('大概多久能到？','dàgài duōjiǔ néng dào','얼마나 걸려요?'),
       C('请帮我打开后备箱。','qǐng bāng wǒ dǎkāi hòubèixiāng','트렁크 좀 열어 주세요.'),
       C('请在这里停车，谢谢。','qǐng zài zhèlǐ tíngchē, xièxie','여기에 세워 주세요, 감사합니다.'),
@@ -1934,15 +1910,15 @@ if(routeToggle && routeBody){
   });
 }
 
-/* ============ 🏥 공리병원 진입·접수 가이드 (기본 닫힘 · 독립 토글) ============ */
-const glToggle = $('glToggle'), glBody = $('glBody'), glCta = $('glCta'), glArw = $('glArw');
-if(glToggle && glBody){
-  glToggle.addEventListener('click', ()=>{
-    const open = glBody.hidden;
-    glBody.hidden = !open;
-    glToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(glArw) glArw.textContent = open ? '\u25B4' : '\u25BE';
-    if(glCta) glCta.textContent = open ? '▴ 가이드 접기' : '▾ 사진으로 단계별 보기';
+/* ============ 🏥 파크웨이 구베이 진입 가이드 (기본 닫힘 · 독립 토글) ============ */
+const pwToggle = $('pwToggle'), pwBody = $('pwBody'), pwCta = $('pwCta'), pwArw = $('pwArw');
+if(pwToggle && pwBody){
+  pwToggle.addEventListener('click', ()=>{
+    const open = pwBody.hidden;
+    pwBody.hidden = !open;
+    pwToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(pwArw) pwArw.textContent = open ? '\u25B4' : '\u25BE';
+    if(pwCta) pwCta.textContent = open ? '▴ 가이드 접기' : '▾ 단계별로 보기';
   });
 }
 
