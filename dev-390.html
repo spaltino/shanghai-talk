@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>dev 390 검증</title>
+<style>
+ body{margin:0;background:#05080f;color:#9fb2cb;font:12px/1.4 -apple-system,sans-serif;display:flex;gap:16px;padding:12px}
+ figure{margin:0}
+ figcaption{color:#7ff0cd;margin-bottom:6px}
+ iframe{width:390px;height:844px;border:1px solid #2b3d58;border-radius:10px;background:#0b1220}
+</style></head><body>
+<figure><figcaption>390×844 · 접힘</figcaption><iframe id="a" src="./index.html"></iframe></figure>
+<figure><figcaption>390×844 · 동선 펼침</figcaption><iframe id="b" src="./index.html"></iframe></figure>
+<figure><figcaption>390×844 · 병원 카드</figcaption><iframe id="c" src="./index.html"></iframe></figure>
+<script>
+function ready(f){return new Promise(r=>{const i=document.getElementById(f);
+  const go=()=>{try{ if(i.contentDocument && i.contentDocument.readyState==='complete' && i.contentDocument.querySelector('.place')) r(i); else setTimeout(go,120);}catch(e){setTimeout(go,200)}};
+  i.addEventListener('load',()=>setTimeout(go,120)); setTimeout(go,600);});}
+window.__measure = () => {
+  const out = {};
+  ['a','b','c'].forEach(k=>{
+    const d = document.getElementById(k).contentDocument, de = d.documentElement;
+    out[k] = {scrollW: de.scrollWidth, clientW: de.clientWidth, overflow: de.scrollWidth - de.clientWidth,
+      tall: [...d.querySelectorAll('.card,.stp-l li,.sp-h b,.talk b,.stp-tx b,.chk span,.route-head .rh-t b')]
+              .filter(e=>e.scrollWidth > e.clientWidth + 1).map(e=>e.textContent.trim().slice(0,40))};
+  });
+  return out;
+};
+window.__openRoute = () => { const d=document.getElementById('b').contentDocument; d.getElementById('routeToggle').click(); return true; };
+window.__openPw = () => { const d=document.getElementById('c').contentDocument;
+  d.getElementById('routeToggle').click(); d.getElementById('pwToggle').click(); return true; };
+window.__scrollToPw = () => { const d=document.getElementById('c').contentDocument;
+  d.getElementById('pwGuide').scrollIntoView({block:'start'}); return true; };
+ready('a').then(()=>ready('b')).then(()=>ready('c')).then(()=>{document.title='ready';});
+</script>
+</body></html>
