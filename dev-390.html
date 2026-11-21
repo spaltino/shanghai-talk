@@ -8,26 +8,33 @@
 </style></head><body>
 <figure><figcaption>390×844 · 접힘</figcaption><iframe id="a" src="./index.html"></iframe></figure>
 <figure><figcaption>390×844 · 동선 펼침</figcaption><iframe id="b" src="./index.html"></iframe></figure>
-<figure><figcaption>390×844 · 병원 카드</figcaption><iframe id="c" src="./index.html"></iframe></figure>
+<figure><figcaption>390×844 · 파크웨이 가이드</figcaption><iframe id="c" src="./index.html"></iframe></figure>
 <script>
 function ready(f){return new Promise(r=>{const i=document.getElementById(f);
   const go=()=>{try{ if(i.contentDocument && i.contentDocument.readyState==='complete' && i.contentDocument.querySelector('.place')) r(i); else setTimeout(go,120);}catch(e){setTimeout(go,200)}};
   i.addEventListener('load',()=>setTimeout(go,120)); setTimeout(go,600);});}
+function prep(f){const i=document.getElementById(f), d=i.contentDocument;
+  const st=d.createElement('style'); st.textContent='html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important} html{scrollbar-width:none}'; d.head.appendChild(st);
+  return d;}
 window.__measure = () => {
   const out = {};
   ['a','b','c'].forEach(k=>{
     const d = document.getElementById(k).contentDocument, de = d.documentElement;
     out[k] = {scrollW: de.scrollWidth, clientW: de.clientWidth, overflow: de.scrollWidth - de.clientWidth,
-      tall: [...d.querySelectorAll('.card,.stp-l li,.sp-h b,.talk b,.stp-tx b,.chk span,.route-head .rh-t b')]
-              .filter(e=>e.scrollWidth > e.clientWidth + 1).map(e=>e.textContent.trim().slice(0,40))};
+      clipped: [...d.querySelectorAll('.card .zh,.card .py,.card .ko,.stp-l li,.sp-h b,.talk b,.stp-tx b,.chk span,figcaption,.sp-m,.mg-l li,.mg-sign-cap')]
+              .filter(e=>e.offsetParent!==null && e.scrollWidth > e.clientWidth + 1).map(e=>e.textContent.trim().slice(0,50))};
   });
   return out;
 };
-window.__openRoute = () => { const d=document.getElementById('b').contentDocument; d.getElementById('routeToggle').click(); return true; };
-window.__openPw = () => { const d=document.getElementById('c').contentDocument;
-  d.getElementById('routeToggle').click(); d.getElementById('pwToggle').click(); return true; };
-window.__scrollToPw = () => { const d=document.getElementById('c').contentDocument;
+window.__openRoute = () => { const d=prep('b'); d.getElementById('routeToggle').click(); return true; };
+window.__openPw = () => { const d=prep('c');
+  d.getElementById('routeToggle').click(); d.getElementById('pwToggle').click();
   d.getElementById('pwGuide').scrollIntoView({block:'start'}); return true; };
-ready('a').then(()=>ready('b')).then(()=>ready('c')).then(()=>{document.title='ready';});
+window.__openCards = () => { const d=prep('c');
+  d.querySelector('[data-place="hospital"]').click();
+  const sc=d.querySelectorAll('[data-scene]'); sc[sc.length-1].click();
+  return d.querySelector('#ledeScene').textContent; };
+window.__top = () => { ['a','b','c'].forEach(k=>document.getElementById(k).contentWindow.scrollTo(0,0)); return true; };
+ready('a').then(()=>ready('b')).then(()=>ready('c')).then(()=>{prep('a');document.title='ready';});
 </script>
 </body></html>
