@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="상하이톡" />
 <meta property="og:title" content="상하이 소통카드" />
-<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 244장" />
+<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 245장" />
 <meta property="og:type" content="website" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23ff8a3d' font-family='sans-serif'%3E%E8%AF%B4%3C/text%3E%3C/svg%3E" />
@@ -858,7 +858,7 @@
             <ol>
               <li><b>먼저 전화</b> <span class="wtag">☎ 021-5089-7060</span> 런지약국에 5mg 재고를 확인하고, 없을 때만 움직이세요.</li>
               <li><span class="zh">临沂路359号</span>는 <span class="zh">上海儿童医学中心</span>역에서 <b>남서쪽 약 2.2km</b>. 걸으면 35분 — 걸어갈 곳이 아닙니다.</li>
-              <li><b>택시</b> 런지약국 출발 <b>약 4.8km · 10분</b>, 돌아올 때 병원 <span class="addr">北园路33号</span>까지 <b>2.0km · 7분</b> (디디 목적지 <span class="zh">国大药房 临沂路359号</span>)</li>
+              <li><b>택시</b> 런지약국 출발 <b>약 4.8km · 10분</b>, 돌아올 때 병원 <span class="addr">北园路33号</span>까지 <b>2.0km · 7분</b> (디디 목적지 <span class="zh">国大药房 临沂路359号</span>)<br><button class="mbtn copy" type="button" data-copy="国大药房 临沂路359号">📋 디디·알리페이 복사</button> · 택시 카드 <b>2번</b>을 기사에게 보여 주세요</li>
               <li><b>지하철</b> <span class="zh">6号线</span> 1정거장 <span class="zh">临沂新村</span>역 + 도보 <b>900m·13분</b> — 지하철로는 왕복 40분+</li>
               <li>10:30까지 출발하지 못하면 <b>건너뛰고</b> 12:15 런지부터. 1펜은 병원에서 받습니다.</li>
             </ol>
@@ -1163,11 +1163,15 @@
           </div>
           <div class="spot">
             <div class="sp-h"><span class="sp-n">2</span><b>국대약방 린이루점</b></div>
-            <div class="sp-a"><span class="addr">临沂路359号</span></div>
+            <div class="sp-a">
+              <span class="addr">临沂路359号</span>
+              <div class="sp-m">国大药房（临沂路店） · 런지약국에서 택시 <b>약 4.8km·10분</b> · 돌아올 때 병원(北园路33号)까지 <b>2.0km·7분</b><br><b>디디·알리페이</b>에는 <b>国大药房 临沂路359号</b>를 붙여넣으세요</div>
+            </div>
             <div class="sp-b">
               <a class="mbtn apple" href="https://maps.apple.com/?q=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E4%B8%B4%E6%B2%82%E8%B7%AF359%E5%8F%B7" target="_blank" rel="noopener">🗺️ Apple지도</a>
               <a class="mbtn amap" href="https://uri.amap.com/search?keyword=%E4%B8%B4%E6%B2%82%E8%B7%AF359%E5%8F%B7&city=310000&callnative=1" target="_blank" rel="noopener">📍 고덕지도</a>
-              <button class="mbtn copy" type="button" data-copy="临沂路359号">📋 주소 복사</button>
+              <button class="mbtn copy" type="button" data-copy="国大药房 临沂路359号">📋 주소 복사</button>
+              <button class="mbtn copy" type="button" data-copy="临沂路359号">📋 주소만</button>
             </div>
           </div>
           <div class="spot">
@@ -1444,6 +1448,7 @@ const PLACES = [
   scenes:[
     { name:'타기 · 목적지', sub:'주소 카드를 그대로 보여주세요', cards:[
       C('你好，请去这个地址。','nǐ hǎo, qǐng qù zhège dìzhǐ','안녕하세요, 이 주소로 가 주세요.'),
+      C('上海市浦东新区临沂路359号，国大药房（临沂路店）。','Shànghǎi shì Pǔdōng xīnqū Línyí lù sānbǎi wǔshíjiǔ hào, Guódà Yàofáng (Línyí lù diàn)','상하이 푸동신구 린이루 359호, 국대약방(린이루점). (국대약방 린이루점·기사에게 보여주기)'),
       C('上海市浦东新区北园路33号，仁济医院东院国际医疗部。','Shànghǎi shì Pǔdōng xīnqū Běiyuán lù sānshísān hào, Rénjì Yīyuàn Dōngyuàn guójì yīliáo bù','상하이 푸동신구 북원로 33호, 런지병원 동원 국제의료부. (병원행·기사에게 보여주기)'),
       C('上海市浦东新区浦建路160号，仁济医院东院。','Shànghǎi shì Pǔdōng xīnqū Pǔjiàn lù yìbǎi liùshí hào, Rénjì Yīyuàn Dōngyuàn','상하이 푸동신구 푸졘로 160호, 런지병원 동원. (일반외래 정문)'),
       C('请去第一医药（凤阳路店），地址是黄浦区凤阳路274号，人民广场地铁站9号口附近。','Qǐng qù Dìyī Yīyào (Fèngyánglù diàn), dìzhǐ shì Huángpǔqū Fèngyánglù èrqīsì hào, Rénmín Guǎngchǎng dìtiězhàn jiǔ hào kǒu fùjìn.','제일의약 펑양루점으로 가주세요 (인민광장역 9번 출구 근처)'),
