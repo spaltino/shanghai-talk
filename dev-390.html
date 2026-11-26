@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>dev-390 검증</title>
+<style>body{margin:0;font:12px/1.4 monospace;background:#000;color:#0f0}#f{width:390px;height:844px;border:0;display:block}#out{white-space:pre-wrap;padding:6px}</style>
+</head><body>
+<pre id="out">running…</pre>
+<iframe id="f"></iframe>
+<script>
+const out = [];
+const P = s => { out.push(s); document.getElementById('out').textContent = out.join('\n'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const EXPECT = {
+  zh: '我有韩国医院的处方（这是中文翻译件），只凭这个和护照可以在这里买穆峰达5毫克吗？如果不行，可以在店里在线开处方直接买吗？',
+  py: 'Wǒ yǒu Hánguó yīyuàn de chùfāng (zhè shì Zhōngwén fānyìjiàn), zhǐ píng zhège hé hùzhào kěyǐ zài zhèlǐ mǎi Mùfēngdá wǔ háokè ma? Rúguǒ bùxíng, kěyǐ zài diàn lǐ zàixiàn kāi chùfāng zhíjiē mǎi ma?'
+};
+const f = document.getElementById('f');
+const errs = [];
+f.onload = async () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  w.addEventListener('error', e => errs.push('ERR ' + e.message + ' @' + String(e.filename||'').split('/').pop() + ':' + e.lineno));
+  w.addEventListener('unhandledrejection', e => errs.push('REJ ' + String(e.reason)));
+  const VW = w.innerWidth;
+  const over = (label) => {
+    const list = [...d.querySelectorAll('body *')].filter(el => {
+      const cs = w.getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+      const r = el.getBoundingClientRect();
+      return r.width > 0.5 && (r.right > VW + 0.5 || r.left < -0.5);
+    }).map(el => el.tagName + '.' + String(el.className || '').split(' ')[0] + '[' + Math.round(el.getBoundingClientRect().left) + '..' + Math.round(el.getBoundingClientRect().right) + ']');
+    P('OVERFLOW ' + label + ': ' + list.length + (list.length ? ' → ' + list.slice(0,6).join(', ') : ''));
+  };
+  await sleep(400);
+  P('VW=' + VW + ' scrollW=' + d.documentElement.scrollWidth + ' clientW=' + d.documentElement.clientWidth + ' PLACES=' + (w.PLACES ? w.PLACES.length : 'undefined'));
+  const imgs = [...d.querySelectorAll('img')];
+  P('IMG broken=' + imgs.filter(i => i.complete && i.naturalWidth === 0).length + '/' + imgs.length);
+  over('view1');
+
+  d.querySelector('.place[data-place="pharmacy"]').click();
+  await sleep(120);
+  P('STEP2 header="' + d.getElementById('hTitle').textContent + '" scenes=' + d.querySelectorAll('.scene').length);
+  over('view2');
+
+  d.querySelector('.scene[data-scene="0"]').click();
+  await sleep(150);
+  const scene = w.scene;
+  P('STEP3 scene="' + scene.name + '" cards=' + d.querySelectorAll('.card').length + ' (data ' + scene.cards.length + ')');
+  const c0 = d.querySelector('.card[data-card="0"] .zh').textContent.trim();
+  const c1 = d.querySelector('.card[data-card="1"]');
+  const zh1 = c1.querySelector('.zh').textContent.trim();
+  const py1 = c1.querySelector('.py').textContent.trim();
+  const ko1 = c1.querySelector('.ko').textContent.trim();
+  const norm = s => s.replace(/\s+/g, ' ').trim();
+  P('CARD1 zh="' + c0 + '"');
+  P('CARD2 zh len=' + zh1.length + ' match=' + (norm(zh1) === norm(EXPECT.zh)));
+  P('CARD2 py match=' + (norm(py1) === norm(EXPECT.py)));
+  P('CARD2 ko="' + ko1 + '"');
+  P('CARD2 zh="' + zh1 + '"');
+  over('view3-cards');
+  const cardRects = [...d.querySelectorAll('.card')].map((el,i) => i + ':' + Math.round(el.getBoundingClientRect().width));
+  P('CARD widths px=' + cardRects.join(' '));
+
+  c1.click();
+  await sleep(300);
+  const fs = d.getElementById('fs');
+  const fsZh = d.getElementById('fsZh');
+  P('FULLSCREEN open=' + (!fs.hidden) + ' count="' + d.getElementById('fsCount').textContent + '" zhLines=' + Math.round(fsZh.getBoundingClientRect().height / parseFloat(w.getComputedStyle(fsZh).fontSize)) + ' fontSize=' + w.getComputedStyle(fsZh).fontSize);
+  const zr = fsZh.getBoundingClientRect();
+  P('FULLSCREEN zh box l=' + Math.round(zr.left) + ' r=' + Math.round(zr.right) + ' w=' + Math.round(zr.width) + ' clipped=' + (fsZh.scrollHeight > fsZh.clientHeight + 1));
+  const pyBox = d.getElementById('fsPy').getBoundingClientRect();
+  P('FULLSCREEN py r=' + Math.round(pyBox.right) + ' text="' + d.getElementById('fsPy').textContent.slice(0, 60) + '…"');
+  over('fullscreen');
+  await sleep(100);
+  d.getElementById('fsClose').click();
+  await sleep(120);
+  P('FULLSCREEN closed=' + d.getElementById('fs').hidden);
+  P('ERRORS ' + errs.length + (errs.length ? ' → ' + errs.slice(0,4).join(' | ') : ''));
+  P('DONE');
+};
+f.src = './index.html?dev390=' + Date.now();
+</script>
+</body></html>
