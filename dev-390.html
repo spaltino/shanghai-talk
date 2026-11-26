@@ -40,8 +40,7 @@ f.onload = async () => {
 
   d.querySelector('.scene[data-scene="0"]').click();
   await sleep(150);
-  const scene = w.scene;
-  P('STEP3 scene="' + scene.name + '" cards=' + d.querySelectorAll('.card').length + ' (data ' + scene.cards.length + ')');
+  P('STEP3 scene="' + d.getElementById('hTitle').textContent + '" cards=' + d.querySelectorAll('.card').length + ' lede="' + d.getElementById('hSub').textContent + '"');
   const c0 = d.querySelector('.card[data-card="0"] .zh').textContent.trim();
   const c1 = d.querySelector('.card[data-card="1"]');
   const zh1 = c1.querySelector('.zh').textContent.trim();
