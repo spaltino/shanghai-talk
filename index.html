@@ -71,6 +71,14 @@
   .view{width:100%; max-width:100%; min-width:0}
   .view[hidden]{display:none}
 
+  /* ---------- home banner ---------- */
+  .hero{
+    display:block; width:100%; max-width:100%; margin:0 0 12px;
+    border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line); background:var(--card); line-height:0;
+  }
+  .hero img{display:block; width:100%; height:auto; aspect-ratio:2 / 1; object-fit:cover}
+
   /* ---------- step 1 ---------- */
   .lede{
     margin:2px 0 14px; padding:14px 16px; border-radius:var(--radius);
@@ -473,6 +481,10 @@
 <main>
   <!-- STEP 1 -->
   <section class="view" id="view1">
+    <picture class="hero">
+      <source srcset="assets/banner.webp" type="image/webp" />
+      <img src="assets/banner.png" width="1200" height="600" fetchpriority="high" decoding="async" alt="밤의 상하이 와이탄 — 스마트폰으로 이야기하는 여행자와 만두 캐릭터, 노란 택시, 동방명주 야경" />
+    </picture>
     <div class="lede">
       <div class="t"><b>어디서 쓰실 건가요?</b> 장소를 고르면 그 자리에서 바로 쓰는 순서대로 나옵니다.</div>
       <div class="steps"><i class="on">1 장소</i><i>2 상황</i><i>3 카드</i></div>
