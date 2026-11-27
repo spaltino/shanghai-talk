@@ -464,7 +464,7 @@
     <div class="logo">说</div>
     <div class="htitle">
       <b id="hTitle">상하이 소통카드</b>
-      <span id="hSub">장소 → 상황 → 카드 · 2026.11.26 상하이</span>
+      <span id="hSub">장소 → 상황 → 카드 · 상하이</span>
     </div>
   </div>
   <button class="nav-btn" id="btnHome" hidden aria-label="처음으로">⌂</button>
@@ -1692,7 +1692,7 @@ function show(n){
   [view1,view2,view3].forEach((v,i)=>v.hidden = (i+1!==n));
   btnBack.hidden = n===1;
   btnHome.hidden = n===1;
-  if(n===1){ hTitle.textContent='상하이 소통카드'; hSub.textContent='장소 → 상황 → 카드 · 2026.11.26 상하이'; window.scrollTo({top:0}); }
+  if(n===1){ hTitle.textContent='상하이 소통카드'; hSub.textContent='장소 → 상황 → 카드 · 상하이'; window.scrollTo({top:0}); }
   if(n===2){ hTitle.textContent = place.em+' '+place.name; hSub.textContent = '상황을 고르세요'; }
   if(n===3){ hTitle.textContent = scene.name; hSub.textContent = place.name + ' · ' + scene.cards.length + '장'; }
   history.replaceState({n}, '');
