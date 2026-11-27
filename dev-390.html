@@ -1,0 +1,122 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>QA 390 · shanghai-talk (임시 검수 페이지)</title>
+<meta name="robots" content="noindex">
+<style>
+  body{margin:0;background:#111;color:#eaeaea;font:12px/1.45 ui-monospace,Menlo,monospace}
+  #f{border:0;display:block;background:#0a1120}
+  #log{white-space:pre-wrap;padding:8px;max-width:390px}
+</style>
+<iframe id="f" src="./index.html?qa=1" width="390" height="844"></iframe>
+<pre id="log">running…</pre>
+<script>
+const f = document.getElementById('f');
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const FORBID = ['HONG','TEAK','LIM ','LIM。','임홍택','홍택','BMUYIVL','1982','9925','7979',
+  '90公斤','178厘米','体重90','당뇨','제주','济州','Jìzhōu','11/26','2026-11','林洪','4sqseoul','editking'];
+
+f.addEventListener('load', async () => {
+  const d = f.contentDocument, w = f.contentWindow;
+  const errs = [];
+  w.addEventListener('error', e => errs.push('error: ' + e.message + ' @' + e.lineno));
+  w.addEventListener('unhandledrejection', e => errs.push('rejection: ' + e.reason));
+  await sleep(600);
+
+  const overflow = () => {
+    const cw = d.documentElement.clientWidth;
+    const bad = [];
+    d.querySelectorAll('body *').forEach(el => {
+      if (el.closest('svg')) return;
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return;
+      const cs = w.getComputedStyle(el);
+      if (cs.visibility === 'hidden' || cs.display === 'none') return;
+      if (el.closest('[hidden]')) return;
+      if (r.right > cw + 0.6 || r.left < -0.6) {
+        bad.push((el.tagName + '.' + (el.className || '')).slice(0, 44) + ' R=' + Math.round(r.right) + ' L=' + Math.round(r.left));
+      }
+    });
+    return { cw: cw, sw: d.documentElement.scrollWidth, n: bad.length, bad: bad.slice(0, 6) };
+  };
+
+  const res = {
+    vw: w.innerWidth, places: d.querySelectorAll('[data-place]').length,
+    home: overflow(), viewOverflow: {}, cards: 0, blankTpl: 0, forbidden: [], domForbidden: [],
+    fsBad: [], errs: errs
+  };
+
+  // 문서 전체 텍스트(정적 HTML 포함)에서 금지 문자열 검사
+  const docTxt = d.documentElement.outerHTML;
+  FORBID.forEach(fb => { if (docTxt.indexOf(fb) >= 0) res.domForbidden.push(fb); });
+  res.blankTpl = (docTxt.match(/＿＿公斤/g) || []).length;
+
+  const check = (tag) => { const v = overflow(); if (v.n) res.viewOverflow[tag] = v; };
+
+  // 동선 펼치기
+  const rt = d.getElementById('routeToggle');
+  if (rt) { rt.click(); await sleep(200); check('route-open'); }
+  const pwt = d.getElementById('pwToggle');
+  if (pwt) { pwt.click(); await sleep(150); check('pw-open'); }
+  const mgt = d.getElementById('mgToggle');
+  if (mgt) { mgt.click(); await sleep(150); check('mg-open'); }
+  if (mgt) { mgt.click(); await sleep(80); }
+  if (pwt) { pwt.click(); await sleep(80); }
+  if (rt) { rt.click(); await sleep(80); }
+
+  const places = ['hospital','pharmacy','taxi','airport','store','help'];
+  for (const pid of places) {
+    const pel = d.querySelector('[data-place="' + pid + '"]');
+    if (!pel) { res.forbidden.push('missing place ' + pid); continue; }
+    pel.click(); await sleep(60);
+    check(pid + ':sceneList');
+    const ns = d.querySelectorAll('[data-scene]').length;
+    for (let si = 0; si < ns; si++) {
+      d.querySelector('[data-scene="' + si + '"]').click(); await sleep(60);
+      const name = d.getElementById('ledeScene').textContent;
+      check(pid + '/' + name);
+      const cards = [...d.querySelectorAll('[data-card]')];
+      cards.forEach((c, ci) => {
+        const zh = c.querySelector('.zh').textContent;
+        const py = c.querySelector('.py').textContent;
+        const ko = c.querySelector('.ko').textContent;
+        res.cards++;
+        const blob = zh + py + ko;
+        FORBID.forEach(fb => { if (blob.indexOf(fb) >= 0) res.forbidden.push(pid + '/' + name + ' #' + (ci + 1) + ' → ' + fb); });
+        if (blob.indexOf('＿＿公斤') >= 0) res.blankTpl += 0;
+      });
+      if (cards.length) {
+        let li = 0, best = -1;
+        cards.forEach((c, i) => { const t = c.querySelector('.zh').textContent.length; if (t > best) { best = t; li = i; } });
+        cards[li].click(); await sleep(140);
+        const fs = d.getElementById('fs');
+        const body = d.getElementById('fsBody');
+        const zhEl = d.getElementById('fsZh');
+        const open = fs && !fs.hidden && w.getComputedStyle(fs).display !== 'none';
+        if (open) {
+          const r = zhEl.getBoundingClientRect();
+          const br = body.getBoundingClientRect();
+          const clipped = (r.right > br.right + 0.6 || r.bottom > br.bottom + 2 || zhEl.scrollHeight > zhEl.clientHeight + 2);
+          if (clipped) res.fsBad.push({ where: pid + '/' + name, card: li + 1, rw: Math.round(r.width), rh: Math.round(r.height), bh: Math.round(br.height) });
+        } else {
+          res.fsBad.push({ where: pid + '/' + name, card: li + 1, note: 'fullscreen did not open' });
+        }
+        const close = d.getElementById('fsClose');
+        if (close) close.click();
+        await sleep(80);
+      }
+      d.getElementById('btnBack').click(); await sleep(50);
+    }
+    d.getElementById('btnHome').click(); await sleep(50);
+  }
+
+  try {
+    const reg = await w.navigator.serviceWorker.getRegistration();
+    res.sw = reg && reg.active ? reg.active.scriptURL : 'none';
+    res.caches = await w.caches.keys();
+  } catch (e) { res.sw = 'err ' + e.message; }
+
+  document.getElementById('log').textContent = JSON.stringify(res, null, 1);
+  window.__QA = res;
+});
+</script>
