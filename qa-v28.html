@@ -1,0 +1,45 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>QA v28</title>
+<meta name="robots" content="noindex">
+<style>body{margin:0;background:#111;color:#eee;font:12px/1.4 ui-monospace,Menlo,monospace}iframe{border:0;display:block;background:#0b1220}pre{white-space:pre-wrap;padding:8px;max-width:760px}</style>
+<iframe id="f" src="./index.html?qa=28" width="390" height="844"></iframe>
+<pre id="log">running…</pre>
+<script>
+const f=document.getElementById('f'), log=document.getElementById('log');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+f.addEventListener('load', async ()=>{
+  const d=f.contentDocument, w=f.contentWindow, out={};
+  const errs=[]; w.addEventListener('error',e=>errs.push('err:'+e.message+'@'+e.lineno));
+  await sleep(700);
+  const cw=d.documentElement.clientWidth;
+  const bad=[];
+  d.querySelectorAll('body *').forEach(el=>{
+    if(el.closest('svg')) return;
+    const r=el.getBoundingClientRect(); if(!r.width||!r.height) return;
+    const cs=w.getComputedStyle(el); if(cs.visibility==='hidden'||cs.display==='none') return;
+    if(el.closest('[hidden]')) return;
+    if(r.right>cw+0.6||r.left<-0.6) bad.push((el.tagName+'.'+(el.className||'')).slice(0,44)+' R='+Math.round(r.right)+' L='+Math.round(r.left));
+  });
+  const hb=d.getElementById('hTitle'), hero=d.querySelector('.hero-title'), lede=d.querySelector('.lede.one');
+  out.vw=w.innerWidth; out.clientWidth=cw; out.scrollWidth=d.documentElement.scrollWidth;
+  out.title=d.title;
+  out.headerText=hb.textContent;
+  out.headerFont=w.getComputedStyle(hb).fontSize;
+  out.headerBox=Math.round(hb.getBoundingClientRect().width)+'/'+Math.round(hb.parentElement.getBoundingClientRect().width);
+  out.headerClipped=hb.scrollWidth>hb.clientWidth+1;
+  out.heroTitle=hero?hero.textContent.trim():null;
+  if(hero){const r=hero.getBoundingClientRect(),cs=w.getComputedStyle(hero);
+    out.heroFont=cs.fontSize; out.heroLS=cs.letterSpacing; out.heroW=Math.round(r.width)+' R='+Math.round(r.right)+' L='+Math.round(r.left);
+    out.heroFill=cs.webkitTextFillColor||cs.color; out.heroClip=hero.scrollWidth>hero.clientWidth+1;}
+  out.lede=lede?lede.textContent.replace(/\s+/g,' ').trim():null;
+  out.ledeH=lede?Math.round(lede.getBoundingClientRect().height):null;
+  out.oldTextLeft=d.body.innerText.indexOf('어디서 쓰실')>=0;
+  out.stepsInLede=!!d.querySelector('.lede .steps');
+  out.places=d.querySelectorAll('[data-place]').length;
+  out.overflowN=bad.length; out.overflow=bad.slice(0,5);
+  out.errs=errs;
+  log.textContent=JSON.stringify(out,null,1);
+  window.__QA=out;
+});
+</script>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>상하이 소통카드 · 上海沟通卡</title>
+<title>상하이 톡 (상하이 소통카드)</title>
 <meta name="description" content="상하이 현장에서 1초 만에 보여주는 중국어 소통카드. 장소 → 상황 → 순서별 대화카드, 화면 가득 확대 모드. 인터넷 없이도 열립니다." />
 <meta name="theme-color" content="#0b1220" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="상하이톡" />
-<meta property="og:title" content="상하이 소통카드" />
+<meta property="og:title" content="상하이 톡 (상하이 소통카드)" />
 <meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 238장" />
 <meta property="og:type" content="website" />
 <link rel="manifest" href="manifest.json" />
@@ -79,6 +79,28 @@
   }
   .hero img{display:block; width:100%; height:auto; aspect-ratio:2 / 1; object-fit:cover}
 
+  /* ---------- hero english title ---------- */
+  .hero-title{
+    margin:0 0 14px; text-align:center; white-space:nowrap;
+    font-family:"SF Pro Display","Avenir Next","Montserrat","Futura","Helvetica Neue",system-ui,-apple-system,sans-serif;
+    font-weight:800; font-size:clamp(24px, 8vw, 38px); line-height:1.15;
+    letter-spacing:.16em; text-indent:.16em; font-kerning:normal;
+  }
+  .hero-title .ht-en{color:#eaf3ff}
+  .hero-title .ht-accent{color:#ffb066}
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .hero-title .ht-en{
+      background-image:linear-gradient(180deg,#ffffff 0%,#dfeeff 48%,#9dc0e4 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    .hero-title .ht-accent{
+      background-image:linear-gradient(180deg,#ffd9a3 0%,#ff9a4d 55%,#ff6a5f 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+  }
+
   /* ---------- step 1 ---------- */
   .lede{
     margin:2px 0 14px; padding:14px 16px; border-radius:var(--radius);
@@ -93,6 +115,8 @@
     background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--muted);
   }
   .lede .steps i.on{background:rgba(255,138,61,.16); border-color:rgba(255,138,61,.45); color:#ffb787}
+  .lede.one{padding:13px 16px; text-align:center}
+  .lede.one .t{font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.2px}
 
   .grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; width:100%; min-width:0}
   .place{
@@ -471,7 +495,7 @@
   <div class="brand">
     <div class="logo">说</div>
     <div class="htitle">
-      <b id="hTitle">상하이 소통카드</b>
+      <b id="hTitle">상하이 톡 (상하이 소통카드)</b>
       <span id="hSub">장소 → 상황 → 카드 · 상하이</span>
     </div>
   </div>
@@ -485,9 +509,9 @@
       <source srcset="assets/banner.webp" type="image/webp" />
       <img src="assets/banner.png" width="1200" height="600" fetchpriority="high" decoding="async" alt="밤의 상하이 와이탄 — 스마트폰으로 이야기하는 여행자와 만두 캐릭터, 노란 택시, 동방명주 야경" />
     </picture>
-    <div class="lede">
-      <div class="t"><b>어디서 쓰실 건가요?</b> 장소를 고르면 그 자리에서 바로 쓰는 순서대로 나옵니다.</div>
-      <div class="steps"><i class="on">1 장소</i><i>2 상황</i><i>3 카드</i></div>
+    <h1 class="hero-title"><span class="ht-en">SHANGHAI</span> <span class="ht-en ht-accent">TALK</span></h1>
+    <div class="lede one">
+      <div class="t">상황에 맞는 카드 선택!!</div>
     </div>
     <div class="grid" id="placeGrid"></div>
 
@@ -1704,7 +1728,7 @@ function show(n){
   [view1,view2,view3].forEach((v,i)=>v.hidden = (i+1!==n));
   btnBack.hidden = n===1;
   btnHome.hidden = n===1;
-  if(n===1){ hTitle.textContent='상하이 소통카드'; hSub.textContent='장소 → 상황 → 카드 · 상하이'; window.scrollTo({top:0}); }
+  if(n===1){ hTitle.textContent='상하이 톡 (상하이 소통카드)'; hSub.textContent='장소 → 상황 → 카드 · 상하이'; window.scrollTo({top:0}); }
   if(n===2){ hTitle.textContent = place.em+' '+place.name; hSub.textContent = '상황을 고르세요'; }
   if(n===3){ hTitle.textContent = scene.name; hSub.textContent = place.name + ' · ' + scene.cards.length + '장'; }
   history.replaceState({n}, '');
