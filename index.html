@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="상하이톡" />
 <meta property="og:title" content="상하이 소통카드" />
-<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 245장" />
+<meta property="og:description" content="병원·약국·택시·공항·식당에서 바로 보여주는 중국어 카드 240장" />
 <meta property="og:type" content="website" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23ff8a3d' font-family='sans-serif'%3E%E8%AF%B4%3C/text%3E%3C/svg%3E" />
@@ -1052,15 +1052,15 @@
                 <div class="mg-t"><b>15:00 진료 — 김현익 선생님 (한국어)</b><span>첫 처방 문의 → 2.5mg 3펜</span></div>
               </div>
               <ul class="mg-l">
-                <li>준비물: <b>여권</b>. 한국 처방전이나 진료기록이 있으면 함께 가져가세요. 한국어로 진료하니 그대로 설명하면 됩니다.</li>
+                <li>준비물: <b>여권</b>. 한국어로 진료하니 그대로 설명하면 됩니다.</li>
                 <li>요청: <b>2.5mg(10mg/펜) 3펜</b> 일괄 처방(3개월분). 첫 처방이라 수량은 의사 판단이니, 재고가 3펜보다 적으면 <b>받을 수 있는 수량</b>을 먼저 확인하세요.</li>
                 <li>진료비 <b>500위안</b>(한국인 할인)은 수납 때, 약값은 펜 종류·수량에 따라 다르니 수납 때 확인하세요(회신 기준 5mg 펜 <b>1,097.55위안</b>).</li>
                 <li>세관 대비: <b>진단서 · 비용명세서 · 영수증</b>을 요청하고, 이름이 여권과 같은지 확인하세요.</li>
               </ul>
               <div class="talk">
                 <span class="tag">💬 의사에게 — 처방 요청</span>
-                <b>这是我第一次用替尔泊肽（穆峰达），想从2.5毫克开始。今天可以开三支吗？</b>
-                <span class="py">Zhè shì wǒ dì yī cì yòng Tì'ěrbótài (Mùfēngdá), xiǎng cóng èr diǎn wǔ háokè kāishǐ. Jīntiān kěyǐ kāi sān zhī ma?</span>
+                <b>我想开三支穆峰达2.5毫克。今天可以开吗？</b>
+                <span class="py">Wǒ xiǎng kāi sān zhī Mùfēngdá èr diǎn wǔ háokè. Jīntiān kěyǐ kāi ma?</span>
               </div>
               <div class="talk">
                 <span class="tag">💬 서류 요청</span>
@@ -1341,11 +1341,8 @@ const PLACES = [
       C('医生，您好。','yīshēng, nín hǎo','의사 선생님, 안녕하세요.'),
       C('我想开一支穆峰达2.5毫克。','wǒ xiǎng kāi yì zhī Mùfēngdá èr diǎn wǔ háokè','마운자로 2.5mg 1펜을 처방해 주세요.'),
       C('替尔泊肽2.5毫克，一支。','Tì\'ěrbótài èr diǎn wǔ háokè, yì zhī','터르제파타이드(성분명) 2.5mg, 1펜입니다.'),
-      C('这是我第一次用这个药，想从2.5毫克开始。','zhè shì wǒ dì yī cì yòng zhège yào, xiǎng cóng èr diǎn wǔ háokè kāishǐ','이 약은 처음인데 2.5mg부터 시작하고 싶습니다.'),
-      C('剂量从2.5毫克开始，可以吗？','jìliàng cóng èr diǎn wǔ háokè kāishǐ, kěyǐ ma','용량은 2.5mg부터 시작해도 될까요?'),
       C('我的体重90公斤，身高178厘米。','wǒ de tǐzhòng jiǔshí gōngjīn, shēngāo yìbǎi qīshíbā límǐ','체중 90kg, 키 178cm입니다.'),
       C('我没有糖尿病，是为了减重。','wǒ méiyǒu tángniàobìng, shì wèile jiǎnzhòng','당뇨는 없고 체중 감량 목적입니다.'),
-      C('没有，这是第一次。','méiyǒu, zhè shì dì yī cì','아니요, 이번이 처음입니다.','您以前用过这个药吗？'),
       C('没有，血糖正常。','méiyǒu, xuètáng zhèngcháng','없습니다. 혈당은 정상입니다.','有糖尿病吗？'),
       C('一支，四周的量。','yì zhī, sì zhōu de liàng','4주분 1펜입니다.','您要几支？'),
       C('没有，都很好。','méiyǒu, dōu hěn hǎo','없습니다, 다 괜찮습니다.','有没有不舒服？'),
@@ -1399,8 +1396,6 @@ const PLACES = [
       C('我是韩国人，中文说得不好。','wǒ shì Hánguórén, Zhōngwén shuō de bù hǎo','한국인이라 중국어를 잘 못합니다.'),
       C('我是初诊，没有这里的就诊卡。','wǒ shì chūzhěn, méiyǒu zhèlǐ de jiùzhěn kǎ','초진이고 이 병원 진료카드는 없습니다.'),
       C('我当天要回韩国，请尽量快一点。','wǒ dāngtiān yào huí Hánguó, qǐng jǐnliàng kuài yìdiǎn','당일 한국으로 돌아가니 조금 서둘러 주세요.'),
-      C('这是我第一次用替尔泊肽（穆峰达），想从2.5毫克开始。','zhè shì wǒ dì yī cì yòng Tì\'ěrbótài (Mùfēngdá), xiǎng cóng èr diǎn wǔ háokè kāishǐ','마운자로는 처음인데 2.5mg부터 시작하고 싶습니다.'),
-      C('可以只凭护照在这里开处方吗？','kěyǐ zhǐ píng hùzhào zài zhèlǐ kāi chùfāng ma','여권만으로 여기서 처방받을 수 있나요?'),
       C('今天想开2.5毫克，最多三支。','jīntiān xiǎng kāi èr diǎn wǔ háokè, zuìduō sān zhī','오늘 2.5mg로 최대 3펜 처방받고 싶습니다.'),
       C('三支都可以吗？','sān zhī dōu kěyǐ ma','3펜 모두 가능한가요?'),
       C('我的体重90公斤，身高178厘米，没有糖尿病。','wǒ de tǐzhòng jiǔshí gōngjīn, shēngāo yìbǎi qīshíbā límǐ, méiyǒu tángniàobìng','체중 90kg, 키 178cm이고 당뇨는 없습니다.'),
